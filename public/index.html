@@ -1,0 +1,13 @@
+<html>
+    <body>
+    <div x-data="{color: 0x00ff00}">
+        <button @click="color = 0x0000ff">test</button>
+        <div x-canvas>
+            <div x-box="{args: [1, 2, 3], material: {color: color}}"></div>
+        </div>
+    </div>
+    </body>
+</html>
+
+
+<script src="../dist/main.js"></script>
