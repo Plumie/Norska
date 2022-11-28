@@ -1,9 +1,21 @@
 <html>
     <body>
-    <div x-data="{color: 0x00ff00}">
-        <button @click="color = 0x0000ff">test</button>
+    <div x-data="{position: 0}">
+        <button @click="position = 5">test</button>
         <div x-canvas>
-            <div x-box="{args: [1, 2, 3], material: {color: color}}"></div>
+            <div x-camera="{position: [0, 0, position]}"></div>
+            <div x-mesh="[
+                {
+                    type: 'BoxGeometry',
+                    args: [1, 1, 1]
+                },
+                {
+                    type: 'MeshBasicMaterial',
+                    parameters: {
+                        color: 0xff0000
+                    }
+                }
+            ]"></div>
         </div>
     </div>
     </body>
