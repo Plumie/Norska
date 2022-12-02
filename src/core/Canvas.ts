@@ -1,7 +1,7 @@
 import Alpine from 'alpinejs'
 import * as THREE from "three";
 
-Alpine.directive('canvas', (el) => {
+Alpine.directive('canvas', (el, {expression}) => {
   const {scene, camera, renderer} = window.Norska = {
     scene: new THREE.Scene(),
     camera: new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000),

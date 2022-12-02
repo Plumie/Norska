@@ -1,21 +1,15 @@
 <html>
     <body>
-    <div x-data="{position: 0}">
-        <button @click="position = 5">test</button>
+    <div x-data="{position: 0x00ff00}">
+        <button @click="position = 0x0000ff">test</button>
         <div x-canvas>
-            <div x-camera="{position: [0, 0, position]}"></div>
-            <div x-mesh="[
-                {
-                    type: 'BoxGeometry',
-                    args: [1, 1, 1]
-                },
-                {
-                    type: 'MeshBasicMaterial',
-                    parameters: {
-                        color: 0x00ff00
-                    }
-                }
-            ]"></div>
+            <br x-scene="{background: 0xff0000}" />
+            <br x-camera="{position: [0, 0, 6]}" />
+            <br
+                x-mesh
+                x-geometry="['Sphere', [1, 32, 16]]"
+                x-material="['MeshBasicMaterial', {color: position}]"
+            />
         </div>
     </div>
     </body>
