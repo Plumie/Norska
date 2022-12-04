@@ -1,5 +1,4 @@
 import Alpine from "alpinejs";
-import * as THREE from "three";
 import {Color, ColorRepresentation, Texture} from "three";
 
 type Props = {
