@@ -1,15 +1,16 @@
 <html>
     <body>
     <div x-data="{position: 0x00ff00}">
-        <button @click="position = 0x0000ff">test</button>
-        <div x-canvas>
-            <br x-scene="{background: 0xff0000}" />
-            <br x-camera="{position: [0, 0, 6]}" />
-            <br
-                x-mesh
-                x-geometry="['Sphere', [1, 32, 16]]"
-                x-material="['MeshBasicMaterial', {color: new $three.Color(position)}]"
-            />
+        <div class="absolute inset-0">
+            <div x-canvas>
+                <br x-scene="{background: 0xff0000}" />
+                <br x-camera="{position: [0, 0, 6]}" />
+                <br
+                    x-mesh
+                    x-geometry="['Sphere', [1, 32, 16]]"
+                    x-material="['MeshBasicMaterial', {color: new $three.Color(position)}]"
+                />
+            </div>
         </div>
     </div>
     </body>
