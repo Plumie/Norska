@@ -1,4 +1,3 @@
-import Alpine from "alpinejs";
 import {Color, ColorRepresentation, Texture} from "three";
 import AlpineInstance from "alpinejs";
 

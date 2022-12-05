@@ -1,8 +1,7 @@
 const path = require('path');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/main.ts',
     module: {
         rules: [
@@ -16,12 +15,13 @@ module.exports = {
     resolve: {
         extensions: ['.ts', '.js'],
     },
-    plugins: [
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            server: { baseDir: ['./'] },
-            files: ["./**/*.html", "./**/*.css", "./**/*.js"]
-        })
-    ]
+    externals: {
+        three: 'three',
+    },
+    output: {
+        filename: 'bundle.js',
+        library: 'Norska',
+        libraryTarget: 'umd',
+        path: path.resolve(__dirname, 'dist'),
+    }
 };

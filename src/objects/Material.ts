@@ -1,7 +1,6 @@
-import Alpine from "alpinejs";
-import * as THREE from "three";
 import {MeshNode} from "../types/Norska";
 import AlpineInstance from "alpinejs";
+import * as THREE from "three";
 
 type Props = [string, Record<string, any>]
 
@@ -13,7 +12,7 @@ export default (Alpine: typeof AlpineInstance) => {
       const mesh = (el as MeshNode).mesh;
       if (!mesh.material.userData.updated) {
         getValues(([name, options]: Props) => {
-          mesh.material = new (THREE as Record<string, any>)[name](options);
+          mesh.material = new (THREE as any)[name](options);
           mesh.material.userData.updated = true;
         });
       } else {

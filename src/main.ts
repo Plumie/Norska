@@ -1,7 +1,9 @@
 import {Geometry, Material, Mesh} from './objects';
 import {Camera, Canvas, Scene} from './core';
+import {Three} from './magic';
 
-const directives: Record<string, any> = {
+const e: Record<string, any> = {
+  // Directives
   Geometry,
   Material,
   Mesh,
@@ -9,10 +11,12 @@ const directives: Record<string, any> = {
   Camera,
   Canvas,
   Scene,
+
+  Three,
 }
 
 export default function (Alpine: any) {
-  Object.keys(directives).forEach((name) => {
-    directives[name](Alpine);
+  Object.keys(e).forEach((name) => {
+    e[name](Alpine);
   });
 }

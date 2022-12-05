@@ -1,4 +1,3 @@
-import Alpine from 'alpinejs'
 import * as THREE from "three";
 import AlpineInstance from "alpinejs";
 

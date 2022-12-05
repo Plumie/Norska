@@ -1,5 +1,5 @@
-import * as THREE from "three";
 import AlpineInstance from "alpinejs";
+import * as THREE from "three";
 
 type Props = [string, number[], Record<string, any>]
 
@@ -9,7 +9,7 @@ export default (Alpine: typeof AlpineInstance) => {
 
     (effect as any)(() => {
       getValues(([primitive, args, options]: Props) => {
-        (el as any).mesh.geometry = new (THREE as Record<string, any>)[`${primitive}Geometry`](...args, options);
+        (el as any).mesh.geometry = new (THREE as any)[`${primitive}Geometry`](...args, options);
       });
     });
   });

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack --watch"
+    "watch": "webpack --watch",
+    "serve": "webpack --watch --config webpack.serve.config.js"
   },
   "repository": {
     "type": "git",
