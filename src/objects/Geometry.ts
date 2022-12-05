@@ -3,7 +3,7 @@ import AlpineInstance from "alpinejs";
 
 type Props = [string, number[], Record<string, any>]
 
-const Geometry = (Alpine: typeof AlpineInstance) => {
+export default (Alpine: typeof AlpineInstance) => {
   Alpine.directive('geometry', (el, {expression}, {evaluateLater, effect}) => {
     const getValues = evaluateLater(expression);
 
@@ -14,5 +14,3 @@ const Geometry = (Alpine: typeof AlpineInstance) => {
     });
   });
 }
-
-export default Geometry;

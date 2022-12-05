@@ -1,11 +1,18 @@
-import {Geometry} from './objects';
+import {Geometry, Material, Mesh} from './objects';
+import {Camera, Canvas, Scene} from './core';
 
-const norska: Record<string, any> = {
-  geometry: Geometry,
+const directives: Record<string, any> = {
+  Geometry,
+  Material,
+  Mesh,
+
+  Camera,
+  Canvas,
+  Scene,
 }
 
 export default function (Alpine: any) {
-  Object.keys(norska).forEach((name) => {
-    Alpine.directive(name, norska[name](Alpine));
+  Object.keys(directives).forEach((name) => {
+    directives[name](Alpine);
   });
 }

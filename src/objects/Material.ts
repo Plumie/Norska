@@ -5,7 +5,7 @@ import AlpineInstance from "alpinejs";
 
 type Props = [string, Record<string, any>]
 
-const Material = (Alpine: typeof AlpineInstance) => {
+export default (Alpine: typeof AlpineInstance) => {
   Alpine.directive('material', (el, {expression}, {evaluateLater, effect}) => {
     const getValues = evaluateLater(expression);
 
@@ -24,5 +24,3 @@ const Material = (Alpine: typeof AlpineInstance) => {
     });
   });
 }
-
-export default Material;

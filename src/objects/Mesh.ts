@@ -2,7 +2,7 @@ import {Mesh} from "three";
 import {MeshNode} from "../types/Norska";
 import AlpineInstance from "alpinejs";
 
-const _Mesh = (Alpine: typeof AlpineInstance) => {
+export default (Alpine: typeof AlpineInstance) => {
   Alpine.directive('mesh', (el, {expression}, {effect}) => {
     const {scene} = window.Norska;
 
@@ -12,5 +12,3 @@ const _Mesh = (Alpine: typeof AlpineInstance) => {
     });
   });
 }
-
-export default _Mesh;
