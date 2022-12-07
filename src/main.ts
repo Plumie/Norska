@@ -1,6 +1,6 @@
 import {Geometry, Material, Mesh} from './objects';
 import {Camera, Canvas, Scene} from './core';
-import {Three} from './magic';
+import {Three, Frame} from './magic';
 
 const e: Record<string, any> = {
   // Directives
@@ -13,6 +13,7 @@ const e: Record<string, any> = {
   Scene,
 
   Three,
+  Frame
 }
 
 export default function (Alpine: any) {

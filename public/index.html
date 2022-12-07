@@ -7,8 +7,9 @@
                 <br x-camera="{position: [0, 0, 6]}" />
                 <br
                     x-mesh
-                    x-geometry="['Sphere', [1, 32, 16]]"
+                    x-geometry="['Box', [1, 1, 1]]"
                     x-material="['MeshBasicMaterial', {color: new $three.Color(position)}]"
+                    x-effect="$frame(() => $el.mesh.rotation.y += 0.01)"
                 />
             </div>
         </div>
