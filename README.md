@@ -1,6 +1,8 @@
 # Norksa
 
-R3F alternative for AlpineJS
+Alpine lightweight plugin for Three.js 🏔️
+
+Inspired by https://github.com/pmndrs/react-three-fiber
 
 ⚠️ Norska is still in pre-alpha, please avoid using it in production as many things are likely to change
 
