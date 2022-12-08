@@ -3,13 +3,11 @@
     <div x-data="{position: 0x00ff00}">
         <div class="absolute inset-0">
             <div x-canvas>
-                <br x-scene="{background: 0xff0000}" />
-                <br x-camera="{position: [0, 0, 6]}" />
+                <br x-camera="{position: [0, 0, 5]}" />
+                <br x-controls="['OrbitControls', {enableDamping: true}]" />
                 <br
                     x-mesh
-                    x-geometry="['Box', [1, 1, 1]]"
-                    x-material="['MeshBasicMaterial', {color: new $three.Color(position)}]"
-                    x-effect="$frame(() => $el.mesh.rotation.y += 0.01)"
+                    x-geometry="['BoxGeometry', [1, 1, 1]]"
                 />
             </div>
         </div>

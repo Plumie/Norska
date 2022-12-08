@@ -1,9 +1,9 @@
 import {Geometry, Material, Mesh} from './objects';
 import {Camera, Canvas, Scene} from './core';
 import {Three, Frame} from './magic';
+import Controls from "./controls/Controls";
 
 const e: Record<string, any> = {
-  // Directives
   Geometry,
   Material,
   Mesh,
@@ -11,6 +11,8 @@ const e: Record<string, any> = {
   Camera,
   Canvas,
   Scene,
+
+  Controls,
 
   Three,
   Frame

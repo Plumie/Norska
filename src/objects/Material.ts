@@ -17,7 +17,7 @@ export default (Alpine: typeof AlpineInstance) => {
         });
       } else {
         getValues(([, options]: Props) => {
-          mesh.material.setValues(options);
+          mesh.material = Object.assign(mesh.material, options);
         });
       }
     });

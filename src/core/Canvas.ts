@@ -1,15 +1,17 @@
-import * as THREE from "three";
+import {Scene, PerspectiveCamera, WebGLRenderer} from "three";
 import AlpineInstance from "alpinejs";
+import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('canvas', (el, {expression}) => {
+  Alpine.directive('canvas', (el) => {
 
     // Create a new Three.js scene
 
     const {scene, camera, renderer} = window.Norska = {
-      scene: new THREE.Scene(),
-      camera: new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000),
-      renderer: new THREE.WebGLRenderer(),
+      scene: new Scene(),
+      camera: new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000),
+      renderer: new WebGLRenderer(),
+      controls: null
     }
 
     // Create a full width/height canvas
@@ -42,6 +44,11 @@ export default (Alpine: typeof AlpineInstance) => {
 
     const animate = () => {
       requestAnimationFrame(animate);
+
+      if (window.Norska.controls) {
+        window.Norska.controls.update();
+      }
+
       renderer.render(scene, camera);
     };
 
