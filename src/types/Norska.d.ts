@@ -1,3 +1,7 @@
-import {Mesh} from 'three';
+import {Material, Mesh} from 'three';
 
-type MeshNode = Node & {mesh: any}
+type NorskaElement = HTMLElement & {
+    __norska: {
+      mesh?: Mesh & {material: Material};
+    }
+}

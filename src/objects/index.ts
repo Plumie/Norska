@@ -1,4 +1,4 @@
-import Geometry from "./Geometry";
+import Geometry from "../geometries/Geometry";
 import Material from "./Material";
 import Mesh from "./Mesh";
 

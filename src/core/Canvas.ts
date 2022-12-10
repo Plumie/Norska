@@ -1,6 +1,6 @@
 import {Scene, PerspectiveCamera, WebGLRenderer} from "three";
 import AlpineInstance from "alpinejs";
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import {NorskaElement} from "../types/Norska";
 
 export default (Alpine: typeof AlpineInstance) => {
   Alpine.directive('canvas', (el) => {
@@ -19,6 +19,11 @@ export default (Alpine: typeof AlpineInstance) => {
     const parent = document.createElement('div');
     parent.style.width = '100%';
     parent.style.height = '100%';
+
+    [...(el as HTMLDivElement).querySelectorAll('*')].forEach((child) => {
+      (child as NorskaElement).__norska = {}
+    });
+
     (el as HTMLDivElement).insertAdjacentElement('beforebegin', parent);
 
     const getParentSize = () => {

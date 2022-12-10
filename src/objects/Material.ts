@@ -1,4 +1,4 @@
-import {MeshNode} from "../types/Norska";
+import {NorskaElement} from "../types/Norska";
 import AlpineInstance from "alpinejs";
 import * as THREE from "three";
 
@@ -9,16 +9,18 @@ export default (Alpine: typeof AlpineInstance) => {
     const getValues = evaluateLater(expression);
 
     (effect as any)(() => {
-      const mesh = (el as MeshNode).mesh;
-      if (!mesh.material.userData.updated) {
-        getValues(([name, options]: Props) => {
-          mesh.material = new (THREE as any)[name](options);
-          mesh.material.userData.updated = true;
-        });
-      } else {
-        getValues(([, options]: Props) => {
-          mesh.material = Object.assign(mesh.material, options);
-        });
+      const mesh = (el as NorskaElement).__norska.mesh;
+      if (mesh) {
+        if (!mesh?.material.userData.updated) {
+          getValues(([name, options]: Props) => {
+            mesh.material = new (THREE as any)[name](options);
+            mesh.material.userData.updated = true;
+          });
+        } else {
+          getValues(([, options]: Props) => {
+            mesh.material = Object.assign(mesh.material, options);
+          });
+        }
       }
     });
   });

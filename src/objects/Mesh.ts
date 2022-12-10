@@ -1,5 +1,5 @@
 import {Mesh} from "three";
-import {MeshNode} from "../types/Norska";
+import {NorskaElement} from "../types/Norska";
 import AlpineInstance from "alpinejs";
 
 export default (Alpine: typeof AlpineInstance) => {
@@ -7,8 +7,8 @@ export default (Alpine: typeof AlpineInstance) => {
     const {scene} = window.Norska;
 
     (effect as any)(() => {
-      (el as MeshNode).mesh = new Mesh();
-      scene.add((el as any).mesh);
+      (el as NorskaElement).__norska.mesh = new Mesh();
+      scene.add((el as NorskaElement).__norska.mesh);
     });
   });
 }
