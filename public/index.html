@@ -5,9 +5,12 @@
             <div x-canvas>
                 <br x-camera="{position: [0, 0, 5]}" />
                 <br x-controls="['OrbitControls']" />
+                <br x-light="['AmbientLight']" />
                 <br
                     x-mesh
-                    x-geometry="['RingGeometry', []]"
+                    x-material="['MeshPhongMaterial', {color: position}]"
+                    x-geometry="['BoxGeometry']"
+                    x-scale="[1, 5, 1]"
                 />
             </div>
         </div>

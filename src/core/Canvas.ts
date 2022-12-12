@@ -1,4 +1,4 @@
-import {Scene, PerspectiveCamera, WebGLRenderer} from "three";
+import {Scene, PerspectiveCamera, WebGLRenderer, AmbientLight, PointLight} from "three";
 import AlpineInstance from "alpinejs";
 import {NorskaElement} from "../types/Norska";
 
