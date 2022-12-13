@@ -1,15 +1,17 @@
-import * as THREE from "three";
+import {Scene, PerspectiveCamera, WebGLRenderer, AmbientLight, PointLight} from "three";
 import AlpineInstance from "alpinejs";
+import {NorskaElement} from "../types/Norska";
 
 export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('canvas', (el, {expression}) => {
+  Alpine.directive('canvas', (el) => {
 
     // Create a new Three.js scene
 
     const {scene, camera, renderer} = window.Norska = {
-      scene: new THREE.Scene(),
-      camera: new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000),
-      renderer: new THREE.WebGLRenderer(),
+      scene: new Scene(),
+      camera: new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000),
+      renderer: new WebGLRenderer(),
+      controls: null
     }
 
     // Create a full width/height canvas
@@ -17,6 +19,11 @@ export default (Alpine: typeof AlpineInstance) => {
     const parent = document.createElement('div');
     parent.style.width = '100%';
     parent.style.height = '100%';
+
+    [...(el as HTMLDivElement).querySelectorAll('*')].forEach((child) => {
+      (child as NorskaElement).__norska = {}
+    });
+
     (el as HTMLDivElement).insertAdjacentElement('beforebegin', parent);
 
     const getParentSize = () => {
@@ -42,6 +49,11 @@ export default (Alpine: typeof AlpineInstance) => {
 
     const animate = () => {
       requestAnimationFrame(animate);
+
+      if (window.Norska.controls) {
+        window.Norska.controls.update();
+      }
+
       renderer.render(scene, camera);
     };
 
