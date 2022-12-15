@@ -1,8 +1,11 @@
 const path = require('path');
 
+const CompressionPlugin = require("compression-webpack-plugin");
+
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/main.ts',
+    plugins: [new CompressionPlugin()],
     module: {
         rules: [
             {
@@ -23,5 +26,6 @@ module.exports = {
         library: 'Norska',
         libraryTarget: 'umd',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     }
 };

@@ -1,5 +1,6 @@
 import Alpine from "alpinejs";
-import Norska from '../dist/bundle';
+// @ts-ignore
+import Norska from '@plumie/norska';
 
 Alpine.plugin(Norska as any);
 (window as any).Alpine = Alpine;

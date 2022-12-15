@@ -25,6 +25,7 @@ export default (Alpine: typeof AlpineInstance) => {
 
         if (!mesh.geometry.userData.updated) {
           getValues(([primitive, args, options]: Props) => {
+            console.log(primitive, args, options);
             mesh.geometry = geometries[primitive](args);
             Object.assign(mesh.geometry, options);
             mesh.geometry.userData.updated = true;
