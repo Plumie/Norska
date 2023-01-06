@@ -7,7 +7,9 @@
     "watch": "webpack --watch",
     "serve": "webpack --watch --config webpack.serve.config.js"
   },
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Plumie/Norska.git"
@@ -19,14 +21,17 @@
   },
   "homepage": "https://github.com/Plumie/Norska#readme",
   "devDependencies": {
+    "@plumie/norska": "file:plumie-norska-0.1.1.tgz",
     "@types/alpinejs": "^3.7.1",
     "@types/three": "^0.146.0",
+    "alpinejs": "^3.10.5",
     "browser-sync-webpack-plugin": "^2.3.0",
+    "three": "^0.146.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.3",
-    "webpack-cli": "^5.0.0",
-    "alpinejs": "^3.10.5",
-    "three": "^0.146.0",
-    "@plumie/norska": "file:plumie-norska-0.1.1.tgz"
+    "webpack-cli": "^5.0.0"
+  },
+  "dependencies": {
+    "compression-webpack-plugin": "^10.0.0"
   }
 }

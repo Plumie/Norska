@@ -21,7 +21,7 @@ export default (Alpine: typeof AlpineInstance) => {
     parent.style.height = '100%';
 
     [...(el as HTMLDivElement).querySelectorAll('*')].forEach((child) => {
-      (child as NorskaElement).__norska = {}
+      (child as NorskaElement)._norska = {}
     });
 
     (el as HTMLDivElement).insertAdjacentElement('beforebegin', parent);

@@ -5,9 +5,10 @@ import Mesh from './meshes/Mesh';
 
 import {Position, Scale, Rotation} from "./utils";
 
-import {Camera, Canvas, Scene} from './core';
+import {Camera, Canvas, Scene, Load} from './core';
 import {Three, Frame} from './magic';
 import Controls from "./controls/Controls";
+
 
 const e: Record<string, any> = {
   Geometry,
@@ -22,6 +23,7 @@ const e: Record<string, any> = {
   Camera,
   Canvas,
   Scene,
+  Load,
 
   Controls,
 

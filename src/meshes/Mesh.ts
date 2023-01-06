@@ -7,8 +7,8 @@ export default (Alpine: typeof AlpineInstance) => {
     const {scene} = window.Norska;
 
     (effect as any)(() => {
-      (el as NorskaElement).__norska.mesh = new Mesh();
-      scene.add((el as NorskaElement).__norska.mesh);
+      (el as NorskaElement)._norska.mesh = new Mesh();
+      scene.add((el as NorskaElement)._norska.mesh);
     });
   });
 }
