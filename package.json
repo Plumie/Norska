@@ -1,7 +1,7 @@
 {
   "name": "@plumie/norska",
   "version": "0.1.1",
-  "description": "R3F alternative for AlpineJS",
+  "description": "Three.js lightweight plugin for Alpine 🏔️",
   "main": "dist/bundle.js",
   "scripts": {
     "watch": "webpack --watch",
