@@ -2,7 +2,6 @@ import AlpineInstance from "alpinejs";
 import geometries from "./index";
 import {NorskaElement} from "../types/Norska";
 
-
 type Props = [
   string,
   number[],
@@ -17,7 +16,7 @@ export default (Alpine: typeof AlpineInstance) => {
 
     (effect as any)(() => {
 
-      const {mesh} = (el as NorskaElement).__norska;
+      const {mesh} = (el as NorskaElement)._norska;
 
       if (mesh) {
 

@@ -9,7 +9,7 @@ export default (Alpine: typeof AlpineInstance) => {
     const getValues = evaluateLater(expression);
 
     (effect as any)(() => {
-      const mesh = (el as NorskaElement).__norska.mesh;
+      const mesh = (el as NorskaElement)._norska.mesh;
       if (mesh) {
         if (!mesh?.material.userData.updated) {
           getValues(([name, options]: Props) => {
