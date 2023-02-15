@@ -14,11 +14,13 @@ Import Norska and initialize it as an Alpine plugin.
 **Please note that Norska must be registered as a plugin before Alpine is initialized**
 
 ```typescript
-import Norska from '@norska/core'
+import norska from '@norska/core'
 
-const norska = Norska({/* options... */});
+// Initialize Norksa
+const Norska = norska({/* options... */});
 
-Alpine.plugin(norska)
+// Register Norska as an Alpine plugin
+Alpine.plugin(Norska)
 window.Alpine = Alpine
 Alpine.start()
 ```
