@@ -6,7 +6,7 @@
 Run the following command to install it.
 
 ```bash
-npm install @plumie/norska alpinejs three.js
+npm install @norska/core alpinejs three.js
 ```
 
 Import Norska and initialize it as an Alpine plugin.
@@ -14,9 +14,11 @@ Import Norska and initialize it as an Alpine plugin.
 **Please note that Norska must be registered as a plugin before Alpine is initialized**
 
 ```typescript
-import Norska from '@plumie/norska'
+import Norska from '@norska/core'
 
-Alpine.plugin(Norska)
+const norska = Norska({/* options... */});
+
+Alpine.plugin(norska)
 window.Alpine = Alpine
 Alpine.start()
 ```
