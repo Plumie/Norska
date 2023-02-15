@@ -1,6 +1,6 @@
-import Alpine from "alpinejs";
 import {Vector3} from "three";
 import AlpineInstance from "alpinejs";
+import { NorskaOptions } from "@/types/Norska";
 
 interface Props {
   position: Vector3,
@@ -8,8 +8,8 @@ interface Props {
   lookAt: Vector3
 }
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('camera', (el, {expression}, {evaluateLater, effect}) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}camera`, (el, {expression}, {evaluateLater, effect}) => {
     const {camera} = window.Norska;
     const getValues = evaluateLater(expression);
 

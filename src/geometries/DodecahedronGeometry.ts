@@ -1,5 +1,5 @@
 import {DodecahedronGeometry as _DodecahedronGeometry} from "three";
-import {mergeProps} from "../dev/functions";
+import {mergeProps} from "@/dev/functions";
 
 type Props = number[]
 

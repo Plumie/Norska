@@ -1,5 +1,5 @@
 import {AmbientLight as _AmbientLight} from "three";
-import {mergeProps} from "../dev/functions";
+import {mergeProps} from "@/dev/functions";
 
 type Props = number[]
 

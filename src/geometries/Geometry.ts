@@ -1,6 +1,6 @@
 import AlpineInstance from "alpinejs";
 import geometries from "./index";
-import {NorskaElement} from "../types/Norska";
+import {NorskaElement, NorskaOptions} from "@/types/Norska";
 
 type Props = [
   string,
@@ -10,8 +10,8 @@ type Props = [
   }
 ];
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('geometry', (el, {expression}, {evaluateLater, effect}) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}geometry`, (el, {expression}, {evaluateLater, effect}) => {
     const getValues = evaluateLater(expression);
 
     (effect as any)(() => {

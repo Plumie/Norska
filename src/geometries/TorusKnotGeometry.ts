@@ -1,5 +1,5 @@
 import {TorusKnotGeometry as _TorusKnotGeometry} from "three";
-import {mergeProps} from "../dev/functions";
+import {mergeProps} from "@/dev/functions";
 
 type Props = number[]
 

@@ -1,8 +1,9 @@
 import AlpineInstance from "alpinejs";
+import { NorskaOptions } from "@/types/Norska";
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader";
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('load', (el, {expression}, {evaluateLater, effect}) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}load`, (el, {expression}, {evaluateLater, effect}) => {
     const getValues = evaluateLater(expression);
 
     (effect as any)(() => {

@@ -1,9 +1,9 @@
 import {Mesh} from "three";
-import {NorskaElement} from "../types/Norska";
+import {NorskaElement, NorskaOptions} from "@/types/Norska";
 import AlpineInstance from "alpinejs";
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('mesh', (el, {expression}, {effect}) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}mesh`, (el, {expression}, {effect}) => {
     const {scene} = window.Norska;
 
     (effect as any)(() => {

@@ -1,7 +1,8 @@
 import AlpineInstance from "alpinejs";
+import { NorskaOptions } from "@/types/Norska";
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.magic('frame', () => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.magic(`${prefix}frame`, () => {
     return (callback: () => void) => {
       const e = () => {
         callback();
