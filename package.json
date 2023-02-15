@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/Plumie/Norska#readme",
   "devDependencies": {
-    "@plumie/norska": "file:plumie-norska-0.1.1.tgz",
     "@types/alpinejs": "^3.7.1",
     "@types/three": "^0.146.0",
     "alpinejs": "^3.10.5",
