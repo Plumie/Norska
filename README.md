@@ -19,7 +19,7 @@ import norska from '@norska/core'
 // Initialize Norksa
 const Norska = norska({/* options... */});
 
-    // Register Norska as an Alpine plugin
+// Register Norska as an Alpine plugin
 Alpine.plugin(Norska)
 window.Alpine = Alpine
 Alpine.start()
