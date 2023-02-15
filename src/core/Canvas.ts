@@ -1,9 +1,9 @@
-import {Scene, PerspectiveCamera, WebGLRenderer, AmbientLight, PointLight} from "three";
+import {Scene, PerspectiveCamera, WebGLRenderer} from "three";
 import AlpineInstance from "alpinejs";
-import {NorskaElement} from "../types/Norska";
+import {NorskaElement, NorskaOptions} from "@/types/Norska";
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('canvas', (el) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}canvas`, (el) => {
 
     // Create a new Three.js scene
 

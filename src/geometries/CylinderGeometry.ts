@@ -1,5 +1,5 @@
 import {CylinderGeometry as _CylinderGeometry} from "three";
-import {mergeProps} from "../dev/functions";
+import {mergeProps} from "@/dev/functions";
 
 type Props = number[]
 

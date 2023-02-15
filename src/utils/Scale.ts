@@ -1,10 +1,10 @@
-import {NorskaElement} from "../types/Norska";
+import {NorskaElement, NorskaOptions} from "@/types/Norska";
 import AlpineInstance from "alpinejs";
 
 type Props = [number, number, number]
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('scale', (el, {expression}, {evaluateLater, effect}) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}scale`, (el, {expression}, {evaluateLater, effect}) => {
     const getValues = evaluateLater(expression);
 
     (effect as any)(() => {

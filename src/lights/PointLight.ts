@@ -1,5 +1,5 @@
 import {PointLight as _PointLight} from "three";
-import {mergeProps} from "../dev/functions";
+import {mergeProps} from "@/dev/functions";
 
 type Props = number[]
 

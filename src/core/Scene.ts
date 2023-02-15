@@ -1,12 +1,13 @@
 import {Color, ColorRepresentation, Texture} from "three";
 import AlpineInstance from "alpinejs";
+import { NorskaOptions } from "@/types/Norska";
 
 type Props = {
   background: ColorRepresentation | Texture;
 }
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('scene', (el, {expression}, {evaluateLater, effect}) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}scene`, (el, {expression}, {evaluateLater, effect}) => {
     const {scene} = window.Norska;
     const getValues = evaluateLater(expression);
 

@@ -1,11 +1,11 @@
 import lights from "./index";
-import {NorskaElement} from "../types/Norska";
+import {NorskaElement, NorskaOptions} from "@/types/Norska";
 import AlpineInstance from "alpinejs";
 
 type Props = [string, any[], Record<string, any>]
 
-export default (Alpine: typeof AlpineInstance) => {
-  Alpine.directive('light', (el,  {expression}, {evaluateLater, effect}) => {
+export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+  Alpine.directive(`${prefix}light`, (el,  {expression}, {evaluateLater, effect}) => {
     const getValues = evaluateLater(expression);
     const {scene} = window.Norska;
 

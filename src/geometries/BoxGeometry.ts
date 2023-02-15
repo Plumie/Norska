@@ -1,5 +1,5 @@
 import {BoxGeometry as _BoxGeometry} from "three";
-import {mergeProps} from "../dev/functions";
+import {mergeProps} from "@/dev/functions";
 
 type Props = number[]
 

@@ -1,5 +1,5 @@
 import {ExtrudeGeometry as _ExtrudeGeometry} from "three";
-import {mergeProps} from "../dev/functions";
+import {mergeProps} from "@/dev/functions";
 
 type Props = number[]
 
