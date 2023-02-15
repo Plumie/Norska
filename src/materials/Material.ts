@@ -1,6 +1,7 @@
 import {NorskaElement, NorskaOptions} from "@/types/Norska";
 import AlpineInstance from "alpinejs";
 import * as THREE from "three";
+import { MeshBasicMaterial } from "three";
 
 type Props = [string, Record<string, any>]
 
@@ -17,8 +18,9 @@ export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
             mesh.material.userData.updated = true;
           });
         } else {
-          getValues(([, options]: Props) => {
-            Object.assign(mesh.material, options);
+          getValues(([, {color, ...rest}]: Props) => {
+            if (color) (mesh.material as MeshBasicMaterial).color.set(color);
+            Object.assign(mesh.material, rest);
           });
         }
       }

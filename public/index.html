@@ -1,15 +1,17 @@
 <html>
     <body>
-    <div x-data="{position: 0x00ff00}">
-        <div class="absolute inset-0">
+        <div x-data="{color: 0xff0000}" style="height: 100%; width: 100%;">
+            <button @click="color = 0x00ff00">Click me</button>
             <div x-canvas>
-                <br x-camera="{position: [0, 0, 5]}" />
-                <br x-controls="['OrbitControls']" />
-                <br x-light="['AmbientLight', [0xffffff, 1]]" />
-                <br x-load="['duck.glb']" />
+              <br x-controls="['OrbitControls']" />
+              <br x-camera="{position: [0, 0, 2]}" />
+              <br 
+                  x-mesh 
+                  x-geometry="['BoxGeometry', [1, 1, 1]]"
+                  x-material="['MeshBasicMaterial', {color}]"
+              />  
             </div>
         </div>
-    </div>
     </body>
 </html>
 
