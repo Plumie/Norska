@@ -1,9 +1,9 @@
 import Alpine from "alpinejs";
 // @ts-ignore
-import Norska from '../dist/bundle.js';
+import norska from '../dist/bundle.js';
 
-const norska = (Norska as any)();
+const Norska = (norska as any)();
 
-Alpine.plugin(norska);
+Alpine.plugin(Norska);
 (window as any).Alpine = Alpine;
 Alpine.start();
