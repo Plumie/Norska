@@ -4,8 +4,8 @@
   "description": "Three.js lightweight plugin for Alpine 🏔️",
   "main": "dist/bundle.js",
   "scripts": {
-    "watch": "set NODE_ENV=production&& webpack --watch",
-    "serve": "set NODE_ENV=development&& webpack --watch"
+    "watch": "env NODE_ENV=production webpack --watch",
+    "serve": "env NODE_ENV=development webpack --watch"
   },
   "files": [
     "/dist"

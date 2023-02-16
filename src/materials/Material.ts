@@ -11,7 +11,7 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
     (el, { expression }, { evaluateLater, effect }) => {
       const getValues = evaluateLater(expression);
 
-      (effect as any)(() => {
+      effect(() => {
         const mesh = (el as NorskaElement)._norska.mesh;
         if (mesh) {
           if (!mesh?.material.userData.updated) {

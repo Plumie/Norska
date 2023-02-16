@@ -1,5 +1,7 @@
 import { Material, Mesh, Light } from 'three';
 
+type Norska = (o: Record<string, any>) => (Alpine: any) => void;
+
 type NorskaOptions = {
   prefix: string;
 };

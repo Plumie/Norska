@@ -8,7 +8,7 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
     (el, { expression }, { evaluateLater, effect }) => {
       const getValues = evaluateLater(expression);
 
-      (effect as any)(() => {
+      effect(() => {
         const { mesh, light } = (el as NorskaElement)._norska;
         getValues((args: Props) => {
           if (mesh) mesh.rotation.set(...args);

@@ -6,8 +6,9 @@ import Mesh from '@/meshes/Mesh';
 import { Position, Scale, Rotation } from '@/utils';
 
 import { Camera, Canvas, Scene, Load } from '@/core';
-import { Three, Frame } from '@/magic';
+import { Three, Frame, N } from '@/magic';
 import Controls from '@/controls/Controls';
+import { Norska } from './types/Norska';
 
 const e: Record<string, any> = {
   Geometry,
@@ -27,10 +28,11 @@ const e: Record<string, any> = {
   Controls,
 
   Three,
-  Frame
+  Frame,
+  N
 };
 
-const norska = (o: Record<string, any>) => {
+ export default (o: Record<string, any>) => {
   return (Alpine: any) => {
     // Defining default optiosn
 
@@ -44,5 +46,3 @@ const norska = (o: Record<string, any>) => {
     });
   };
 };
-
-export default norska;

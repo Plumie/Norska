@@ -10,7 +10,7 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
       const getValues = evaluateLater(expression);
       const { scene } = window.Norska;
 
-      (effect as any)(() => {
+      effect(() => {
         const light = (el as NorskaElement)._norska.light;
         if (light) {
           getValues(([, , options]: Props) => {
