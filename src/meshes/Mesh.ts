@@ -1,5 +1,5 @@
 import { Mesh } from 'three';
-import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import {  NorskaOptions } from '@/types/Norska';
 
 export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
   Alpine.directive(`${prefix}mesh`, (el, {}, { cleanup }) => {
@@ -7,11 +7,11 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
 
     const createMesh = () => {
       el._norska.mesh = new Mesh();
-      scene.add((el as NorskaElement)._norska.mesh);
+      scene.add(el._norska.mesh);
     };
 
     const removeMesh = () => {
-      scene.remove((el as NorskaElement)._norska.mesh);
+      scene.remove(el._norska.mesh);
     };
 
     // On load

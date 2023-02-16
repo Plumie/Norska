@@ -1,4 +1,4 @@
-import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import { NorskaOptions } from '@/types/Norska';
 
 import * as THREE from 'three';
 import { MeshBasicMaterial } from 'three';
@@ -12,7 +12,7 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
       const getValues = evaluateLater(expression);
 
       effect(() => {
-        const mesh = (el as NorskaElement)._norska.mesh;
+        const mesh = el._norska.mesh;
         if (mesh) {
           if (!mesh?.material.userData.updated) {
             getValues(([name, options]: Props) => {

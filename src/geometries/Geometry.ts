@@ -1,5 +1,5 @@
 import geometries from './index';
-import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import { NorskaOptions } from '@/types/Norska';
 
 type Props = [
   string,
@@ -16,7 +16,7 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
       const getValues = evaluateLater(expression);
 
       (effect as any)(() => {
-        const { mesh } = (el as NorskaElement)._norska;
+        const { mesh } = el._norska;
 
         if (mesh) {
           // If the geometry has not been updated yet, we create a new one

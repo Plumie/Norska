@@ -1,4 +1,4 @@
-import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import { NorskaOptions } from '@/types/Norska';
 
 type Props = [number, number, number];
 
@@ -8,12 +8,17 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
     (el, { expression }, { evaluateLater, effect }) => {
       const getValues = evaluateLater(expression);
 
-      (effect as any)(() => {
-        const { mesh, light } = (el as NorskaElement)._norska;
+      const changeScale = () => {
         getValues((args: Props) => {
+          const { mesh, light } = el._norska;
           if (mesh) mesh.scale.set(...args);
+          if (light) light.scale.set(...args);
         });
-      });
+      };
+
+      el.addEventListener('norska:load:end', changeScale);
+
+      effect(changeScale);
     }
   );
 };
