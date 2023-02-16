@@ -1,18 +1,22 @@
-import {Scene, PerspectiveCamera, WebGLRenderer} from "three";
-import AlpineInstance from "alpinejs";
-import {NorskaElement, NorskaOptions} from "@/types/Norska";
+import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
-export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
+import { NorskaElement, NorskaOptions } from '@/types/Norska';
+
+export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
   Alpine.directive(`${prefix}canvas`, (el) => {
-
     // Create a new Three.js scene
 
-    const {scene, camera, renderer} = window.Norska = {
+    const { scene, camera, renderer } = (window.Norska = {
       scene: new Scene(),
-      camera: new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000),
+      camera: new PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      ),
       renderer: new WebGLRenderer(),
       controls: null
-    }
+    });
 
     // Create a full width/height canvas
 
@@ -21,24 +25,24 @@ export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
     parent.style.height = '100%';
 
     [...(el as HTMLDivElement).querySelectorAll('*')].forEach((child) => {
-      (child as NorskaElement)._norska = {}
+      (child as NorskaElement)._norska = {};
     });
 
     (el as HTMLDivElement).insertAdjacentElement('beforebegin', parent);
 
     const getParentSize = () => {
-      const {width, height} = parent.getBoundingClientRect();
-      return {width, height};
-    }
+      const { width, height } = parent.getBoundingClientRect();
+      return { width, height };
+    };
 
     const setCanvasSize = () => {
-      const {width, height} = getParentSize();
+      const { width, height } = getParentSize();
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize( width, height );
-    }
+      renderer.setSize(width, height);
+    };
 
-    window.addEventListener( 'resize', setCanvasSize);
+    window.addEventListener('resize', setCanvasSize);
     parent.appendChild(renderer.domElement);
 
     (el as HTMLDivElement).style.display = 'none';
@@ -58,5 +62,5 @@ export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
     };
 
     animate();
-  })
-}
+  });
+};

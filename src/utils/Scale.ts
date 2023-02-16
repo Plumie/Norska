@@ -1,17 +1,19 @@
-import {NorskaElement, NorskaOptions} from "@/types/Norska";
-import AlpineInstance from "alpinejs";
+import { NorskaElement, NorskaOptions } from '@/types/Norska';
 
-type Props = [number, number, number]
+type Props = [number, number, number];
 
-export default (Alpine: typeof AlpineInstance, {prefix}: NorskaOptions) => {
-  Alpine.directive(`${prefix}scale`, (el, {expression}, {evaluateLater, effect}) => {
-    const getValues = evaluateLater(expression);
+export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
+  Alpine.directive(
+    `${prefix}scale`,
+    (el, { expression }, { evaluateLater, effect }) => {
+      const getValues = evaluateLater(expression);
 
-    (effect as any)(() => {
-      const {mesh, light} = (el as NorskaElement)._norska;
-      getValues((args: Props) => {
-        if (mesh) mesh.scale.set(...args);
+      (effect as any)(() => {
+        const { mesh, light } = (el as NorskaElement)._norska;
+        getValues((args: Props) => {
+          if (mesh) mesh.scale.set(...args);
+        });
       });
-    });
-  });
-}
+    }
+  );
+};

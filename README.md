@@ -1,6 +1,8 @@
 # Installation
 *How to install Norska with AlpineJS*
 
+Check out the documentation: https://plumie.gitbook.io/norska/
+
 ## As a module
 
 Run the following command to install it.
