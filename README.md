@@ -38,6 +38,8 @@ Alpine.start()
 
 To create a ThreeJS scene in our document, we need to initialize a Canvas, for this it is possible to use `x-canvas` which will create a basic scene, a camera, and a renderer with each of the default parameters that can be adjusted.
 
+By default, Norksa takes the size of its parent container, so if it doesn't appear, you may be missing one or two style lines.
+
 ## Populating our scene
 
 There are many ways to fill your scene, but we'll keep it simple for now.
