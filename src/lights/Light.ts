@@ -1,5 +1,5 @@
 import lights from './index';
-import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import { NorskaOptions } from '@/types/Norska';
 
 type Props = [string, any[], Record<string, any>];
 
@@ -10,17 +10,17 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
       const getValues = evaluateLater(expression);
       const { scene } = window.Norska;
 
-      (effect as any)(() => {
-        const light = (el as NorskaElement)._norska.light;
+      effect(() => {
+        const light = el._norska.light;
         if (light) {
           getValues(([, , options]: Props) => {
             Object.assign(light, options);
           });
         } else {
           getValues(([name, args, options]: Props) => {
-            (el as NorskaElement)._norska.light = new lights[name](args);
-            Object.assign((el as any)._norska.light, options);
-            scene.add((el as NorskaElement)._norska.light);
+            el._norska.light = new lights[name](args);
+            Object.assign(el._norska.light, options);
+            scene.add(el._norska.light);
           });
         }
       });

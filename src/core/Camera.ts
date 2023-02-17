@@ -15,7 +15,7 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
       const { camera } = window.Norska;
       const getValues = evaluateLater(expression);
 
-      (effect as any)(() => {
+      effect(() => {
         getValues((params: Props) => {
           params.position && camera.position.set(...(params.position as any));
           params.rotation && camera.rotation.set(...(params.rotation as any));

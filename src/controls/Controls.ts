@@ -26,7 +26,7 @@ export default (Alpine: Alpine) => {
       let { renderer, camera, scene, controls } = window.Norska;
       const getValues = evaluateLater(expression);
 
-      (effect as any)(() => {
+      effect(() => {
         getValues(([name, options]: Props) => {
           if (!controls) {
             controls = new Controls[name](

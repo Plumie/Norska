@@ -1,6 +1,6 @@
 import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
-import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import { NorskaOptions } from '@/types/Norska';
 
 export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
   Alpine.directive(`${prefix}canvas`, (el) => {
@@ -24,11 +24,11 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
     parent.style.width = '100%';
     parent.style.height = '100%';
 
-    [...(el as HTMLDivElement).querySelectorAll('*')].forEach((child) => {
-      (child as NorskaElement)._norska = {};
+    [...el.querySelectorAll('*')].forEach((child) => {
+      child._norska = {};
     });
 
-    (el as HTMLDivElement).insertAdjacentElement('beforebegin', parent);
+    el.insertAdjacentElement('beforebegin', parent);
 
     const getParentSize = () => {
       const { width, height } = parent.getBoundingClientRect();

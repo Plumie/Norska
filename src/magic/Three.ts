@@ -1,8 +1,7 @@
-import { NorskaOptions } from '@/types/Norska';
 import * as THREE from 'three';
 
-export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
-  Alpine.magic(`${prefix}three`, () => {
+export default (Alpine: Alpine) => {
+  Alpine.magic('three', () => {
     return THREE;
   });
 };

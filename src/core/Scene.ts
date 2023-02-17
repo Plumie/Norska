@@ -13,7 +13,7 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
       const { scene } = window.Norska;
       const getValues = evaluateLater(expression);
 
-      (effect as any)(() => {
+      effect(() => {
         getValues(({ background }: Props) => {
           if (background) {
             if (background instanceof Color) scene.background.set(background);

@@ -1,7 +1,5 @@
-import { NorskaOptions } from '@/types/Norska';
-
-export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
-  Alpine.magic(`${prefix}frame`, () => {
+export default (Alpine: Alpine) => {
+  Alpine.magic('frame', () => {
     return (callback: () => void) => {
       const e = () => {
         callback();

@@ -1,18 +1,13 @@
 <html>
     <body>
-        <div x-data="{color: 0xff0000, count: 0}" style="height: 100%; width: 100%;">
-            <button @click="count++">Click me</button>
+        <div x-data style="height: 100%; width: 100%;">
             <div x-canvas>
-              <br x-controls="['OrbitControls']" />
-              <br x-camera="{position: [0, 0, 2]}" />
-              <template x-for="i in count">
-                  <br 
-                      x-mesh
-                      x-geometry="['BoxGeometry', [0.2, 0.2, 0.2]]"
-                      x-material="['MeshBasicMaterial', {color}]"
-                      x-position="[(i - 5) * 0.3, 0, 0]"
-                  />  
-              </template>
+                <br x-controls="['OrbitControls']" />
+                <br x-camera="{position: [0, 0, 3]}" />
+                <br x-light="['AmbientLight', 0xffffff, 0.5]" />
+                <div x-mesh x-position="[1, 0, 1]">
+                  <br x-load=['Duck.glb'] />
+                </div>
             </div>
         </div>
     </body>
