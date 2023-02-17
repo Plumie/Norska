@@ -2,10 +2,12 @@
     <body>
         <div x-data style="height: 100%; width: 100%;">
             <div x-canvas>
-              <br x-controls="['OrbitControls']" />
-              <br x-camera="{position: [0, 0, 3]}" />
-              <br x-light="['AmbientLight', 0xffffff, 0.5]" />
-              <br x-load="['Duck.glb']" x-position="[0, -1, 0]" x-scale="[0.1, 0.1, 0.1]" />
+                <br x-controls="['OrbitControls']" />
+                <br x-camera="{position: [0, 0, 3]}" />
+                <br x-light="['AmbientLight', 0xffffff, 0.5]" />
+                <div x-mesh x-position="[1, 0, 1]">
+                  <br x-load=['Duck.glb'] />
+                </div>
             </div>
         </div>
     </body>

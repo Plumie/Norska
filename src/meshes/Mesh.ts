@@ -7,15 +7,21 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
 
     const createMesh = () => {
       el._norska.mesh = new Mesh();
-      scene.add(el._norska.mesh);
+      if (el.parentNode._norska && el.parentNode._norska.mesh) {
+        el.parentNode._norska.mesh.add(el._norska.mesh);
+      } else {
+        scene.add(el._norska.mesh);
+      }
     };
 
     const removeMesh = () => {
-      scene.remove(el._norska.mesh);
-    };
-
-    // On load
-
+      if (el.parentNode._norska && el.parentNode._norska.mesh) {
+        el.parentNode._norska.mesh.remove(el._norska.mesh);
+      } else {
+        scene.remove(el._norska.mesh);
+      }
+    }
+   
     if (!el.hasOwnProperty('_norska')) {
       el._norska = {};
     }
