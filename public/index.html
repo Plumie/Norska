@@ -1,13 +1,14 @@
 <html>
     <body>
-        <div x-data style="height: 100%; width: 100%;">
+        <div x-data="{isVisible: true}" style="height: 100%; width: 100%;">
+        <button x-on:click="isVisible = !isVisible">Toggle</button>
             <div x-canvas>
                 <br x-controls="['OrbitControls']" />
                 <br x-camera="{position: [0, 0, 3]}" />
                 <br x-light="['AmbientLight', 0xffffff, 0.5]" />
-                <div x-mesh x-position="[1, 0, 1]">
-                  <br x-load=['Duck.glb'] />
-                </div>
+                <template x-if="isVisible">
+                    <div x-mesh x-geometry="['BoxGeometry', [1, 1, 1]]"></div>
+                </template>
             </div>
         </div>
     </body>

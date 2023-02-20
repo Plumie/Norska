@@ -15,8 +15,8 @@ export default (Alpine: Alpine, { prefix }: NorskaOptions) => {
     };
 
     const removeMesh = () => {
-      if (el.parentNode._norska && el.parentNode._norska.mesh) {
-        el.parentNode._norska.mesh.remove(el._norska.mesh);
+      if (el._norska.mesh.parent) {
+        el._norska.mesh.parent.remove(el._norska.mesh);
       } else {
         scene.remove(el._norska.mesh);
       }
