@@ -1,5 +1,5 @@
 # Norska ⛰️
-*Three.js lightweight plugin for Alpine*
+*Three.js plugin for Alpine*
 
 ### Warning: Norska is still in alpha, please avoid using it in production as many things are likely to change
 
