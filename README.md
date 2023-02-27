@@ -1,3 +1,8 @@
+# Norska ⛰️
+*Three.js lightweight plugin for Alpine*
+
+### Warning: Norska is still in alpha, please avoid using it in production as many things are likely to change
+
 # Installation
 *How to install Norska with AlpineJS*
 
