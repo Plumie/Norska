@@ -2,12 +2,7 @@
   <body>
     <div x-data="{isVisible: true}" style="height: 100%; width: 100%">
       <button x-on:click="isVisible = !isVisible">Toggle</button>
-      <div x-3.canvas>
-        <br x-3.camera="{position: [0, 0, 5]}" />
-        <br x-3.controls="['OrbitControls']" />
-        <br x-3.load="['Duck.glb']" />
-        <br x-3.light="['ambientLight', [0xf00000, 1]]" />
-      </div>
+      <br x-3.meshStandardMaterial="[{color: 'red'}]" />
     </div>
   </body>
 </html>
