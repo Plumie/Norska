@@ -1,9 +1,9 @@
-import { HemisphereLight as _HemisphereLight } from 'three';
+import { HemisphereLight } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const HemisphereLight = (props: Props) => {
+const hemisphereLight = (props: Props) => {
   const args: Record<string, any> = {
     skyColor: 0xffffff,
     groundColor: 0xffffff,
@@ -12,7 +12,7 @@ const HemisphereLight = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _HemisphereLight(...Object.values(args));
+  return new HemisphereLight(...Object.values(args));
 };
 
-export default HemisphereLight;
+export default hemisphereLight;

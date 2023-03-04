@@ -4,8 +4,7 @@
   "description": "Three.js lightweight plugin for Alpine 🏔️",
   "main": "dist/bundle.js",
   "scripts": {
-    "watch": "cross-env NODE_ENV=production webpack --watch",
-    "serve": "cross-env NODE_ENV=development webpack --watch"
+    "vite:watch": "cross-env NODE_ENV=production  vite"
   },
   "files": [
     "/dist"
@@ -32,6 +31,7 @@
     "webpack-cli": "^5.0.0"
   },
   "dependencies": {
-    "compression-webpack-plugin": "^10.0.0"
+    "compression-webpack-plugin": "^10.0.0",
+    "vite": "^4.1.4"
   }
 }

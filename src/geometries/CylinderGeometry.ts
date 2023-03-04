@@ -1,9 +1,9 @@
-import { CylinderGeometry as _CylinderGeometry } from 'three';
+import { CylinderGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const CylinderGeometry = (props: Props) => {
+const cylinderGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radiusTop: 1,
     radiusBottom: 1,
@@ -17,7 +17,7 @@ const CylinderGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _CylinderGeometry(...Object.values(args));
+  return new CylinderGeometry(...Object.values(args));
 };
 
-export default CylinderGeometry;
+export default cylinderGeometry;

@@ -1,9 +1,9 @@
-import { SphereGeometry as _SphereGeometry } from 'three';
+import { SphereGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const SphereGeometry = (props: Props) => {
+const sphereGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radius: 1,
     widthSegments: 32,
@@ -16,7 +16,7 @@ const SphereGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _SphereGeometry(...Object.values(args));
+  return new SphereGeometry(...Object.values(args));
 };
 
-export default SphereGeometry;
+export default sphereGeometry;

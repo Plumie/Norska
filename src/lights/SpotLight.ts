@@ -1,9 +1,9 @@
-import { SpotLight as _SpotLight } from 'three';
+import { SpotLight } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const SpotLight = (props: Props) => {
+const spotLight = (props: Props) => {
   const args: Record<string, any> = {
     color: 0xffffff,
     intensity: 1,
@@ -15,7 +15,7 @@ const SpotLight = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _SpotLight(...Object.values(args));
+  return new SpotLight(...Object.values(args));
 };
 
-export default SpotLight;
+export default spotLight;

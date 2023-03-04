@@ -1,10 +1,12 @@
 # Norska ⛰️
-*Three.js plugin for Alpine*
+
+_Three.js plugin for Alpine_
 
 ### Warning: Norska is still in alpha, please avoid using it in production as many things are likely to change
 
 # Installation
-*How to install Norska with AlpineJS*
+
+_How to install Norska with AlpineJS_
 
 Check out the documentation: https://plumie.gitbook.io/norska/
 
@@ -21,19 +23,22 @@ Import Norska and initialize it as an Alpine plugin.
 **Please note that Norska must be registered as a plugin before Alpine is initialized**
 
 ```typescript
-import norska from '@norska/core'
+import norska from '@norska/core';
 
 // Initialize Norksa
-const Norska = norska({/* options... */});
+const Norska = norska({
+  /* options... */
+});
 
 // Register Norska as an Alpine plugin
-Alpine.plugin(Norska)
-window.Alpine = Alpine
-Alpine.start()
+Alpine.plugin(Norska);
+window.Alpine = Alpine;
+Alpine.start();
 ```
 
 # Quick Start
-*How to use Norska*
+
+_How to use Norska_
 
 ## Initializing a canvas
 
@@ -58,13 +63,13 @@ We declare a mesh with `x-mesh`, then we can attach a geometry and a material wi
 
 ```html
 <div x-data>
-    <div x-canvas>
-        <br x-camera="{position: [0, 0, 5]}" />
-        <br
-            x-mesh
-            x-geometry="['BoxGeometry', [1, 1, 1]]"
-            x-material="['MeshBasicMaterial', {color: 0xff0000}]"
-        />
-    </div>
+  <div x-canvas>
+    <br x-camera="{position: [0, 0, 5]}" />
+    <br
+      x-mesh
+      x-geometry="['BoxGeometry', [1, 1, 1]]"
+      x-material="['MeshBasicMaterial', {color: 0xff0000}]"
+    />
+  </div>
 </div>
 ```

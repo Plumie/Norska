@@ -1,9 +1,9 @@
-import { ShapeGeometry as _ShapeGeometry } from 'three';
+import { ShapeGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const ShapeGeometry = (props: Props) => {
+const shapeGeometry = (props: Props) => {
   const args: Record<string, any> = {
     shapes: null,
     curveSegments: 12
@@ -11,7 +11,7 @@ const ShapeGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _ShapeGeometry(...Object.values(args));
+  return new ShapeGeometry(...Object.values(args));
 };
 
-export default ShapeGeometry;
+export default shapeGeometry;

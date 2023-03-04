@@ -1,9 +1,9 @@
-import { TorusKnotGeometry as _TorusKnotGeometry } from 'three';
+import { TorusKnotGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const TorusKnotGeometry = (props: Props) => {
+const torusKnotGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radius: 1,
     tube: 0.4,
@@ -15,7 +15,7 @@ const TorusKnotGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _TorusKnotGeometry(...Object.values(args));
+  return new TorusKnotGeometry(...Object.values(args));
 };
 
-export default TorusKnotGeometry;
+export default torusKnotGeometry;

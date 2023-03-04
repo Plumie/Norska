@@ -1,9 +1,9 @@
-import { RingGeometry as _RingGeometry } from 'three';
+import { RingGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const RingGeometry = (props: Props) => {
+const ringGeometry = (props: Props) => {
   const args: Record<string, any> = {
     innerRadius: 0.5,
     outerRadius: 1,
@@ -15,7 +15,7 @@ const RingGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _RingGeometry(...Object.values(args));
+  return new RingGeometry(...Object.values(args));
 };
 
-export default RingGeometry;
+export default ringGeometry;

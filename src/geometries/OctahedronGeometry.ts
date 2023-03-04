@@ -1,9 +1,9 @@
-import { OctahedronGeometry as _OctahedronGeometry } from 'three';
+import { OctahedronGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const OctahedronGeometry = (props: Props) => {
+const octahedronGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radius: 1,
     detail: 0
@@ -11,7 +11,7 @@ const OctahedronGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _OctahedronGeometry(...Object.values(args));
+  return new OctahedronGeometry(...Object.values(args));
 };
 
-export default OctahedronGeometry;
+export default octahedronGeometry;

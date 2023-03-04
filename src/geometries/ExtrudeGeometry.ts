@@ -1,9 +1,9 @@
-import { ExtrudeGeometry as _ExtrudeGeometry } from 'three';
+import { ExtrudeGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const ExtrudeGeometry = (props: Props) => {
+const extrudeGeometry = (props: Props) => {
   const args: Record<string, any> = {
     shapes: null,
     options: null
@@ -11,7 +11,7 @@ const ExtrudeGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _ExtrudeGeometry(...Object.values(args));
+  return new ExtrudeGeometry(...Object.values(args));
 };
 
-export default ExtrudeGeometry;
+export default extrudeGeometry;

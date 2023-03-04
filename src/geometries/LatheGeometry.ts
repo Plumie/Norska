@@ -1,9 +1,9 @@
-import { LatheGeometry as _LatheGeometry } from 'three';
+import { LatheGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const LatheGeometry = (props: Props) => {
+const latheGeometry = (props: Props) => {
   const args: Record<string, any> = {
     points: null,
     segments: 12,
@@ -13,7 +13,7 @@ const LatheGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _LatheGeometry(...Object.values(args));
+  return new LatheGeometry(...Object.values(args));
 };
 
-export default LatheGeometry;
+export default latheGeometry;

@@ -1,9 +1,9 @@
-import { TetrahedronGeometry as _TetrahedronGeometry } from 'three';
+import { TetrahedronGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const TetrahedronGeometry = (props: Props) => {
+const tetrahedronGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radius: 1,
     detail: 0
@@ -11,7 +11,7 @@ const TetrahedronGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _TetrahedronGeometry(...Object.values(args));
+  return new TetrahedronGeometry(...Object.values(args));
 };
 
-export default TetrahedronGeometry;
+export default tetrahedronGeometry;

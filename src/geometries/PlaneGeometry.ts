@@ -1,9 +1,9 @@
-import { PlaneGeometry as _PlaneGeometry } from 'three';
+import { PlaneGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const PlaneGeometry = (props: Props) => {
+const planeGeometry = (props: Props) => {
   const args: Record<string, any> = {
     width: 1,
     height: 1,
@@ -13,7 +13,7 @@ const PlaneGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _PlaneGeometry(...Object.values(args));
+  return new PlaneGeometry(...Object.values(args));
 };
 
-export default PlaneGeometry;
+export default planeGeometry;

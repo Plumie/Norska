@@ -1,9 +1,9 @@
-import { CapsuleGeometry as _CapsuleGeometry } from 'three';
+import { CapsuleGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const CapsuleGeometry = (props: Props) => {
+const capsuleGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radius: 1,
     length: 1,
@@ -13,7 +13,7 @@ const CapsuleGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _CapsuleGeometry(...Object.values(args));
+  return new CapsuleGeometry(...Object.values(args));
 };
 
-export default CapsuleGeometry;
+export default capsuleGeometry;

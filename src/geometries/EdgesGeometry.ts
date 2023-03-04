@@ -1,9 +1,9 @@
-import { EdgesGeometry as _EdgesGeometry } from 'three';
+import { EdgesGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const EdgesGeometry = (props: Props) => {
+const edgesGeometry = (props: Props) => {
   const args: Record<string, any> = {
     geometry: null,
     thresholdAngle: 1
@@ -11,7 +11,7 @@ const EdgesGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _EdgesGeometry(...Object.values(args));
+  return new EdgesGeometry(...Object.values(args));
 };
 
-export default EdgesGeometry;
+export default edgesGeometry;

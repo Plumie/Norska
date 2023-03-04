@@ -1,9 +1,9 @@
-import { TubeGeometry as _TubeGeometry } from 'three';
+import { TubeGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const TubeGeometry = (props: Props) => {
+const tubeGeometry = (props: Props) => {
   const args: Record<string, any> = {
     path: null,
     tubularSegments: 64,
@@ -14,7 +14,7 @@ const TubeGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _TubeGeometry(...Object.values(args));
+  return new TubeGeometry(...Object.values(args));
 };
 
-export default TubeGeometry;
+export default tubeGeometry;

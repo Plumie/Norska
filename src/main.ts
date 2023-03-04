@@ -1,48 +1,49 @@
-import Geometry from '@/geometries/Geometry';
-import Material from '@/materials/Material';
-import Light from '@/lights/Light';
-import Mesh from '@/meshes/Mesh';
+import { Camera, Canvas, Load, Scene } from '@/core';
+import { Controls } from '@/controls';
+import { Geometry } from '@/geometries';
+import { Material } from '@/materials';
+import { Light } from '@/lights';
+import { Mesh } from '@/meshes';
+import { Position, Rotation, Scale } from '@/utils';
+import { Frame, N, Three } from '@/magic';
 
-import { Position, Scale, Rotation } from '@/utils';
-
-import { Camera, Canvas, Scene, Load } from '@/core';
-import { Three, Frame, N } from '@/magic';
-import Controls from '@/controls/Controls';
-import { Norska } from './types/Norska';
-
-const e: Record<string, any> = {
-  Geometry,
-  Material,
-  Mesh,
-  Light,
-
-  Position,
-  Scale,
-  Rotation,
-
-  Camera,
-  Canvas,
-  Scene,
-  Load,
-
-  Controls,
-
-  Three,
-  Frame,
-  N
+const directives: Record<string, any> = {
+  camera: Camera,
+  canvas: Canvas,
+  load: Load,
+  controls: Controls,
+  scene: Scene,
+  geometry: Geometry,
+  material: Material,
+  light: Light,
+  mesh: Mesh,
+  position: Position,
+  rotation: Rotation,
+  scale: Scale
 };
 
- export default (o: Record<string, any>) => {
-  return (Alpine: any) => {
-    // Defining default optiosn
+const magics: Record<string, any> = {
+  frame: Frame,
+  n: N,
+  Three: Three
+};
 
+export default (o: Record<string, any>) => {
+  return (Alpine: any) => {
     const options = {
-      prefix: '',
+      prefix: '3',
       ...o
     };
 
-    Object.keys(e).forEach((name) => {
-      e[name](Alpine, options);
+    (Alpine as Alpine).directive(
+      options.prefix,
+      (el: any, args: any, routine: any) => {
+        directives[args.modifiers[0]](el, args, routine);
+      }
+    );
+
+    Object.keys(magics).forEach((name) => {
+      magics[name](Alpine, options);
     });
   };
 };

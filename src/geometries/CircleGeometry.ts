@@ -1,9 +1,9 @@
-import { CircleGeometry as _CircleGeometry } from 'three';
+import { CircleGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const CircleGeometry = (props: Props) => {
+const circleGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radius: 1,
     segments: 8,
@@ -13,7 +13,7 @@ const CircleGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _CircleGeometry(...Object.values(args));
+  return new CircleGeometry(...Object.values(args));
 };
 
-export default CircleGeometry;
+export default circleGeometry;

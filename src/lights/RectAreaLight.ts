@@ -1,9 +1,9 @@
-import { RectAreaLight as _RectAreaLight } from 'three';
+import { RectAreaLight } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const RectAreaLight = (props: Props) => {
+const rectAreaLight = (props: Props) => {
   const args: Record<string, any> = {
     color: 0xffffff,
     intensity: 1,
@@ -13,7 +13,7 @@ const RectAreaLight = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _RectAreaLight(...Object.values(args));
+  return new RectAreaLight(...Object.values(args));
 };
 
-export default RectAreaLight;
+export default rectAreaLight;

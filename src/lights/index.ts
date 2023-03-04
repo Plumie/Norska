@@ -1,17 +1,21 @@
-import AmbientLight from './AmbientLight';
-import DirectionalLight from './DirectionalLight';
-import HemisphereLight from './HemisphereLight';
-import PointLight from './PointLight';
-import SpotLight from './SpotLight';
-import RectAreaLight from './RectAreaLight';
+import ambientLight from './ambientLight';
+import directionalLight from './directionalLight';
+import hemisphereLight from './hemisphereLight';
+import pointLight from './pointLight';
+import spotLight from './spotLight';
+import rectAreaLight from './rectAreaLight';
+
+import Light from './Light';
 
 const lights: Record<string, any> = {
-  AmbientLight,
-  DirectionalLight,
-  HemisphereLight,
-  PointLight,
-  SpotLight,
-  RectAreaLight
+  ambientLight,
+  directionalLight,
+  hemisphereLight,
+  pointLight,
+  spotLight,
+  rectAreaLight
 };
 
 export default lights;
+
+export { Light };

@@ -1,9 +1,9 @@
-import { ConeGeometry as _ConeGeometry } from 'three';
+import { ConeGeometry } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const ConeGeometry = (props: Props) => {
+const coneGeometry = (props: Props) => {
   const args: Record<string, any> = {
     radius: 1,
     height: 1,
@@ -16,7 +16,7 @@ const ConeGeometry = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _ConeGeometry(...Object.values(args));
+  return new ConeGeometry(...Object.values(args));
 };
 
-export default ConeGeometry;
+export default coneGeometry;

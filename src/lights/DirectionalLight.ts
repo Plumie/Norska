@@ -1,9 +1,9 @@
-import { DirectionalLight as _DirectionalLight } from 'three';
+import { DirectionalLight } from 'three';
 import { mergeProps } from '@/dev/functions';
 
 type Props = number[];
 
-const DirectionalLight = (props: Props) => {
+const directionalLight = (props: Props) => {
   const args: Record<string, any> = {
     color: 0xffffff,
     intensity: 1
@@ -11,7 +11,7 @@ const DirectionalLight = (props: Props) => {
 
   mergeProps(props, args);
 
-  return new _DirectionalLight(...Object.values(args));
+  return new DirectionalLight(...Object.values(args));
 };
 
-export default DirectionalLight;
+export default directionalLight;

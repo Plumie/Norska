@@ -1,47 +1,51 @@
-import BoxGeometry from './BoxGeometry';
-import CapsuleGeometry from './CapsuleGeometry';
-import CircleGeometry from './CircleGeometry';
-import ConeGeometry from './ConeGeometry';
-import CylinderGeometry from './CylinderGeometry';
-import DodecahedronGeometry from './DodecahedronGeometry';
-import EdgesGeometry from './EdgesGeometry';
-import ExtrudeGeometry from './ExtrudeGeometry';
-import IcosahedronGeometry from './IcosahedronGeometry';
-import LatheGeometry from './LatheGeometry';
-import OctahedronGeometry from './OctahedronGeometry';
-import PlaneGeometry from './PlaneGeometry';
-import PolyhedronGeometry from './PolyhedronGeometry';
-import RingGeometry from './RingGeometry';
-import ShapeGeometry from './ShapeGeometry';
-import SphereGeometry from './SphereGeometry';
-import TetrahedronGeometry from './TetrahedronGeometry';
-import TorusGeometry from './TorusGeometry';
-import TorusKnotGeometry from './TorusKnotGeometry';
-import TubeGeometry from './TubeGeometry';
-import WireframeGeometry from './WireframeGeometry';
+import boxGeometry from './boxGeometry';
+import capsuleGeometry from './capsuleGeometry';
+import circleGeometry from './circleGeometry';
+import coneGeometry from './coneGeometry';
+import cylinderGeometry from './cylinderGeometry';
+import dodecahedronGeometry from './dodecahedronGeometry';
+import edgesGeometry from './edgesGeometry';
+import extrudeGeometry from './extrudeGeometry';
+import icosahedronGeometry from './icosahedronGeometry';
+import latheGeometry from './latheGeometry';
+import octahedronGeometry from './octahedronGeometry';
+import planeGeometry from './planeGeometry';
+import polyhedronGeometry from './polyhedronGeometry';
+import ringGeometry from './ringGeometry';
+import shapeGeometry from './shapeGeometry';
+import sphereGeometry from './sphereGeometry';
+import tetrahedronGeometry from './tetrahedronGeometry';
+import torusGeometry from './torusGeometry';
+import torusKnotGeometry from './torusKnotGeometry';
+import tubeGeometry from './tubeGeometry';
+import wireframeGeometry from './wireframeGeometry';
+
+import Geometry from './Geometry';
 
 const geometries: Record<string, any> = {
-  BoxGeometry,
-  CapsuleGeometry,
-  CircleGeometry,
-  ConeGeometry,
-  CylinderGeometry,
-  DodecahedronGeometry,
-  EdgesGeometry,
-  ExtrudeGeometry,
-  IcosahedronGeometry,
-  LatheGeometry,
-  OctahedronGeometry,
-  PlaneGeometry,
-  PolyhedronGeometry,
-  RingGeometry,
-  ShapeGeometry,
-  SphereGeometry,
-  TetrahedronGeometry,
-  TorusGeometry,
-  TorusKnotGeometry,
-  TubeGeometry,
-  WireframeGeometry
+  BoxGeometry: boxGeometry,
+  CapsuleGeometry: capsuleGeometry,
+  CircleGeometry: circleGeometry,
+  ConeGeometry: coneGeometry,
+  CylinderGeometry: cylinderGeometry,
+  DodecahedronGeometry: dodecahedronGeometry,
+  EdgesGeometry: edgesGeometry,
+  ExtrudeGeometry: extrudeGeometry,
+  IcosahedronGeometry: icosahedronGeometry,
+  LatheGeometry: latheGeometry,
+  OctahedronGeometry: octahedronGeometry,
+  PlaneGeometry: planeGeometry,
+  PolyhedronGeometry: polyhedronGeometry,
+  RingGeometry: ringGeometry,
+  ShapeGeometry: shapeGeometry,
+  SphereGeometry: sphereGeometry,
+  TetrahedronGeometry: tetrahedronGeometry,
+  TorusGeometry: torusGeometry,
+  TorusKnotGeometry: torusKnotGeometry,
+  TubeGeometry: tubeGeometry,
+  WireframeGeometry: wireframeGeometry
 };
 
 export default geometries;
+
+export { Geometry };
