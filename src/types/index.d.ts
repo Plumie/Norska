@@ -8,11 +8,17 @@ declare global {
     Norska: Record<string, any>;
   }
 
+  type AlpineDirective = (
+    el: NorskaElement,
+    args: any,
+    routine: any,
+    instance: any
+  ) => void;
+
+  type AlpineMagic = (arg0: string, arg1: (params) => void) => void;
+
   type Alpine = {
-    directive: (
-      arg0: string,
-      arg1: (el: NorskaElement, binding: any, { effect, cleanup }: any) => void
-    ) => void;
-    magic: (arg0: string, arg1: (params) => void) => void;
+    directive: (prefix: string, AlpineDirective: AlpineDirective) => void;
+    magic: AlpineMagic;
   };
 }

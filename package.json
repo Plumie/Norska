@@ -1,15 +1,16 @@
 {
   "name": "@norska/core",
-  "version": "0.2.1-alpha",
+  "version": "0.3.0-alpha",
   "description": "Three.js lightweight plugin for Alpine 🏔️",
-  "main": "dist/bundle.js",
   "scripts": {
-    "watch": "cross-env NODE_ENV=production webpack --watch",
-    "serve": "cross-env NODE_ENV=development webpack --watch"
+    "vite:watch": "vite",
+    "vite:build": "vite build --mode=production"
   },
+  "type": "module",
   "files": [
-    "/dist"
+    "dist"
   ],
+  "main": "dist/norska.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Plumie/Norska.git"
@@ -23,15 +24,11 @@
   "devDependencies": {
     "@types/alpinejs": "^3.7.1",
     "@types/three": "^0.146.0",
-    "alpinejs": "^3.10.5",
-    "browser-sync-webpack-plugin": "^2.3.0",
     "cross-env": "^7.0.3",
-    "three": "^0.146.0",
     "ts-loader": "^9.4.2",
+    "vite": "^4.1.4",
     "typescript": "^4.9.3",
-    "webpack-cli": "^5.0.0"
-  },
-  "dependencies": {
-    "compression-webpack-plugin": "^10.0.0"
+    "alpinejs": "^3.10.5",
+    "three": "^0.146.0"
   }
 }

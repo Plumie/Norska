@@ -1,3 +1,5 @@
-export { default as Position } from './Position';
-export { default as Rotation } from './Rotation';
-export { default as Scale } from './Scale';
+import position from './position';
+import rotation from './rotation';
+import scale from './scale';
+
+export { position, rotation, scale };

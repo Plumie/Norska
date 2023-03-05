@@ -1,48 +1,44 @@
-import Geometry from '@/geometries/Geometry';
-import Material from '@/materials/Material';
-import Light from '@/lights/Light';
-import Mesh from '@/meshes/Mesh';
+import * as THREE from 'three';
+import { NORSKA_MAGICS, NORSKA_DIRECTIVES, THREE_DIRECTIVES } from '@/map';
 
-import { Position, Scale, Rotation } from '@/utils';
+const lowerCaseTHREE = Object.fromEntries(
+  Object.entries(THREE).map(([k, v]) => [k.toLowerCase(), v])
+);
 
-import { Camera, Canvas, Scene, Load } from '@/core';
-import { Three, Frame, N } from '@/magic';
-import Controls from '@/controls/Controls';
-import { Norska } from './types/Norska';
-
-const e: Record<string, any> = {
-  Geometry,
-  Material,
-  Mesh,
-  Light,
-
-  Position,
-  Scale,
-  Rotation,
-
-  Camera,
-  Canvas,
-  Scene,
-  Load,
-
-  Controls,
-
-  Three,
-  Frame,
-  N
-};
-
- export default (o: Record<string, any>) => {
+export default (o: Record<string, any>) => {
   return (Alpine: any) => {
-    // Defining default optiosn
-
     const options = {
-      prefix: '',
+      prefix: '3',
       ...o
     };
 
-    Object.keys(e).forEach((name) => {
-      e[name](Alpine, options);
+    (Alpine as Alpine).directive(options.prefix, (el, args, routine) => {
+      const values = args.expression ? routine.evaluate(args.expression) : [];
+      try {
+        if (args.modifiers[0] in NORSKA_DIRECTIVES) {
+          NORSKA_DIRECTIVES[args.modifiers[0]](el, args, routine);
+          return;
+        }
+        
+        const i = (() => {
+          if (Array.isArray(values)) return new (lowerCaseTHREE as any)[args.modifiers[0]](...values);
+          return new (lowerCaseTHREE as any)[args.modifiers[0]]({...values});
+        })();
+
+        const type: any = () => {
+          if (i instanceof THREE.Mesh) return 'mesh';
+          if (i instanceof THREE.Light) return 'light';
+          if (i instanceof THREE.BufferGeometry) return 'geometry';
+          if (i instanceof THREE.Material) return 'material';
+        };
+        THREE_DIRECTIVES[type()](el, args, routine, i);
+      } catch (e) {
+        console.error(e);
+      }
+    });
+
+    Object.keys(NORSKA_MAGICS).forEach((name) => {
+      NORSKA_MAGICS[name](Alpine, options);
     });
   };
 };
