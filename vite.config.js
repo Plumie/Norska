@@ -3,10 +3,14 @@ import path from 'path';
 
 export default defineConfig({
   build: {
+    rollupOptions: {
+      external: ['three']
+    },
     lib: {
       entry: path.resolve(__dirname, 'src/main.ts'),
       name: 'Norska',
-      fileName: (format) => `norska.${format}.js`
+      formats: ['es'],
+      fileName: 'norska'
     }
   },
   resolve: {

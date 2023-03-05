@@ -1,11 +1,4 @@
-
-type Props = [
-  string,
-  number[],
-  {
-    [key: string]: any;
-  }
-];
+type Props = [any[], Record<string, any>];
 
 const geometry: AlpineDirective = (
   el,
@@ -18,13 +11,13 @@ const geometry: AlpineDirective = (
   effect(() => {
     const mesh = el._norska.mesh;
     if (mesh) {
-      if (!mesh?.geometry.userData.updated) {
-        mesh.geometry = instance;
-        mesh.geometry.userData.updated = true;
-      } else {
+      if (mesh?.geometry.uuid === instance.uuid) {
         getValues(([, options]: Props) => {
           Object.assign(mesh.geometry, options);
         });
+      } else {
+        mesh.geometry = instance;
+        mesh.geometry.userData.updated = true;
       }
     }
   });

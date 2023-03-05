@@ -1,6 +1,7 @@
-import camera from './Camera';
-import canvas from './Canvas';
-import Scene from './Scene';
-import Load from './Load';
+import camera from './camera';
+import canvas from './canvas';
+import scene from './scene';
+import load from './load';
+import controls from './controls';
 
-export { camera, canvas, Scene, Load };
+export { camera, canvas, scene, load, controls };

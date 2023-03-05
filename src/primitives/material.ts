@@ -1,4 +1,4 @@
-type Props = [string, Record<string, any>];
+type Props = [Record<string, any>];
 
 const material: AlpineDirective = (
   el,
@@ -11,14 +11,14 @@ const material: AlpineDirective = (
   effect(() => {
     const mesh = el._norska.mesh;
     if (mesh) {
-      if (!mesh?.material.userData.updated) {
-        mesh.material = instance;
-        mesh.material.userData.updated = true;
-      } else {
-        getValues(([, { color, ...rest }]: Props) => {
+      if (mesh?.material.uuid === instance.uuid) {
+        getValues(([{ color, ...rest }]: Props) => {
           if (color) mesh.material.color.set(color);
           Object.assign(mesh.material, rest);
         });
+      } else {
+        mesh.material = instance;
+        mesh.material.userData.updated = true;
       }
     }
   });

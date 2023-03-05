@@ -2,14 +2,18 @@
   <body>
     <div x-data="{isVisible: true}" style="height: 100%; width: 100%">
       <button x-on:click="isVisible = !isVisible">Toggle</button>
-      <div x-n.canvas>
-        <br x-n.camera="{position: [0, 0, 5]}" />
-        <template x-if="isVisible">
-          <br 
-            x-3.mesh
-            x-3.meshBasicMaterial="[{color: 'red'}]" 
-            x-3.boxGeometry="[1, 1, 1]"
-          />
+      <div x-3.canvas>
+        <br x-3.camera="{position: [0, 0, 5]}" />
+        <br x-3.orbitControls="[[$N.camera, $N.renderer.domElement], {autoRotate: isVisible}]" />
+        <template x-if="true">
+          <div x-3.mesh>
+            <br 
+              x-3.mesh
+              x-3.meshBasicMaterial="{color: 'red'}" 
+              x-3.boxGeometry="[1, 1, 1]"
+              x-3.position="[-1, 0, 0]"
+            />
+          </div>
         </template>
       </div>
     </div>
@@ -26,3 +30,5 @@
   window.Alpine = Alpine;
   Alpine.start();
 </script>
+
+

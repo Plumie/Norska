@@ -1,6 +1,6 @@
 type Props = [number, number, number];
 
-const Position: AlpineDirective = (
+const position: AlpineDirective = (
   el,
   { expression },
   { evaluateLater, effect }
@@ -20,4 +20,4 @@ const Position: AlpineDirective = (
   effect(changePosition);
 };
 
-export default Position;
+export default position;

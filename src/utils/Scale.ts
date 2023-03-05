@@ -1,6 +1,6 @@
 type Props = [number, number, number];
 
-const Scale: AlpineDirective = (
+const scale: AlpineDirective = (
   el,
   { expression },
   { evaluateLater, effect }
@@ -20,4 +20,4 @@ const Scale: AlpineDirective = (
   effect(changeScale);
 };
 
-export default Scale;
+export default scale;

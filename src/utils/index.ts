@@ -1,5 +1,5 @@
-import Position from './Position';
-import Rotation from './Rotation';
-import Scale from './Scale';
+import position from './position';
+import rotation from './rotation';
+import scale from './scale';
 
-export { Position, Rotation, Scale };
+export { position, rotation, scale };

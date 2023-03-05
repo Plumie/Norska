@@ -1,5 +1,5 @@
-import Three from './Three';
-import Frame from './Frame';
-import N from './N';
+import three from './three';
+import frame from './frame';
+import n from './n';
 
-export { Three, Frame, N };
+export { three, frame, n };

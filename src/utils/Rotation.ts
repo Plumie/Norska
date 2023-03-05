@@ -1,6 +1,6 @@
 type Props = [number, number, number];
 
-const Rotation: AlpineDirective = (
+const rotation: AlpineDirective = (
   el,
   { expression },
   { evaluateLater, effect }
@@ -20,4 +20,4 @@ const Rotation: AlpineDirective = (
   effect(changeRotation);
 };
 
-export default Rotation;
+export default rotation;

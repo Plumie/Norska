@@ -1,10 +1,10 @@
-import { Mesh as _Mesh } from 'three';
+import { Mesh } from 'three';
 
-const Mesh: AlpineDirective = (el, {}, { cleanup }) => {
+const mesh: AlpineDirective = (el, {}, { cleanup }) => {
   const { scene } = window.Norska;
 
   const createMesh = () => {
-    el._norska.mesh = new _Mesh();
+    el._norska.mesh = new Mesh();
     if (el.parentNode._norska && el.parentNode._norska.mesh) {
       el.parentNode._norska.mesh.add(el._norska.mesh);
     } else {
@@ -26,9 +26,7 @@ const Mesh: AlpineDirective = (el, {}, { cleanup }) => {
 
   createMesh();
 
-  // Cleanup routine
-
   cleanup(() => removeMesh());
 };
 
-export default Mesh;
+export default mesh;
