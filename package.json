@@ -1,6 +1,6 @@
 {
   "name": "@norska/core",
-  "version": "0.3.0-alpha",
+  "version": "0.3.0",
   "description": "Three.js lightweight plugin for Alpine 🏔️",
   "scripts": {
     "vite:watch": "vite",

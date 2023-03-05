@@ -9,16 +9,13 @@ const geometry: AlpineDirective = (
   const getValues = evaluateLater(expression);
 
   effect(() => {
-    const mesh = el._norska.mesh;
+    const {mesh} = el._norska;
+
     if (mesh) {
-      if (mesh?.geometry.uuid === instance.uuid) {
-        getValues(([, options]: Props) => {
-          Object.assign(mesh.geometry, options);
-        });
-      } else {
-        mesh.geometry = instance;
-        mesh.geometry.userData.updated = true;
-      }
+      getValues(([, options]: Props) => {
+        if (mesh.geometry.uuid !== instance.uuid) mesh.geometry = instance;
+        Object.assign(mesh.geometry, options);
+      });
     }
   });
 };
