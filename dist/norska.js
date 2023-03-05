@@ -3106,18 +3106,18 @@ const lo = ue, ho = (l, { expression: s }, { evaluateLater: o, effect: e }) => {
 }, fo = (l, { expression: s }, { evaluateLater: o, effect: e }, t) => {
   const i = o(s);
   e(() => {
-    const n = l._norska.mesh;
-    n && ((n == null ? void 0 : n.geometry.uuid) === t.uuid ? i(([, a]) => {
-      Object.assign(n.geometry, a);
-    }) : (n.geometry = t, n.geometry.userData.updated = !0));
+    const { mesh: n } = l._norska;
+    n && i(([, a]) => {
+      n.geometry.uuid !== t.uuid && (n.geometry = t), Object.assign(n.geometry, a);
+    });
   });
 }, mo = (l, { expression: s }, { evaluateLater: o, effect: e }, t) => {
   const i = o(s);
   e(() => {
-    const n = l._norska.mesh;
-    n && ((n == null ? void 0 : n.material.uuid) === t.uuid ? i(([{ color: a, ...r }]) => {
-      a && n.material.color.set(a), Object.assign(n.material, r);
-    }) : (n.material = t, n.material.userData.updated = !0));
+    const { mesh: n } = l._norska;
+    n && i(({ color: a, ...r }) => {
+      n.material.uuid !== t.uuid && (n.material = t), a && n.material.color.set(a), Object.assign(n.material, r);
+    });
   });
 }, go = (l, {}, { cleanup: s }) => {
   const { scene: o } = window.Norska, e = () => {
@@ -3129,10 +3129,10 @@ const lo = ue, ho = (l, { expression: s }, { evaluateLater: o, effect: e }) => {
 }, wo = (l, { expression: s }, { evaluateLater: o, effect: e }, t) => {
   const { scene: i } = window.Norska, n = s ? o(s) : [];
   e(() => {
-    const a = l._norska.light;
-    a ? n(([, r]) => {
-      Object.assign(a, r);
-    }) : i.add(t);
+    const { light: a } = l._norska;
+    n(([, r]) => {
+      a ? Object.assign(a, r) : (Object.assign(t, r), i.add(t), l._norska.light = t);
+    });
   });
 }, yo = (l) => {
   l.magic("three", () => Ie);
