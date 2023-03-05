@@ -2,7 +2,16 @@
   <body>
     <div x-data="{isVisible: true}" style="height: 100%; width: 100%">
       <button x-on:click="isVisible = !isVisible">Toggle</button>
-      <br x-3.meshStandardMaterial="[{color: 'red'}]" />
+      <div x-n.canvas>
+        <br x-n.camera="{position: [0, 0, 5]}" />
+        <template x-if="isVisible">
+          <br 
+            x-3.mesh
+            x-3.meshBasicMaterial="[{color: 'red'}]" 
+            x-3.boxGeometry="[1, 1, 1]"
+          />
+        </template>
+      </div>
     </div>
   </body>
 </html>

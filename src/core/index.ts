@@ -1,6 +1,6 @@
-import Camera from './Camera';
-import Canvas from './Canvas';
+import camera from './Camera';
+import canvas from './Canvas';
 import Scene from './Scene';
 import Load from './Load';
 
-export { Camera, Canvas, Scene, Load };
+export { camera, canvas, Scene, Load };
