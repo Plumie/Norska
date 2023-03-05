@@ -15,7 +15,7 @@ Check out the documentation: https://plumie.gitbook.io/norska/
 Run the following command to install it.
 
 ```bash
-npm install @norska/core alpinejs three.js
+npm install @norska/core alpinejs three
 ```
 
 Import Norska and initialize it as an Alpine plugin.
