@@ -31,6 +31,7 @@ export default (o: Record<string, any>) => {
           if (i instanceof THREE.BufferGeometry) return 'geometry';
           if (i instanceof THREE.Material) return 'material';
         };
+
         THREE_DIRECTIVES[type()](el, args, routine, i);
       } catch (e) {
         console.error(e);

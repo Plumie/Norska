@@ -10,14 +10,17 @@ const light: AlpineDirective = (
   const getValues = expression ? evaluateLater(expression) : [];
 
   effect(() => {
-    const light = el._norska.light;
-    if (light) {
-      getValues(([, options]: Props) => {
+    const {light} = el._norska;
+
+    getValues(([, options]: Props) => {
+      if (!light) {
+        Object.assign(instance, options);     
+        scene.add(instance);
+        el._norska.light = instance;
+      } else {
         Object.assign(light, options);
-      });
-    } else {
-      scene.add(instance);
-    }
+      }
+    });
   });
 };
 

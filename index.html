@@ -1,20 +1,11 @@
 <html>
   <body>
-    <div x-data="{isVisible: true}" style="height: 100%; width: 100%">
-      <button x-on:click="isVisible = !isVisible">Toggle</button>
+    <div class="relative" x-data="{color: 0xffffff}" style="height: 100%">
+      <button class="absolute top-4 left-4 z-10 p-2 bg-white rounded-sm" @click="color = `#${Math.floor(Math.random()*16777215).toString(16)}`">Change color</button>
       <div x-3.canvas>
-        <br x-3.camera="{position: [0, 0, 5]}" />
-        <br x-3.orbitControls="[[$N.camera, $N.renderer.domElement], {autoRotate: isVisible}]" />
-        <template x-if="true">
-          <div x-3.mesh>
-            <br 
-              x-3.mesh
-              x-3.meshBasicMaterial="{color: 'red'}" 
-              x-3.boxGeometry="[1, 1, 1]"
-              x-3.position="[-1, 0, 0]"
-            />
-          </div>
-        </template>
+        <br x-3.orbitControls="[$N.camera, $N.renderer.domElement]" />
+        <br x-3.camera="{position: [0, 0, 2]}" />
+        <br x-3.mesh x-3.boxGeometry="[1, 1, 1]" x-3.meshBasicMaterial="{color}" />
       </div>
     </div>
   </body>
