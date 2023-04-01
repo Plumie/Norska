@@ -5,7 +5,7 @@ const lowerCaseTHREE = Object.fromEntries(
   Object.entries(THREE).map(([k, v]) => [k.toLowerCase(), v])
 );
 
-export default (o: Record<string, any>) => {
+export default (o?: Record<string, any>) => {
   return (Alpine: any) => {
     const options = {
       prefix: '3',
