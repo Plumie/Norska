@@ -15,7 +15,7 @@ const Scene: AlpineDirective = (
   effect(() => {
     getValues(({ background }: Props) => {
       if (background) {
-        if (background instanceof Color) scene.background.set(background);
+        if (background instanceof Color) (scene.background as Color).set(background);
         if (background instanceof Texture) scene.background = background;
         else scene.background = new Color(background);
       }

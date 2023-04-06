@@ -1,3 +1,5 @@
+import { AlpineDirective } from "@/types/Alpine";
+
 type Props = [number, number, number];
 
 const rotation: AlpineDirective = (

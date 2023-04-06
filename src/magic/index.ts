@@ -1,5 +1,5 @@
 import three from './three';
 import frame from './frame';
-import n from './n';
+import n from './N';
 
 export { three, frame, n };

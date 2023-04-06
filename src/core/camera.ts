@@ -16,9 +16,15 @@ const Camera: AlpineDirective = (
 
   effect(() => {
     getValues((params: Props) => {
-      params.position && camera.position.set(...(params.position as any));
-      params.rotation && camera.rotation.set(...(params.rotation as any));
-      params.lookAt && camera.lookAt(...(params.lookAt as any));
+      params.position && camera.position.set(
+        ...params.position.toArray()
+      );
+      params.rotation && camera.rotation.set(
+        ...params.rotation.toArray()
+      );
+      params.lookAt && camera.lookAt(
+        ...params.lookAt.toArray()
+      );
     });
   });
 };
