@@ -1,4 +1,5 @@
 import { Color, ColorRepresentation, Texture } from 'three';
+import { AlpineDirective } from '@/types/Alpine';
 
 type Props = {
   background: ColorRepresentation | Texture;

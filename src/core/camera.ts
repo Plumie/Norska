@@ -1,4 +1,5 @@
 import { Vector3 } from 'three';
+import { AlpineDirective } from '@/types/Alpine';
 
 interface Props {
   position: Vector3;
