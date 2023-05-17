@@ -1,4 +1,5 @@
 import { NorskaElement } from '@/types/Norska';
+import { Alpine } from '@/types/Alpine';
 
 export default (Alpine: Alpine) => {
   Alpine.magic('n', (el: NorskaElement) => {

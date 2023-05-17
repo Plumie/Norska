@@ -1,22 +1,14 @@
 import { Alpine } from 'alpinejs';
+import { Scene, Camera, Renderer, Controls } from 'three'
 
 declare global {
   interface Window {
-    Alpine: Alpine;
-    Norska: Record<string, any>;
+    Alpine: Alpine
+    Norska: {
+      scene: Scene,
+      camera: Camera,
+      renderer: Renderer,
+      controls: Controls,
+    }
   }
-
-  type AlpineDirective = (
-    el: NorskaElement,
-    args: any,
-    routine: any,
-    instance: any
-  ) => void;
-
-  type AlpineMagic = (arg0: string, arg1: (params) => void) => void;
-
-  type Alpine = {
-    directive: (prefix: string, AlpineDirective: AlpineDirective) => void;
-    magic: AlpineMagic;
-  };
 }

@@ -1,3 +1,5 @@
+import { AlpineDirective } from "@/types/Alpine";
+
 type Props = [any[], Record<string, any>];
 
 const light: AlpineDirective = (
