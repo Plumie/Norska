@@ -3,6 +3,9 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import {MMDLoader} from 'three/examples/jsm/loaders/MMDLoader';
 import {DRACOLoader} from 'three/examples/jsm/loaders/DRACOLoader';
 
+import {AlpineDirective} from '@/types/Alpine';
+
+
 const Load: AlpineDirective = (
   el,
   { expression },

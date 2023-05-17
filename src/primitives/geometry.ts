@@ -1,4 +1,5 @@
 type Props = [any[], Record<string, any>];
+import {AlpineDirective} from '@/types/Alpine';
 
 const geometry: AlpineDirective = (
   el,

@@ -1,25 +1,23 @@
-import {describe, it} from 'vitest';
-import Alpine from 'alpinejs';
-import norska from '@/main';
+import {beforeEach, describe, expect, it} from 'vitest';
+import {init} from '@/tests/utils';
 
-const JSDOM = require('jsdom').JSDOM;
-const Norska = norska({});
+describe('Canvas Component', () => {
+  let root: HTMLElement;
 
-const { window } = new JSDOM(`<!DOCTYPE html><html><body></body></html>`, {pretendToBeVisual: true});
-global.window = window;
-global.document = window.document;
+  beforeEach(async () => {  
+    root = init();
+  });
 
-const MyComponent = `
-  <div x-data>
-    <span x-3.canvas></span>
-  </div>
-`;
+  it('should render a canvas element', () => {
+    const canvas = root.querySelector('canvas');
+    expect(canvas).toBeTruthy();
+  })
 
-describe('#canvas', () => { 
-  it('displays the message', async () => {
-    const el = document.createElement('div');
-    el.innerHTML = MyComponent;
-    Alpine.plugin(Norska);
-    Alpine.initTree(el);
+  it('should initialize a camera', () => {
+    expect((window as any).Norska.camera).toBeTruthy();
+  })
+
+  it('should initialize a scene', () => {
+    expect((window as any).Norska.scene).toBeTruthy();
   });
 })

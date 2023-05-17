@@ -5,7 +5,7 @@
   "scripts": {
     "vite:watch": "vite",
     "vite:build": "vite build --mode=production",
-    "test": "vitest"
+    "vite:test": "vitest"
   },
   "type": "module",
   "files": [
@@ -26,11 +26,11 @@
     "@types/alpinejs": "^3.7.1",
     "@types/three": "^0.146.0",
     "alpinejs": "^3.10.5",
-    "jsdom": "^21.1.0",
+    "jsdom": "^21.1.1",
     "three": "^0.146.0",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.3",
     "vite": "^4.1.4",
-    "vitest": "^0.29.2"
+    "vitest": "^0.29.8"
   }
 }

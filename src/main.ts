@@ -1,11 +1,13 @@
-import * as THREE from 'three';
+import { NorskaOptions } from '@/types/Norska';
+import { Alpine } from '@/types/Alpine';
 import { NORSKA_MAGICS, NORSKA_DIRECTIVES, THREE_DIRECTIVES } from '@/map';
+import * as THREE from 'three';
 
-const lowerCaseTHREE = Object.fromEntries(
+const lowerCaseTHREE: Record<string, any> = Object.fromEntries(
   Object.entries(THREE).map(([k, v]) => [k.toLowerCase(), v])
 );
 
-export default (o: Record<string, any>) => {
+export default (o: NorskaOptions) => {
   return (Alpine: any) => {
     const options = {
       prefix: '3',
@@ -22,7 +24,7 @@ export default (o: Record<string, any>) => {
         
         const i = (() => {
           if (Array.isArray(values)) return new (lowerCaseTHREE as any)[args.modifiers[0]](...values);
-          return new (lowerCaseTHREE as any)[args.modifiers[0]]({...values});
+          return new lowerCaseTHREE[args.modifiers[0]]({...values});
         })();
 
         const type: any = () => {
