@@ -4,7 +4,8 @@
   "description": "Three.js lightweight plugin for Alpine 🏔️",
   "scripts": {
     "vite:watch": "vite",
-    "vite:build": "vite build --mode=production"
+    "vite:build": "vite build --mode=production",
+    "vite:test": "vitest"
   },
   "type": "module",
   "files": [
@@ -24,11 +25,12 @@
   "devDependencies": {
     "@types/alpinejs": "^3.7.1",
     "@types/three": "^0.146.0",
-    "cross-env": "^7.0.3",
-    "ts-loader": "^9.4.2",
-    "vite": "^4.1.4",
-    "typescript": "^4.9.3",
     "alpinejs": "^3.10.5",
-    "three": "^0.146.0"
+    "jsdom": "^21.1.1",
+    "three": "^0.146.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.4",
+    "vitest": "^0.29.8"
   }
 }
