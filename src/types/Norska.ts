@@ -1,4 +1,4 @@
-import { Mesh, Light, Material } from 'three';
+import { Mesh, Light, Material, Scene, Camera, Renderer } from 'three';
 import { Alpine } from './Alpine';
 
 export type Norska = (o: Record<string, unknown>) => (Alpine: Alpine) => void;
@@ -16,5 +16,10 @@ export interface NorskaElement extends HTMLElement {
 };
 
 export interface NorskaWindow extends Window {
-	Norska: any;
+	Norska: {
+		scene: Scene;
+		camera: Camera;
+		renderer: Renderer;
+		controls: any;
+	};
 }

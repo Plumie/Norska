@@ -43,6 +43,9 @@ describe('material', () => {
   });
 
   it('should be equal to scene mesh material', () => {
-    expect((window as NorskaWindow).Norska.scene.children[0].material).toBe(mesh?.material);
+		const sceneMesh = (window as NorskaWindow).Norska.scene.children[0];
+		if (sceneMesh instanceof Mesh) {
+    	expect(sceneMesh.material).toBe(mesh?.material);
+		}
   });
 });

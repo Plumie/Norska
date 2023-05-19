@@ -5,7 +5,7 @@ import { NorskaWindow } from '@/types/Norska';
 
 const init = (template?: string) => {
   vi.mock('three', async () => {
-    const THREE =  await vi.importActual('three') as any;
+    const THREE =  await vi.importActual('three') as typeof import('three');
 
     return {
       ...THREE,

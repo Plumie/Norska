@@ -6,7 +6,6 @@ import {DRACOLoader} from 'three/examples/jsm/loaders/DRACOLoader';
 import {AlpineDirective} from '@/types/Alpine';
 import { Object3D } from 'three';
 
-
 const Load: AlpineDirective = (
   el,
   { expression },

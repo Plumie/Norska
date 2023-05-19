@@ -9,6 +9,7 @@ const lowerCaseTHREE: Record<string, any> = Object.fromEntries(
 
 export default (o?: NorskaOptions) => {
   return (Alpine: any) => {
+
     const options = {
       prefix: '3',
       ...o

@@ -1,7 +1,7 @@
 import { AlpineDirective } from "@/types/Alpine";
-import { MeshStandardMaterial } from "three";
+import { MaterialParameters, MeshStandardMaterial } from "three";
 
-type Props = Record<string, any>;
+type Props = Record<string, keyof MaterialParameters>;
 
 const material: AlpineDirective = (
   el,

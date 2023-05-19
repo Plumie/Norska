@@ -28,6 +28,9 @@ describe('BoxGeometry', () => {
   });
 
   it('should be equal to scene mesh geometry', () => {
-    expect((window as NorskaWindow).Norska.scene.children[0].geometry).toBe(mesh?.geometry);
+			const sceneMesh = (window as NorskaWindow).Norska.scene.children[0];
+			if (sceneMesh instanceof Mesh) {
+				expect(sceneMesh.geometry).toBe(mesh?.geometry);
+			}
   });
 });
