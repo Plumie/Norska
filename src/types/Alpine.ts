@@ -1,13 +1,20 @@
 import { NorskaElement } from '@/types/Norska';
 
+type AlpineRoutine = (args: unknown) => any;
+
 export type AlpineDirective = (
   el: NorskaElement,
-  args: any,
-  routine?: any,
-  instance?: any
+  args: Record<string, any>,
+  routine: {
+		evaluateLater: AlpineRoutine;
+		cleanup: AlpineRoutine;
+		effect: AlpineRoutine;
+		evaluate: AlpineRoutine;
+	},
+  instance?: InstanceType<any>
 ) => void;
 
-export type AlpineMagic = (arg0: string, arg1: (params: any) => any) => void;
+export type AlpineMagic = (name: string, callback: (args: any) => unknown) => void;
 
 export type Alpine = {
   directive: (prefix: string, AlpineDirective: AlpineDirective) => void;

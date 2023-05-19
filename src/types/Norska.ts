@@ -1,13 +1,13 @@
 import { Mesh, Light, Material } from 'three';
 import { Alpine } from './Alpine';
 
-export type Norska = (o: Record<string, any>) => (Alpine: Alpine) => void;
+export type Norska = (o: Record<string, unknown>) => (Alpine: Alpine) => void;
 
-export type NorskaOptions = {
+export interface NorskaOptions {
   prefix?: string;
 };
 
-export type NorskaElement = HTMLElement & {
+export interface NorskaElement extends HTMLElement {
   _norska: {
     mesh?: Mesh & { material: Material },
     light?: Light,
