@@ -4,6 +4,7 @@ import {MMDLoader} from 'three/examples/jsm/loaders/MMDLoader';
 import {DRACOLoader} from 'three/examples/jsm/loaders/DRACOLoader';
 
 import {AlpineDirective} from '@/types/Alpine';
+import { Object3D } from 'three';
 
 
 const Load: AlpineDirective = (
@@ -20,12 +21,12 @@ const Load: AlpineDirective = (
       const loader = getLoader(file);
 
       loader.load(file, (gltf) => {
-        el._norska.mesh = gltf.scene.children[0];
+        el._norska.mesh = (gltf as any).scene.children[0];
 
         if (el.parentNode._norska && el.parentNode._norska.mesh) {
-          el.parentNode._norska.mesh.add(el._norska.mesh);
+          el.parentNode._norska.mesh.add((el._norska.mesh as Object3D));
         } else {
-          scene.add(el._norska.mesh);
+          scene.add((el._norska.mesh as Object3D));
         }
         el.dispatchEvent(new CustomEvent('norska:load:end'));
       });
@@ -33,10 +34,10 @@ const Load: AlpineDirective = (
   };
 
   const removeMesh = () => {
-    if (el._norska.mesh.parent) {
+    if (el._norska.mesh?.parent) {
       el._norska.mesh.parent.remove(el._norska.mesh);
     } else {
-      scene.remove(el._norska.mesh);
+      scene.remove((el._norska.mesh as Object3D));
     }
   };
 

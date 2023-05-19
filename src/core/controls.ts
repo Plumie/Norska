@@ -20,7 +20,7 @@ let controls: Record<string, any> = {
 };
 
 Object.entries(controls).forEach(([name, Control]) => {
-  const d: AlpineDirective = (el, { expression}, { evaluateLater, effect }) => {
+  const d: AlpineDirective = (_, { expression}, { evaluateLater, effect }) => {
     const getValues = evaluateLater(expression);
 
     effect(() => {

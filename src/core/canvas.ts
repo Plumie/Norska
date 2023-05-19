@@ -1,3 +1,4 @@
+import { AlpineDirective } from '@/types/Alpine';
 import { NorskaElement } from '@/types/Norska';
 import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
@@ -43,7 +44,7 @@ const Canvas: AlpineDirective = (el) => {
   window.addEventListener('resize', setCanvasSize);
   parent.appendChild(renderer.domElement);
 
-  (el as HTMLDivElement).style.display = 'none';
+  (el as unknown as HTMLDivElement).style.display = 'none';
 
   setCanvasSize();
 

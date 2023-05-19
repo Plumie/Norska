@@ -1,5 +1,6 @@
 import {beforeEach, describe, expect, it} from 'vitest';
 import {init} from '@/tests/utils';
+import { NorskaWindow } from '@/types/Norska';
 
 describe('Canvas Component', () => {
   let root: HTMLElement;
@@ -14,10 +15,10 @@ describe('Canvas Component', () => {
   })
 
   it('should initialize a camera', () => {
-    expect((window as any).Norska.camera).toBeTruthy();
+    expect((window as NorskaWindow).Norska.camera).toBeTruthy();
   })
 
   it('should initialize a scene', () => {
-    expect((window as any).Norska.scene).toBeTruthy();
+    expect((window as NorskaWindow).Norska.scene).toBeTruthy();
   });
 })

@@ -1,8 +1,9 @@
 import Alpine from 'alpinejs';
 import {vi} from 'vitest';
 import norska from '@/main';
+import { NorskaWindow } from '@/types/Norska';
 
-const init = (el?: any) => {
+const init = (template?: string) => {
   vi.mock('three', async () => {
     const THREE =  await vi.importActual('three') as any;
 
@@ -21,17 +22,16 @@ const init = (el?: any) => {
   root.innerHTML = `
     <div style="width: 500px; height: 500px;">
       <div x-3.canvas>
-        ${el}
+        ${template}
       </div>
     </div>
   `;
   document.body.appendChild(root);
 
-  (window as any).Alpine = Alpine;
+  (window as NorskaWindow).Alpine = Alpine;
 
   const Norska = norska();
   Alpine.plugin(Norska);
-
   Alpine.start();
 
   return root;

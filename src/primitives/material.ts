@@ -1,4 +1,5 @@
 import { AlpineDirective } from "@/types/Alpine";
+import { MeshStandardMaterial } from "three";
 
 type Props = Record<string, any>;
 
@@ -15,7 +16,7 @@ const material: AlpineDirective = (
     if (mesh) {
       getValues(({ color, ...rest }: Props) => {
         if (mesh.material.uuid !== instance.uuid) mesh.material = instance;
-        if (color) (mesh.material as any).color.set(color);
+        if (color) (mesh.material as MeshStandardMaterial).color.set(color);
         Object.assign(mesh.material, rest);
       });
     }

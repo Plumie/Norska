@@ -1,4 +1,4 @@
-import { AlpineDirective, AlpineMagic } from '@/types/Alpine';
+import { Alpine, AlpineDirective } from '@/types/Alpine';
 import { canvas, camera, scene, load, controls } from '@/core';
 import { position, rotation, scale } from '@/utils';
 import { mesh, material, geometry, light } from '@/primitives';
@@ -22,7 +22,7 @@ const NORSKA_DIRECTIVES: Record<string, AlpineDirective> = {
   ...controls,
 };
 
-const NORSKA_MAGICS: Record<string, AlpineMagic> = {
+const NORSKA_MAGICS: Record<string, (Alpine: Alpine) => void> = {
   frame,
   n,
   three

@@ -1,6 +1,7 @@
 import { Mesh, Light, Material } from 'three';
+import { Alpine } from './Alpine';
 
-export type Norska = (o: Record<string, any>) => (Alpine: any) => void;
+export type Norska = (o: Record<string, any>) => (Alpine: Alpine) => void;
 
 export type NorskaOptions = {
   prefix?: string;
@@ -13,3 +14,7 @@ export type NorskaElement = HTMLElement & {
   };
   parentNode: NorskaElement;
 };
+
+export interface NorskaWindow extends Window {
+	Norska: any;
+}

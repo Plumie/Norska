@@ -1,7 +1,7 @@
 import { describe, expect, it, beforeEach } from 'vitest';
 import { init, update } from '@/tests/utils';
-import { NorskaElement } from '@/types/Norska';
-import { Mesh } from 'three';
+import { NorskaElement, NorskaWindow } from '@/types/Norska';
+import { Mesh, MeshStandardMaterial } from 'three';
 
 describe('material', () => {
   let root: HTMLElement;
@@ -23,20 +23,26 @@ describe('material', () => {
 
   it('should add material to the scene', () => {
     const { scene } = window.Norska;
-    expect(scene.children[0].material).toBe(mesh.material);
+    expect(
+			( scene.children[0] as Mesh).material
+		).toBe(mesh.material);
   });
 
   it('should set color on material', () => {
-    expect(mesh.material.color.getHex()).toBe(0xff0000);
+    expect(
+			(mesh.material as MeshStandardMaterial).color.getHex()
+		).toBe(0xff0000);
   });
 
   it('should update color on material', async () => {
     meshEl.setAttribute('x-3.meshStandardMaterial', '{color: 0x00ff00}');
     await update();
-    expect(mesh.material.color.getHex()).toBe(0x00ff00);
+    expect(
+			(mesh.material as MeshStandardMaterial).color.getHex()
+		).toBe(0x00ff00);
   });
 
   it('should be equal to scene mesh material', () => {
-    expect((window as any).Norska.scene.children[0].material).toBe(mesh?.material);
+    expect((window as NorskaWindow).Norska.scene.children[0].material).toBe(mesh?.material);
   });
 });
