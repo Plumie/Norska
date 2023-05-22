@@ -4,4 +4,4 @@ import scene from './scene';
 import load from './load';
 import controls from './controls';
 
-export { camera, canvas, scene, load, controls };
+export { camera, canvas, scene, load, controls};
