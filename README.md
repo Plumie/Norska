@@ -56,7 +56,7 @@ There are many ways to fill your scene, but we'll keep it simple for now.
 
 Let's start with a simple cube.
 
-**The hierarchy of the scene is the same as that of the HTML blocks in x-canvas. A good way to do this is to use `<div>` for elements with children, and void elements like `<br/>` for the rest.**
+**The hierarchy of the scene is the same as that of the HTML blocks in the canvas. A good way to do this is to use `<div>` for elements with children, and void elements like `<br/>` for the rest.**
 
 The scene already has a camera but its default position is 0 on all axes, that's why we move it back slightly to avoid it being in the cube.
 We declare a mesh with `x-3.mesh`, then we can attach a geometry and a material with the corresponding directives.
