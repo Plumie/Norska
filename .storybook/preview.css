@@ -1,0 +1,16 @@
+#storybook-root {
+  height: 100vh;
+}
+
+#storybook-root div {
+  height: 100%;
+}
+
+#storybook-root canvas {
+  height: 100%;
+  width: 100%;
+}
+
+.sb-main-padded {
+  padding: 0 !important;
+}

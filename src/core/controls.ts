@@ -5,7 +5,7 @@ import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
-import { AlpineDirective } from '@/types/Alpine';
+import { NorskaDirective } from '@/types/Norska';
 
 type Props = any[];
 
@@ -20,7 +20,7 @@ let controls: Record<string, any> = {
 };
 
 Object.entries(controls).forEach(([name, Control]) => {
-  const d: AlpineDirective = (_, { expression}, { evaluateLater, effect }) => {
+  const d: NorskaDirective = (_, { expression}, { evaluateLater, effect }) => {
     const getValues = evaluateLater(expression);
 
     effect(() => {

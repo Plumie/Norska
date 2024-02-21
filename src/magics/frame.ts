@@ -1,4 +1,4 @@
-import { Alpine } from "@/types/Alpine";
+import { Alpine } from "alpinejs";
 
 export default (Alpine: Alpine) => {
   Alpine.magic('frame', () => {

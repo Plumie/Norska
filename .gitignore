@@ -1,5 +1,1 @@
 node_modules
-dist
-public/**/*.js
-.idea
-plumie-norska*.tgz

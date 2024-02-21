@@ -1,48 +1,30 @@
 {
-  "name": "@norska/core",
-  "version": "0.3.2",
-  "description": "Three.js lightweight plugin for Alpine 🏔️",
+  "type": "module",
   "scripts": {
-    "vite:watch": "vite",
-    "vite:build": "vite build --mode=production",
-    "vite:test": "vitest",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/norska.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Plumie/Norska.git"
+  "dependencies": {
+    "@types/alpinejs": "^3.13.6",
+    "@types/three": "^0.161.2",
+    "alpinejs": "^3.13.5",
+    "three": "^0.161.0",
+    "vite": "^5.1.4"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Plumie/Norska/issues"
-  },
-  "homepage": "https://github.com/Plumie/Norska#readme",
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.12",
-    "@storybook/addon-interactions": "^7.0.12",
-    "@storybook/addon-links": "^7.0.12",
-    "@storybook/blocks": "^7.0.12",
-    "@storybook/html": "^7.0.12",
-    "@storybook/html-vite": "^7.0.12",
-    "@storybook/testing-library": "^0.0.14-next.2",
-    "@types/alpinejs": "^3.7.1",
-    "@types/three": "^0.146.0",
-    "alpinejs": "^3.10.5",
-    "jsdom": "^21.1.1",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/addon-links": "^7.6.17",
+    "@storybook/blocks": "^7.6.17",
+    "@storybook/html": "^7.6.17",
+    "@storybook/html-vite": "^7.6.17",
+    "@storybook/test": "^7.6.17",
+    "@types/node": "^20.11.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "storybook": "^7.0.12",
-    "three": "^0.146.0",
-    "ts-loader": "^9.4.2",
-    "typescript": "^4.9.3",
-    "vite": "^4.1.4",
-    "vitest": "^0.29.8"
+    "storybook": "^7.6.17"
   }
 }

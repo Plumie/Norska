@@ -1,7 +1,8 @@
-type Props = [any[], Record<string, any>];
-import {AlpineDirective} from '@/types/Alpine';
+import { NorskaDirective } from "@/types/Norska";
 
-const geometry: AlpineDirective = (
+type Props = [any[], Record<string, any>];
+
+const geometry: NorskaDirective = (
   el,
   { expression },
   { evaluateLater, effect },

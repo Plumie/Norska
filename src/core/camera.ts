@@ -1,5 +1,5 @@
+import { NorskaDirective } from '@/types/Norska';
 import { Euler, Vector3 } from 'three';
-import { AlpineDirective } from '@/types/Alpine';
 
 interface Props {
   position: Vector3;
@@ -7,7 +7,7 @@ interface Props {
   lookAt: Vector3;
 }
 
-const Camera: AlpineDirective = (
+const Camera: NorskaDirective = (
 	_,
   { expression },
   { evaluateLater, effect }

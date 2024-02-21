@@ -1,12 +1,12 @@
+import { NorskaDirective } from '@/types/Norska';
 import { Color, ColorRepresentation, Texture } from 'three';
-import { AlpineDirective } from '@/types/Alpine';
 
 type Props = {
   background: ColorRepresentation | Texture;
 };
 
-const Scene: AlpineDirective = (
-  el,
+const Scene: NorskaDirective = (
+  _,
   { expression },
   { evaluateLater, effect }
 ) => {

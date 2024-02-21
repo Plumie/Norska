@@ -1,8 +1,6 @@
-import { Alpine } from '@/types/Alpine';
+import { Alpine } from 'alpinejs';
 import * as THREE from 'three';
 
 export default (Alpine: Alpine) => {
-  Alpine.magic('three', () => {
-    return THREE;
-  });
+  Alpine.magic('three', () => THREE);
 };

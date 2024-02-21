@@ -1,33 +1,42 @@
-import { NorskaOptions } from '@/types/Norska';
-import { Alpine } from '@/types/Alpine';
-import { directives, magicProperties } from '@/map';
 import * as THREE from 'three';
+import { Alpine } from 'alpinejs';
 
-const lowerCaseTHREE: Record<string, any> = Object.fromEntries(
+import { NorskaOptions } from '@/types/Norska';
+import { directives, magicProperties } from '@/map';
+
+// Capital letters cannot be used in an html attribute
+const lowercaseThreeNamespace: Record<string, any> = Object.fromEntries(
   Object.entries(THREE).map(([k, v]) => [k.toLowerCase(), v])
 );
 
-export default (o?: NorskaOptions) => {
-  return (Alpine: any) => {
+export default (norskaOptions?: NorskaOptions) => {
+  return (Alpine: Alpine) => {
 
+    // Default options
     const options = {
       prefix: '3',
-      ...o
+      ...norskaOptions
     };
 
-    (Alpine as Alpine).directive(options.prefix, (el, args, routine) => {
+    Alpine.directive(options.prefix, (el, args, routine) => {
+
       const values = args.expression ? routine.evaluate(args.expression) : [];
+
       try {
         if (args.modifiers[0] in directives.core) {
           directives.core[args.modifiers[0]](el, args, routine);
           return;
         }
 
+        // Get the corresponding instance
         const i = (() => {
-          if (Array.isArray(values)) return new (lowerCaseTHREE as any)[args.modifiers[0]](...values);
-          return new lowerCaseTHREE[args.modifiers[0]]({ ...values });
+          if (Array.isArray(values)) {
+            return new (lowercaseThreeNamespace as Record<string, any>)[args.modifiers[0]](...values);
+          }
+          return new lowercaseThreeNamespace[args.modifiers[0]]({ ...values as Object });
         })();
 
+        // Get the instance type and call the corresponding directive
         const instanceType = () => {
           if (i instanceof THREE.Mesh) return 'mesh';
           if (i instanceof THREE.Light) return 'light';
@@ -42,6 +51,7 @@ export default (o?: NorskaOptions) => {
       }
     });
 
+    // Register magic properties
     Object.keys(magicProperties).forEach((name) => {
       magicProperties[name](Alpine);
     });

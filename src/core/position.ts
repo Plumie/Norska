@@ -1,8 +1,8 @@
-import { AlpineDirective } from "@/types/Alpine";
+import { NorskaDirective } from "@/types/Norska";
 
 type Props = [number, number, number];
 
-const position: AlpineDirective = (
+const position: NorskaDirective = (
   el,
   { expression },
   { evaluateLater, effect }

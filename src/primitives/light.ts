@@ -1,8 +1,9 @@
-import { AlpineDirective } from "@/types/Alpine";
+import { NorskaDirective } from "@/types/Norska";
+import { Light } from "three";
 
-type Props = [any[], Record<string, any>];
+type Props = ConstructorParameters<typeof Light>;
 
-const light: AlpineDirective = (
+const light: NorskaDirective = (
   el,
   { expression },
   { evaluateLater, effect },
@@ -19,9 +20,9 @@ const light: AlpineDirective = (
         Object.assign(instance, options);     
         scene.add(instance);
         el._norska.light = instance;
-      } else {
-        Object.assign(light, options);
+        return;
       }
+      Object.assign(light, options);
     });
   });
 };

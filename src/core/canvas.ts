@@ -1,10 +1,9 @@
-import { AlpineDirective } from '@/types/Alpine';
-import { NorskaElement } from '@/types/Norska';
+import { NorskaDirective, NorskaElement } from '@/types/Norska';
 import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
-const Canvas: AlpineDirective = (el) => {
-  // Create a new Three.js scene
+const Canvas: NorskaDirective = (el) => {
 
+  // Create a new Three.js scene
   const { scene, camera, renderer } = (window.Norska = {
     scene: new Scene(),
     camera: new PerspectiveCamera(
@@ -18,7 +17,6 @@ const Canvas: AlpineDirective = (el) => {
   });
 
   // Create a full width/height canvas
-
   const parent = document.createElement('div');
   parent.style.width = '100%';
   parent.style.height = '100%';
@@ -49,7 +47,6 @@ const Canvas: AlpineDirective = (el) => {
   setCanvasSize();
 
   // Start the animation loop
-
   const animate = () => {
     requestAnimationFrame(animate);
 
