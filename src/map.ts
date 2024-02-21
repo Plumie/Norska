@@ -1,35 +1,18 @@
 import { Alpine, AlpineDirective } from '@/types/Alpine';
-import { canvas, camera, scene, load, controls } from '@/core';
-import { position, rotation, scale } from '@/utils';
-import { mesh, material, geometry, light } from '@/primitives';
-import { frame, n, three } from '@/magic';
+import core from '@/core';
+import primitives from '@/primitives';
+import magics from '@/magics';
 
-const THREE_DIRECTIVES: Record<string, AlpineDirective> = {
-  mesh,
-  geometry,
-  material,
-  light
+const directives: Record<string, Record<string, AlpineDirective>> = {
+  core,
+  primitives
 };
 
-const NORSKA_DIRECTIVES: Record<string, AlpineDirective> = {
-  canvas,
-  camera,
-  load,
-  scene,
-  position,
-  rotation,
-  scale,
-  ...controls,
-};
-
-const NORSKA_MAGICS: Record<string, (Alpine: Alpine) => void> = {
-  frame,
-  n,
-  three
+const magicProperties: Record<string, (Alpine: Alpine) => void> = {
+  ...magics
 };
 
 export {
-  THREE_DIRECTIVES,
-  NORSKA_DIRECTIVES,
-  NORSKA_MAGICS,
+  directives,
+  magicProperties
 };

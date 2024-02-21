@@ -3,4 +3,11 @@ import material from './material';
 import mesh from './mesh';
 import light from './light';
 
-export { geometry, material, light, mesh };
+const primitives = {
+  geometry,
+  material,
+  mesh,
+  light
+}
+
+export default primitives;

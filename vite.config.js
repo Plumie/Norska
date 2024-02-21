@@ -1,10 +1,13 @@
 import { defineConfig } from 'vite';
 import path from 'path';
+import blacklist from './blacklist';
 
 export default defineConfig({
   build: {
     rollupOptions: {
-      external: ['three']
+      external: [
+        ...blacklist
+      ]
     },
     lib: {
       entry: path.resolve(__dirname, 'src/main.ts'),
