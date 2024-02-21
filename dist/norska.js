@@ -1,8 +1,8 @@
 import * as f from "three";
-import { Scene as g, PerspectiveCamera as _, WebGLRenderer as y, Color as k, Texture as E, Mesh as N } from "three";
-import { OBJLoader as v } from "three/examples/jsm/loaders/OBJLoader";
-import { GLTFLoader as C } from "three/examples/jsm/loaders/GLTFLoader";
-import { MMDLoader as b } from "three/examples/jsm/loaders/MMDLoader";
+import { Scene as g, PerspectiveCamera as _, WebGLRenderer as y, Color as k, Texture as N, Mesh as v } from "three";
+import { OBJLoader as E } from "three/examples/jsm/loaders/OBJLoader";
+import { GLTFLoader as b } from "three/examples/jsm/loaders/GLTFLoader";
+import { MMDLoader as C } from "three/examples/jsm/loaders/MMDLoader";
 import { DRACOLoader as O } from "three/examples/jsm/loaders/DRACOLoader";
 import { OrbitControls as L } from "three/examples/jsm/controls/OrbitControls";
 import { DragControls as j } from "three/examples/jsm/controls/DragControls";
@@ -45,14 +45,14 @@ const S = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
     requestAnimationFrame(r), window.Norska.controls && window.Norska.controls.update(), c.render(s, i);
   };
   r();
-}, R = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
+}, F = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
   const { scene: n } = window.Norska, t = i(s);
   c(() => {
     t(({ background: o }) => {
-      o && (o instanceof k && n.background.set(o), o instanceof E ? n.background = o : n.background = new k(o));
+      o && (o instanceof k && n.background.set(o), o instanceof N ? n.background = o : n.background = new k(o));
     });
   });
-}, F = (e, { expression: s }, { evaluateLater: i, cleanup: c }) => {
+}, R = (e, { expression: s }, { evaluateLater: i, cleanup: c }) => {
   const n = i(s), { scene: t } = window.Norska, o = () => {
     n(([m]) => {
       a(m).load(m, (u) => {
@@ -68,11 +68,11 @@ const S = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
     const h = m.split(".").pop();
     switch (h) {
       case "glb":
-        return new C();
-      case "obj":
-        return new v();
-      case "pmd":
         return new b();
+      case "obj":
+        return new E();
+      case "pmd":
+        return new C();
       case "drc":
         return new O();
       default:
@@ -131,8 +131,8 @@ const z = d, $ = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
 }, D = {
   camera: S,
   canvas: T,
-  scene: R,
-  load: F,
+  scene: F,
+  load: R,
   position: $,
   rotation: q,
   scale: B,
@@ -156,10 +156,18 @@ const z = d, $ = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
 }, U = (e, {}, { cleanup: s }) => {
   const { scene: i } = window.Norska, c = () => {
     var t, o, r;
-    e._norska.mesh = new N(), (t = e.parentNode) != null && t._norska && ((o = e.parentNode) != null && o._norska.mesh) ? (r = e.parentNode) == null || r._norska.mesh.add(e._norska.mesh) : i.add(e._norska.mesh);
+    if (e._norska.mesh = new v(), (t = e.parentNode) != null && t._norska && ((o = e.parentNode) != null && o._norska.mesh)) {
+      (r = e.parentNode) == null || r._norska.mesh.add(e._norska.mesh);
+      return;
+    }
+    i.add(e._norska.mesh);
   }, n = () => {
-    var t, o;
-    (t = e._norska.mesh) != null && t.parent ? (o = e._norska.mesh) == null || o.parent.remove(e._norska.mesh) : i.remove(e._norska.mesh);
+    var t;
+    if (e._norska.mesh.parent) {
+      (t = e._norska.mesh) == null || t.parent.remove(e._norska.mesh);
+      return;
+    }
+    i.remove(e._norska.mesh);
   };
   e.hasOwnProperty("_norska") || (e._norska = {}), c(), s(() => n());
 }, W = (e, { expression: s }, { evaluateLater: i, effect: c }, n) => {
@@ -167,7 +175,11 @@ const z = d, $ = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
   c(() => {
     const { light: r } = e._norska;
     o(([, a]) => {
-      r ? Object.assign(r, a) : (Object.assign(n, a), t.add(n), e._norska.light = n);
+      if (!r) {
+        Object.assign(n, a), t.add(n), e._norska.light = n;
+        return;
+      }
+      Object.assign(r, a);
     });
   });
 }, J = {
@@ -193,9 +205,9 @@ const z = d, $ = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
 }, w = {
   core: D,
   primitives: J
-}, l = {
+}, p = {
   ...X
-}, p = Object.fromEntries(
+}, l = Object.fromEntries(
   Object.entries(f).map(([e, s]) => [e.toLowerCase(), s])
 ), de = (e) => (s) => {
   const i = {
@@ -209,7 +221,7 @@ const z = d, $ = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
         w.core[n.modifiers[0]](c, n, t);
         return;
       }
-      const r = Array.isArray(o) ? new p[n.modifiers[0]](...o) : new p[n.modifiers[0]]({ ...o }), a = () => {
+      const r = Array.isArray(o) ? new l[n.modifiers[0]](...o) : new l[n.modifiers[0]]({ ...o }), a = () => {
         if (r instanceof f.Mesh)
           return "mesh";
         if (r instanceof f.Light)
@@ -224,8 +236,8 @@ const z = d, $ = (e, { expression: s }, { evaluateLater: i, effect: c }) => {
     } catch (r) {
       console.error(r);
     }
-  }), Object.keys(l).forEach((c) => {
-    l[c](s);
+  }), Object.keys(p).forEach((c) => {
+    p[c](s);
   });
 };
 export {
