@@ -1,0 +1,8 @@
+input: .
+output: ../dist/docs
+url: https://www.norska.vercel.app/docs 
+branding:
+  title: Norska
+  label: Docs
+footer:
+  copyright: "&copy; Copyright {{ year }}. All rights reserved."
