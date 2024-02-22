@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { Alpine } from 'alpinejs';
 
-import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import { NorskaOptions } from '@/types/Norska';
 import directives from '@/directives';
 import magics from '@/magics';
 
@@ -13,7 +13,6 @@ const lowercaseThreeNamespace: Record<string, any> = Object.fromEntries(
 export default (norskaOptions?: NorskaOptions) => {
   return (Alpine: Alpine) => {
 
-    // Default options
     const options = {
       prefix: '3',
       ...norskaOptions
@@ -24,6 +23,7 @@ export default (norskaOptions?: NorskaOptions) => {
       const values = args.expression ? routine.evaluate(args.expression) : [];
 
       try {
+
         // Check if directive is a core directive
         if (args.modifiers[0] in directives.core) {
           directives.core[args.modifiers[0]](el, args, routine);
@@ -44,20 +44,18 @@ export default (norskaOptions?: NorskaOptions) => {
             throw new Error(`The object ${args.modifiers[0]} does not exist in the three.js namespace`);
           }
 
-          // Array
           if (Array.isArray(values)) {
             return new (lowercaseThreeNamespace as Record<string, any>)[args.modifiers[0]](...values);
           }
 
-          // Object
           if (values != null && values.constructor.name === "Object") {
             return new lowercaseThreeNamespace[args.modifiers[0]]({ ...values as Object });
           }
 
-          // Values
           return new lowercaseThreeNamespace[args.modifiers[0]](values);
         });
 
+        // Instanciate
         directives.instance(el, args, routine, getInstance());
       } catch (e) {
         console.error(e);

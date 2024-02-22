@@ -10,7 +10,6 @@ export default meta;
 export const Mesh: StoryObj = {
   argTypes: {
     geometry: {
-      // Every possible geometry
       options: Object.keys(THREE).filter((key) => key.endsWith('Geometry')),
       control: {
         type: 'select',

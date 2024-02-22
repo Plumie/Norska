@@ -14,8 +14,6 @@ const p: NorskaDirective = (
 
     getValues((args: any) => {
 
-      // Drill into the instance for nested properties depending on the modifier
-
       const last = modifiers[modifiers.length - 1];
 
       let j = i;
@@ -29,7 +27,6 @@ const p: NorskaDirective = (
         j = j[modifier];
       });
 
-      // Check if the property is a settable property
       if (j[last]?.set) {
 
         if (Array.isArray(args)) {
@@ -41,7 +38,6 @@ const p: NorskaDirective = (
         return; 
       }
 
-      // Else, set the property
       j[last] = args;
     });
   });

@@ -1,5 +1,5 @@
 import * as u from "three";
-import { Scene as k, PerspectiveCamera as _, WebGLRenderer as y } from "three";
+import { Scene as k, PerspectiveCamera as _, WebGLRenderer as l } from "three";
 const v = (e) => {
   const { camera: t } = window.Norska;
   if (!e.hasOwnProperty("_norska")) {
@@ -7,7 +7,7 @@ const v = (e) => {
     return;
   }
   e._norska = t;
-}, l = (e) => {
+}, y = (e) => {
   var d;
   const { scene: t, camera: a, renderer: s } = window.Norska = {
     scene: new k(),
@@ -17,7 +17,7 @@ const v = (e) => {
       0.1,
       1e3
     ),
-    renderer: new y(),
+    renderer: new l(),
     controls: null
   }, n = document.createElement("div");
   n.style.width = "100%", n.style.height = "100%", [...e.querySelectorAll("*")].forEach((c) => {
@@ -102,31 +102,31 @@ const v = (e) => {
       s.remove(e._norska);
     }
   };
-  e.hasOwnProperty("_norska") || (e._norska = {}), i(), t(() => o());
+  i(), t(() => o());
 }, h = {
   core: {
     camera: v,
-    canvas: l,
+    canvas: y,
     scene: j,
     p: E,
     attach: N
   },
   instance: x
-}, O = (e) => {
+}, b = (e) => {
   e.magic("three", () => u), e.magic("math", () => u.MathUtils), e.magic("3", () => window.Norska);
-}, P = (e) => {
+}, O = (e) => {
   e.magic("frame", () => (t) => {
     const a = () => {
       t(), requestAnimationFrame(a);
     };
     a();
   });
-}, b = (e) => {
+}, P = (e) => {
   e.magic("i", (t) => t._norska);
 }, p = {
-  three: O,
-  frame: P,
-  i: b
+  three: b,
+  frame: O,
+  i: P
 }, m = Object.fromEntries(
   Object.entries(u).map(([e, t]) => [e.toLowerCase(), t])
 ), C = (e) => (t) => {

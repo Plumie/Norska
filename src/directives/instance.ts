@@ -21,7 +21,6 @@ const instance: NorskaDirective = (
       el.parentNode?._norska.add(el._norska);
       return;
     }
-
     scene.add(el._norska);
   };
 
@@ -36,11 +35,6 @@ const instance: NorskaDirective = (
     scene.remove(el._norska);
 
   };
-
-  // Create norska's reference object if it doesn't exist
-  if (!el.hasOwnProperty('_norska')) {
-    el._norska = {};
-  }
 
   createInstance();
 

@@ -3,6 +3,7 @@ import canvas from './canvas';
 import scene from './scene';
 import p from './p';
 import attach from './attach';
+
 import instance from './instance';
 
 const directives: Record<string, any> = {

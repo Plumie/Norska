@@ -13,7 +13,6 @@ const attach: NorskaDirective = (
 
     if (!i || !parentInstance) return;
 
-    // Drill into the instance for nested properties depending on the modifier
     modifiers.shift();
 
     const last = modifiers[modifiers.length - 1];

@@ -3,8 +3,6 @@ import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
 const canvas: NorskaDirective = (el) => {
 
-
-  // Create a new Three.js scene
   const { scene, camera, renderer } = (window.Norska = {
     scene: new Scene(),
     camera: new PerspectiveCamera(
@@ -17,12 +15,10 @@ const canvas: NorskaDirective = (el) => {
     controls: null
   });
 
-  // Create a full width/height canvas
   const parent = document.createElement('div');
   parent.style.width = '100%';
   parent.style.height = '100%';
 
-  // Ensure all children have a norska object
   [...el.querySelectorAll('*')].forEach((child) => {
     (child as NorskaElement)._norska = null;
   });
@@ -47,8 +43,6 @@ const canvas: NorskaDirective = (el) => {
   (el as unknown as HTMLDivElement).style.display = 'none';
 
   setCanvasSize();
-
-  // Start the animation loop
 
   const animate = () => {
     requestAnimationFrame(animate);
