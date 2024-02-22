@@ -11,9 +11,7 @@ const scale: NorskaDirective = (
 
   const changeScale = () => {
     getValues((args: Props) => {
-      const { mesh, light } = el._norska;
-      if (mesh) mesh.scale.set(...args);
-      if (light) light.scale.set(...args);
+      el._norska.i.scale.set(...args);
     });
   };
 
