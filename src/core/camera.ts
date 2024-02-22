@@ -1,27 +1,16 @@
 import { NorskaDirective } from '@/types/Norska';
-import { Euler, Vector3 } from 'three';
 
-interface Props {
-  position: Vector3;
-  rotation: Euler;
-  lookAt: Vector3;
-}
-
-const Camera: NorskaDirective = (
-	_,
-  { expression },
-  { evaluateLater, effect }
+const camera: NorskaDirective = (
+	el,
 ) => {
   const { camera } = window.Norska;
-  const getValues = evaluateLater(expression);
 
-  effect(() => {
-    getValues(({position, rotation, lookAt}: Props) => {
-			if (position && Array.isArray(position)) camera.position.set(position[0], position[1], position[2]);
-			if (rotation && Array.isArray(rotation)) camera.rotation.set(rotation[0], rotation[1], rotation[2]);
-			if (lookAt && Array.isArray(lookAt)) camera.lookAt(lookAt);
-    });
-  });
+  el._norska.i = camera;
+
+  // Create norska's reference object if it doesn't exist
+  if (!el.hasOwnProperty('_norska')) {
+    el._norska = {};
+  }
 };
 
-export default Camera;
+export default camera;

@@ -11,7 +11,7 @@ export const Geometries: StoryObj = {
     <div x-data>
       <div x-3.canvas>
         <br x-3.scene="{background: 0x151414}" />
-        <br x-3.camera="{position: [0, 0, 3]}" />
+        <br x-3.camera x-3.position="[0, 0, '3']" />
         <br x-3.pointLight="[0xffffff, 10, 100]" x-3.position="[3, 3, 3]" />
         <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
         <br

@@ -12,6 +12,11 @@ const rotation: NorskaDirective = (
   const changeRotation = () => {
     getValues((args: Props) => {
       el._norska.i.rotation.set(...args);
+
+      // Error handling
+      if (args.some((arg) => typeof arg !== 'number')) {
+        throw new Error(`Rotation should be a array of numbers. Got ${JSON.stringify(args)} instead.`);
+      }
     });
   };
 

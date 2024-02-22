@@ -1,7 +1,7 @@
 import { NorskaDirective, NorskaElement } from '@/types/Norska';
 import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
-const Canvas: NorskaDirective = (el) => {
+const canvas: NorskaDirective = (el) => {
 
   // Create a new Three.js scene
   const { scene, camera, renderer } = (window.Norska = {
@@ -47,6 +47,7 @@ const Canvas: NorskaDirective = (el) => {
   setCanvasSize();
 
   // Start the animation loop
+
   const animate = () => {
     requestAnimationFrame(animate);
 
@@ -60,4 +61,4 @@ const Canvas: NorskaDirective = (el) => {
   animate();
 };
 
-export default Canvas;
+export default canvas;
