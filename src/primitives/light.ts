@@ -13,16 +13,18 @@ const light: NorskaDirective = (
   const getValues = expression ? evaluateLater(expression) : [];
 
   effect(() => {
-    const {light} = el._norska;
+    const {i} = el._norska;
 
     getValues(([, options]: Props) => {
-      if (!light) {
+      if (!i) {
         Object.assign(instance, options);     
         scene.add(instance);
-        el._norska.light = instance;
+        el._norska.i = instance;
         return;
       }
-      Object.assign(light, options);
+      if (i instanceof Light) {
+        Object.assign(i, options);
+      }
     });
   });
 };

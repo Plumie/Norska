@@ -11,9 +11,7 @@ const position: NorskaDirective = (
 
   const changePosition = () => {
     getValues((args: Props) => {
-      const { mesh, light } = el._norska;
-      if (mesh) mesh.position.set(...args);
-      if (light) light.position.set(...args);
+      el._norska.i.position.set(...args);
     });
   };
 

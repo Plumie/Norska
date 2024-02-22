@@ -5,22 +5,23 @@ const mesh: NorskaDirective = (el, {}, { cleanup }) => {
   const { scene } = window.Norska;
 
   const createMesh = () => {
-    el._norska.mesh = new Mesh();
-    // Check if the parent has a mesh and add it to it
-    if (el.parentNode?._norska && el.parentNode?._norska.mesh) {
-      el.parentNode?._norska.mesh.add(el._norska.mesh);
+    el._norska.i = new Mesh();
+
+    if (el.parentNode?._norska && el.parentNode?._norska.i instanceof Mesh) {
+      el.parentNode?._norska.i.add(el._norska.i);
       return;
     }
-    scene.add(el._norska.mesh);
+
+    scene.add(el._norska.i);
   };
 
   const removeMesh = () => {
     // Check if the mesh has a parent and remove it from it
-    if (el._norska.mesh.parent) {
-      el._norska.mesh?.parent.remove(el._norska.mesh);
+    if (el._norska.i.parent) {
+      el._norska.i?.parent.remove(el._norska.i);
       return;
     }
-    scene.remove(el._norska.mesh as Object3D);
+    scene.remove(el._norska.i as Object3D);
   };
 
   // Create norska's reference object if it doesn't exist

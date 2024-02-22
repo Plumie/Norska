@@ -11,9 +11,7 @@ const rotation: NorskaDirective = (
 
   const changeRotation = () => {
     getValues((args: Props) => {
-      const { mesh, light } = el._norska;
-      if (mesh) mesh.rotation.set(...args);
-      if (light) light.rotation.set(...args);
+      el._norska.i.rotation.set(...args);
     });
   };
 

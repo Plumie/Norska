@@ -1,4 +1,5 @@
 import { NorskaDirective } from "@/types/Norska";
+import { Mesh } from "three";
 
 type Props = [any[], Record<string, any>];
 
@@ -11,12 +12,12 @@ const geometry: NorskaDirective = (
   const getValues = evaluateLater(expression);
 
   effect(() => {
-    const {mesh} = el._norska;
+    const {i} = el._norska;
 
-    if (mesh) {
+    if (i instanceof Mesh) {
       getValues(([, options]: Props) => {
-        if (mesh.geometry.uuid !== instance.uuid) mesh.geometry = instance;
-        Object.assign(mesh.geometry, options);
+        if (i.geometry.uuid !== instance.uuid) i.geometry = instance;
+        Object.assign(i.geometry, options);
       });
     }
   });
