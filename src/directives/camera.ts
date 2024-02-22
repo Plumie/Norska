@@ -1,16 +1,16 @@
 import { NorskaDirective } from '@/types/Norska';
 
-const Scene: NorskaDirective = (
-  el,
+const camera: NorskaDirective = (
+	el,
 ) => {
-  const { scene } = window.Norska;
+  const { camera } = window.Norska;
 
   if (!el.hasOwnProperty('_norska')) {
     el._norska = {};
     return;
   }
 
-  el._norska.i = scene;
+  el._norska = camera;
 };
 
-export default Scene;
+export default camera;

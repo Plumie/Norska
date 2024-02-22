@@ -3,6 +3,7 @@ import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
 
 const canvas: NorskaDirective = (el) => {
 
+
   // Create a new Three.js scene
   const { scene, camera, renderer } = (window.Norska = {
     scene: new Scene(),
@@ -21,11 +22,12 @@ const canvas: NorskaDirective = (el) => {
   parent.style.width = '100%';
   parent.style.height = '100%';
 
+  // Ensure all children have a norska object
   [...el.querySelectorAll('*')].forEach((child) => {
-    (child as NorskaElement)._norska = {};
+    (child as NorskaElement)._norska = null;
   });
 
-  el.insertAdjacentElement('beforebegin', parent);
+  el.parentNode?.appendChild(parent);
 
   const getParentSize = () => {
     const { width, height } = parent.getBoundingClientRect();

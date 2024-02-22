@@ -1,8 +1,9 @@
 import * as THREE from 'three';
 import { Alpine } from 'alpinejs';
 
-import { NorskaOptions } from '@/types/Norska';
-import { directives, magicProperties } from '@/map';
+import { NorskaElement, NorskaOptions } from '@/types/Norska';
+import directives from '@/directives';
+import magics from '@/magics';
 
 // Capital letters cannot be used in an html attribute
 const lowercaseThreeNamespace: Record<string, any> = Object.fromEntries(
@@ -23,37 +24,49 @@ export default (norskaOptions?: NorskaOptions) => {
       const values = args.expression ? routine.evaluate(args.expression) : [];
 
       try {
+        // Check if directive is a core directive
         if (args.modifiers[0] in directives.core) {
           directives.core[args.modifiers[0]](el, args, routine);
           return;
         }
 
-        // Get the corresponding instance
-        const i = (() => {
+        // Check if first character is a $, if so it's a prop
+        if (args.modifiers[0].charAt(0) === "$") {
+          args.modifiers[0] = args.modifiers[0].slice(1);
+          directives.core.p(el, args, routine);
+          return;
+        }
+
+        // Else fallback to a three.js object instance
+        const getInstance = (() => {
+
+          if(lowercaseThreeNamespace[args.modifiers[0]] === undefined) {
+            throw new Error(`The object ${args.modifiers[0]} does not exist in the three.js namespace`);
+          }
+
+          // Array
           if (Array.isArray(values)) {
             return new (lowercaseThreeNamespace as Record<string, any>)[args.modifiers[0]](...values);
           }
-          return new lowercaseThreeNamespace[args.modifiers[0]]({ ...values as Object });
-        })();
 
-        // Get the instance type and call the corresponding directive
-        const instanceType = () => {
-          if (i instanceof THREE.Mesh) return 'mesh';
-          if (i instanceof THREE.Light) return 'light';
-          if (i instanceof THREE.BufferGeometry) return 'geometry';
-          if (i instanceof THREE.Material) return 'material';
-          throw new Error(`Unknown instance type: ${i}`);
-        };
+          // Object
+          if (values != null && values.constructor.name === "Object") {
+            return new lowercaseThreeNamespace[args.modifiers[0]]({ ...values as Object });
+          }
 
-        directives.primitives[instanceType()](el, args, routine, i);
+          // Values
+          return new lowercaseThreeNamespace[args.modifiers[0]](values);
+        });
+
+        directives.instance(el, args, routine, getInstance());
       } catch (e) {
         console.error(e);
       }
     });
 
     // Register magic properties
-    Object.keys(magicProperties).forEach((name) => {
-      magicProperties[name](Alpine);
+    Object.keys(magics).forEach((name) => {
+      magics[name](Alpine);
     });
   };
 };

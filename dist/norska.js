@@ -1,16 +1,17 @@
-import * as d from "three";
-import { Scene as k, PerspectiveCamera as p, WebGLRenderer as y, Mesh as f, Light as g } from "three";
-const _ = (e) => {
-  const { camera: o } = window.Norska;
+import * as u from "three";
+import { Scene as k, PerspectiveCamera as _, WebGLRenderer as y } from "three";
+const v = (e) => {
+  const { camera: r } = window.Norska;
   if (!e.hasOwnProperty("_norska")) {
     e._norska = {};
     return;
   }
-  e._norska.i = o;
+  e._norska = r;
 }, l = (e) => {
-  const { scene: o, camera: s, renderer: i } = window.Norska = {
+  var d;
+  const { scene: r, camera: a, renderer: s } = window.Norska = {
     scene: new k(),
-    camera: new p(
+    camera: new _(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
@@ -18,175 +19,145 @@ const _ = (e) => {
     ),
     renderer: new y(),
     controls: null
-  }, t = document.createElement("div");
-  t.style.width = "100%", t.style.height = "100%", [...e.querySelectorAll("*")].forEach((c) => {
-    c._norska = {};
-  }), e.insertAdjacentElement("beforebegin", t);
-  const a = () => {
-    const { width: c, height: m } = t.getBoundingClientRect();
-    return { width: c, height: m };
-  }, n = () => {
-    const { width: c, height: m } = a();
-    s.aspect = c / m, s.updateProjectionMatrix(), i.setSize(c, m);
+  }, n = document.createElement("div");
+  n.style.width = "100%", n.style.height = "100%", [...e.querySelectorAll("*")].forEach((c) => {
+    c._norska = null;
+  }), (d = e.parentNode) == null || d.appendChild(n);
+  const i = () => {
+    const { width: c, height: w } = n.getBoundingClientRect();
+    return { width: c, height: w };
+  }, o = () => {
+    const { width: c, height: w } = i();
+    a.aspect = c / w, a.updateProjectionMatrix(), s.setSize(c, w);
   };
-  window.addEventListener("resize", n), t.appendChild(i.domElement), e.style.display = "none", n();
-  const r = () => {
-    requestAnimationFrame(r), window.Norska.controls && window.Norska.controls.update(), i.render(o, s);
+  window.addEventListener("resize", o), n.appendChild(s.domElement), e.style.display = "none", o();
+  const t = () => {
+    requestAnimationFrame(t), window.Norska.controls && window.Norska.controls.update(), s.render(r, a);
   };
-  r();
-}, b = (e) => {
-  const { scene: o } = window.Norska;
+  t();
+}, j = (e) => {
+  const { scene: r } = window.Norska;
   if (!e.hasOwnProperty("_norska")) {
     e._norska = {};
     return;
   }
-  e._norska.i = o;
-}, v = (e, { expression: o }, { evaluateLater: s, effect: i }) => {
-  const t = s(o), a = () => {
-    t((n) => {
-      if (e._norska.i.position.set(...n), n.some((r) => typeof r != "number"))
-        throw new Error(`Position should be a array of numbers. Got ${JSON.stringify(n)} instead.`);
-    });
-  };
-  e.addEventListener("norska:load:end", a), i(a);
-}, E = (e, { expression: o }, { evaluateLater: s, effect: i }) => {
-  const t = s(o), a = () => {
-    t((n) => {
-      if (e._norska.i.rotation.set(...n), n.some((r) => typeof r != "number"))
-        throw new Error(`Rotation should be a array of numbers. Got ${JSON.stringify(n)} instead.`);
-    });
-  };
-  e.addEventListener("norska:load:end", a), i(a);
-}, N = (e, { expression: o }, { evaluateLater: s, effect: i }) => {
-  const t = s(o), a = () => {
-    t((n) => {
-      if (e._norska.i.scale.set(...n), n.some((r) => typeof r != "number"))
-        throw new Error(`Scale should be a array of numbers. Got ${JSON.stringify(n)} instead.`);
-    });
-  };
-  e.addEventListener("norska:load:end", a), i(a);
-}, O = (e, { modifiers: o, expression: s }, { evaluateLater: i, effect: t }) => {
-  const a = i(s);
-  t(() => {
-    const { i: n } = e._norska;
-    n && a((r) => {
-      n[o[1]] = r;
-    });
-  });
-}, S = {
-  camera: _,
-  canvas: l,
-  scene: b,
-  position: v,
-  rotation: E,
-  scale: N,
-  p: O
-}, P = (e, { expression: o }, { evaluateLater: s, effect: i }, t) => {
-  const a = s(o);
-  i(() => {
-    const { i: n } = e._norska;
-    n instanceof f && a(([, r]) => {
-      n.geometry.uuid !== t.uuid && (n.geometry = t), Object.assign(n.geometry, r);
-    });
-  });
-}, j = (e, { expression: o }, { evaluateLater: s, effect: i }, t) => {
-  const a = s(o);
-  i(() => {
-    const { i: n } = e._norska;
-    n instanceof f && a(({ color: r, ...c }) => {
-      n.material.uuid !== t.uuid && (n.material = t), r && n.material.color.set(r), Object.assign(n.material, c);
-    });
-  });
-}, L = (e, {}, { cleanup: o }) => {
-  const { scene: s } = window.Norska, i = () => {
-    var n, r;
-    return ((n = e.parentNode) == null ? void 0 : n._norska) && ((r = e.parentNode) == null ? void 0 : r._norska.i) instanceof f;
-  }, t = () => {
-    var n;
-    if (e._norska.i = new f(), i()) {
-      (n = e.parentNode) == null || n._norska.i.add(e._norska.i);
-      return;
-    }
-    s.add(e._norska.i);
-  }, a = () => {
-    var n;
-    if (i()) {
-      (n = e._norska.i) == null || n.parent.remove(e._norska.i);
-      return;
-    }
-    s.remove(e._norska.i);
-  };
-  e.hasOwnProperty("_norska") || (e._norska = {}), t(), o(() => a());
-}, V = (e, { expression: o }, { evaluateLater: s, effect: i }, t) => {
-  const { scene: a } = window.Norska, n = o ? s(o) : [];
-  i(() => {
-    const { i: r } = e._norska;
-    n(([, c]) => {
-      if (!r) {
-        Object.assign(t, c), a.add(t), e._norska.i = t;
+  e._norska = r;
+}, E = (e, { modifiers: r, expression: a }, { evaluateLater: s, effect: n }) => {
+  const i = s(a);
+  n(() => {
+    const o = e._norska;
+    o && i((t) => {
+      var w;
+      const d = r[r.length - 1];
+      let c = o;
+      if (r.forEach((f) => {
+        if (c[f] === void 0)
+          throw new Error(`Property ${r.join(".")} does not exist`);
+        f !== d && (c = c[f]);
+      }), (w = c[d]) != null && w.set) {
+        if (Array.isArray(t)) {
+          c[d].set(...t);
+          return;
+        }
+        c[d].set(t);
         return;
       }
-      r instanceof g && Object.assign(r, c);
+      c[d] = t;
     });
   });
-}, M = {
-  geometry: P,
-  material: j,
-  mesh: L,
-  light: V
-}, x = (e) => {
-  e.magic("three", () => d), e.magic("3", () => window.Norska);
-}, C = (e) => {
-  e.magic("frame", () => (o) => {
-    const s = () => {
-      o(), requestAnimationFrame(s);
-    };
-    s();
+}, N = (e, { modifiers: r }, { effect: a }) => {
+  a(() => {
+    const s = e._norska, n = e.parentNode._norska;
+    if (!s || !n)
+      return;
+    r.shift();
+    const i = r[r.length - 1];
+    let o = n;
+    r.forEach((t) => {
+      if (o[t] === void 0)
+        throw new Error(`Property ${r.join(".")} does not exist`);
+      t !== i && (o = o[t]);
+    }), o[i] = s;
   });
-}, G = (e) => {
-  e.magic("i", (o) => o._norska);
-}, R = {
-  three: x,
-  frame: C,
-  i: G
-}, u = {
-  core: S,
-  primitives: M
-}, w = {
-  ...R
-}, h = Object.fromEntries(
-  Object.entries(d).map(([e, o]) => [e.toLowerCase(), o])
-), z = (e) => (o) => {
-  const s = {
+}, x = (e, {}, { cleanup: r }, a) => {
+  const { scene: s } = window.Norska, n = () => {
+    var t;
+    return (t = e.parentNode) == null ? void 0 : t._norska;
+  }, i = () => {
+    var t;
+    if (e._norska = a, !!a.isObject3D) {
+      if (n()) {
+        (t = e.parentNode) == null || t._norska.add(e._norska);
+        return;
+      }
+      s.add(e._norska);
+    }
+  }, o = () => {
+    var t;
+    if (a.isObject3D) {
+      if (n()) {
+        (t = e._norska) == null || t.parent.remove(e._norska);
+        return;
+      }
+      s.remove(e._norska);
+    }
+  };
+  e.hasOwnProperty("_norska") || (e._norska = {}), i(), r(() => o());
+}, h = {
+  core: {
+    camera: v,
+    canvas: l,
+    scene: j,
+    p: E,
+    attach: N
+  },
+  instance: x
+}, O = (e) => {
+  e.magic("three", () => u), e.magic("3", () => window.Norska);
+}, P = (e) => {
+  e.magic("frame", () => (r) => {
+    const a = () => {
+      r(), requestAnimationFrame(a);
+    };
+    a();
+  });
+}, b = (e) => {
+  e.magic("i", (r) => r._norska);
+}, p = {
+  three: O,
+  frame: P,
+  i: b
+}, m = Object.fromEntries(
+  Object.entries(u).map(([e, r]) => [e.toLowerCase(), r])
+), A = (e) => (r) => {
+  const a = {
     prefix: "3",
     ...e
   };
-  o.directive(s.prefix, (i, t, a) => {
-    const n = t.expression ? a.evaluate(t.expression) : [];
+  r.directive(a.prefix, (s, n, i) => {
+    const o = n.expression ? i.evaluate(n.expression) : [];
     try {
-      if (t.modifiers[0] in u.core) {
-        u.core[t.modifiers[0]](i, t, a);
+      if (n.modifiers[0] in h.core) {
+        h.core[n.modifiers[0]](s, n, i);
         return;
       }
-      const r = Array.isArray(n) ? new h[t.modifiers[0]](...n) : new h[t.modifiers[0]]({ ...n }), c = () => {
-        if (r instanceof d.Mesh)
-          return "mesh";
-        if (r instanceof d.Light)
-          return "light";
-        if (r instanceof d.BufferGeometry)
-          return "geometry";
-        if (r instanceof d.Material)
-          return "material";
-        throw new Error(`Unknown instance type: ${r}`);
+      if (n.modifiers[0].charAt(0) === "$") {
+        n.modifiers[0] = n.modifiers[0].slice(1), h.core.p(s, n, i);
+        return;
+      }
+      const t = () => {
+        if (m[n.modifiers[0]] === void 0)
+          throw new Error(`The object ${n.modifiers[0]} does not exist in the three.js namespace`);
+        return Array.isArray(o) ? new m[n.modifiers[0]](...o) : o != null && o.constructor.name === "Object" ? new m[n.modifiers[0]]({ ...o }) : new m[n.modifiers[0]](o);
       };
-      u.primitives[c()](i, t, a, r);
-    } catch (r) {
-      console.error(r);
+      h.instance(s, n, i, t());
+    } catch (t) {
+      console.error(t);
     }
-  }), Object.keys(w).forEach((i) => {
-    w[i](o);
+  }), Object.keys(p).forEach((s) => {
+    p[s](r);
   });
 };
 export {
-  z as default
+  A as default
 };
