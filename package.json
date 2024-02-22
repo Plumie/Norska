@@ -8,6 +8,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@storybook/addon-storysource": "^7.6.17",
     "@types/alpinejs": "^3.13.6",
     "@types/three": "^0.161.2",
     "alpinejs": "^3.13.5",

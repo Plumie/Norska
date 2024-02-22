@@ -1,6 +1,7 @@
 import 'three';
 import Alpine from 'alpinejs'
 import './preview.css';
+import './pico.min.css';
 import norska from '../src/main'
 
 Alpine.plugin(norska());
