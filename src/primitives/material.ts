@@ -12,17 +12,18 @@ const material: NorskaDirective = (
   const getValues = evaluateLater(expression);
   effect(() => {
     const {i} = el._norska;
-    if (i instanceof Mesh) {
-      getValues(({ color, ...args }: Props) => {
-        if (i.material.uuid !== instance.uuid) {
-          i.material = instance;
-        }
-        if (color) {
-          i.material.color.set(color);
-        }
-        Object.assign(i.material, args);
-      });
-    }
+
+    if (!(i instanceof Mesh)) return;
+
+    getValues(({ color, ...args }: Props) => {
+      if (i.material.uuid !== instance.uuid) {
+        i.material = instance;
+      }
+      if (color) {
+        i.material.color.set(color);
+      }
+      Object.assign(i.material, args);
+    });
   });
 };
 

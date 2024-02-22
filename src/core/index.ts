@@ -1,21 +1,19 @@
 import camera from './camera';
 import canvas from './canvas';
 import scene from './scene';
-import load from './load';
-import controls from './controls';
 import position from './position';
 import rotation from './rotation';
 import scale from './scale';
+import p from './p';
 
 const core = {
   camera,
   canvas,
   scene,
-  load,
   position,
   rotation,
   scale,
-  ...controls,
+  p
 };
 
 export default core;

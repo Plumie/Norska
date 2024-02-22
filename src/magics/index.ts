@@ -1,11 +1,11 @@
 import three from '@/magics/three';
 import frame from '@/magics/frame';
-import n from '@/magics/norska';
+import i from '@/magics/i';
 
 const magics = {
   three,
   frame,
-  n
+  i
 };
 
 export default magics;

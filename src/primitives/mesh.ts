@@ -4,10 +4,12 @@ import { Mesh, Object3D } from 'three';
 const mesh: NorskaDirective = (el, {}, { cleanup }) => {
   const { scene } = window.Norska;
 
+  const hasParent = () => el.parentNode?._norska && el.parentNode?._norska.i instanceof Mesh;
+
   const createMesh = () => {
     el._norska.i = new Mesh();
 
-    if (el.parentNode?._norska && el.parentNode?._norska.i instanceof Mesh) {
+    if (hasParent()) {
       el.parentNode?._norska.i.add(el._norska.i);
       return;
     }
@@ -16,8 +18,9 @@ const mesh: NorskaDirective = (el, {}, { cleanup }) => {
   };
 
   const removeMesh = () => {
+
     // Check if the mesh has a parent and remove it from it
-    if (el._norska.i.parent) {
+    if (hasParent()) {
       el._norska.i?.parent.remove(el._norska.i);
       return;
     }

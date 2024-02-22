@@ -14,12 +14,12 @@ const geometry: NorskaDirective = (
   effect(() => {
     const {i} = el._norska;
 
-    if (i instanceof Mesh) {
-      getValues(([, options]: Props) => {
-        if (i.geometry.uuid !== instance.uuid) i.geometry = instance;
-        Object.assign(i.geometry, options);
-      });
-    }
+    if (!(i instanceof Mesh)) return;
+
+    getValues(([, options]: Props) => {
+      if (i.geometry.uuid !== instance.uuid) i.geometry = instance;
+      Object.assign(i.geometry, options);
+    });
   });
 };
 
