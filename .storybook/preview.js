@@ -1,7 +1,7 @@
 import 'three';
 import Alpine from 'alpinejs'
 import './preview.css';
-import norska from '../dist/norska';
+import norska from '../src/main'
 
 Alpine.plugin(norska());
 window.Alpine = Alpine

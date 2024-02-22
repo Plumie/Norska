@@ -12,7 +12,7 @@ export const Geometries: StoryObj = {
       <div x-3.canvas>
         <br 
           x-3.scene 
-          x-3.p.background="new $3.Color('red')" 
+          x-3.p.background="'red'" 
         />
         <br x-3.camera x-3.position="[0, 0, 3]" />
         <br x-3.pointLight="[0xffffff, 10, 100]" x-3.position="[3, 3, 3]" />

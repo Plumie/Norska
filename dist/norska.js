@@ -135,7 +135,7 @@ const _ = (e) => {
   mesh: L,
   light: V
 }, x = (e) => {
-  e.magic("3", () => d);
+  e.magic("three", () => d), e.magic("3", () => window.Norska);
 }, C = (e) => {
   e.magic("frame", () => (o) => {
     const s = () => {
@@ -144,7 +144,7 @@ const _ = (e) => {
     s();
   });
 }, G = (e) => {
-  e.magic("n", (o) => o._norska), e.magic("N", () => window.Norska);
+  e.magic("i", (o) => o._norska);
 }, R = {
   three: x,
   frame: C,
