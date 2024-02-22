@@ -47,7 +47,7 @@ export const Mesh: StoryObj = {
           >
             <br 
               x-3.${material} 
-              x-3.$color="'white'"
+              x-3.$color="'red'"
               x-3.attach.material
             />
             <br 
