@@ -4,8 +4,7 @@
     "dev": "vite build --watch",
     "build": "vite build",
     "storybook": "storybook dev -p 6006 --no-open",
-    "build-storybook": "storybook build",
-    "build-documentation": "cd documentation && retype build"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "alpinejs": "^3.13.5",
@@ -13,7 +12,6 @@
     "vite": "^5.1.4"
   },
   "devDependencies": {
-    "retypeapp": "^3.5.0",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
@@ -22,8 +20,8 @@
     "@storybook/html": "^7.6.17",
     "@storybook/html-vite": "^7.6.17",
     "@storybook/test": "^7.6.17",
-    "@types/node": "^20.11.19",
     "@types/alpinejs": "^3.13.6",
+    "@types/node": "^20.11.19",
     "@types/three": "^0.161.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
