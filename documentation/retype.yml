@@ -1,6 +1,6 @@
 input: .
 output: ../dist/docs
-url: https://norska.vercel.app/docs 
+url: https://norska.plume.moe/docs 
 branding:
   title: Norska
   label: Docs
