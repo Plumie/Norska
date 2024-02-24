@@ -17,7 +17,7 @@ const canvas: NorskaDirective = (
     return renderer;
   }
 
-  const getCamera: () => Camera = () => {
+  const getCamera = () => {
     if (parameters.camera instanceof Camera) return parameters.camera; // Custom camera
     // Default camera
     const camera = new PerspectiveCamera(
