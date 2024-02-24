@@ -65,13 +65,21 @@ We declare a mesh with `x-3.mesh`, then we can attach a geometry and a material 
 
 ```html
 <div x-data>
-  <div x-3.canvas>
-    <br x-3.camera="{position: [0, 0, 5]}" />
-    <br
-      x-3.mesh
-      x-3.boxGeometry="[1, 1, 1]"
-      x-3.meshBasicMaterial="{color: 0xff0000}"
-    />
-  </div>
+    <div x-3.canvas>
+        <br 
+            x-3.camera
+            x-3.$position.z="5"
+        />
+        <div x-3.mesh>
+            <br         
+                x-3.boxGeometry
+                x-3.attach.geometry
+            />
+            <br         
+                x-3.meshBasicMaterial="{color: 0xff0000}"
+                x-3.attach.material
+            />
+        </div>
+    </div>
 </div>
 ```

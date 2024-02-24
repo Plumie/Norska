@@ -9,7 +9,7 @@ const attach: NorskaDirective = (
   effect(() => {
 
     const i = el._norska;
-    const parentInstance = el.parentNode._norska;
+    const parentInstance = el.parentNode?._norska || window._norska;
 
     if (!i || !parentInstance) return;
 
@@ -25,9 +25,13 @@ const attach: NorskaDirective = (
       }
 
       if (modifier === last) return;
-
       j = j[modifier];
     });
+
+    if (j[last]?.set) {
+      j[last].copy(i);
+      return; 
+    }
 
     j[last] = i;
   });

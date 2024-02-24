@@ -1,4 +1,3 @@
-import { Scene, Camera, Renderer } from 'three';
 import { ElementWithXAttributes, Alpine } from 'alpinejs';
 
 export type Norska = (o: Record<string, unknown>) => (Alpine: Alpine) => void;
@@ -17,12 +16,3 @@ export interface NorskaOptions {
 export interface NorskaElement extends ElementWithXAttributes {
   _norska: any;
 };
-
-export interface NorskaWindow extends Window {
-	Norska: {
-		scene: Scene;
-		camera: Camera;
-		renderer: Renderer;
-		controls: any;
-	};
-}

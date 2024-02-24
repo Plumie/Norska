@@ -7,7 +7,7 @@ const instance: NorskaDirective = (
   instance
 ) => {
 
-  const { scene } = window.Norska;
+  const { scene } = window._norska;
 
   const hasParent = () => el.parentNode?._norska;
 

@@ -8,11 +8,12 @@ const p: NorskaDirective = (
   const getValues = evaluateLater(expression);
 
   effect(() => {
-    const i = el._norska;
-
-    if (!i) return;
 
     getValues((args: any) => {
+
+      const i = el._norska;
+
+      if (!i) return;
 
       const last = modifiers[modifiers.length - 1];
 

@@ -1,10 +1,13 @@
-import 'three';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import Alpine from 'alpinejs'
+
 import './preview.css';
 import './pico.min.css';
 import norska from '../src/main'
 
-Alpine.plugin(norska());
+Alpine.plugin(norska({
+  loaders: [GLTFLoader]
+}));
 window.Alpine = Alpine
  
 Alpine.start()

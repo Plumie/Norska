@@ -1,29 +1,66 @@
 import { NorskaDirective, NorskaElement } from '@/types/Norska';
-import { Scene, PerspectiveCamera, WebGLRenderer } from 'three';
+import { Camera, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
-const canvas: NorskaDirective = (el) => {
+const canvas: NorskaDirective = (
+  el,
+  { expression },
+  { evaluate },
+) => {
 
-  const { scene, camera, renderer } = (window.Norska = {
-    scene: new Scene(),
-    camera: new PerspectiveCamera(
+  const parameters: any = expression ? evaluate(expression) : {};
+
+  const getRenderer = () => {
+    if (parameters.renderer instanceof WebGLRenderer) return parameters.renderer; // Custom renderer
+    // Default renderer
+    const renderer = new WebGLRenderer(); 
+    if (parameters.renderer?.constructor.name === 'Object') Object.assign(renderer, parameters.renderer);
+    return renderer;
+  }
+
+  const getCamera: () => Camera = () => {
+    if (parameters.camera instanceof Camera) return parameters.camera; // Custom camera
+    // Default camera
+    const camera = new PerspectiveCamera(
       75,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
-    ),
-    renderer: new WebGLRenderer(),
-    controls: null
-  });
+    );
+    if (parameters.camera?.constructor.name === 'Object') Object.assign(camera, parameters.camera);
+    return camera;
+  }
 
-  const parent = document.createElement('div');
-  parent.style.width = '100%';
-  parent.style.height = '100%';
+  const getScene = () => {
+    if (parameters.scene instanceof Scene) return parameters.scene; // Custom scene
+    // Default scene
+    const scene = new Scene();
+    if (parameters.scene?.constructor.name === 'Object') Object.assign(scene, parameters.scene);
+    return scene;
+  }
 
-  [...el.querySelectorAll('*')].forEach((child) => {
-    (child as NorskaElement)._norska = null;
-  });
+  const {scene, camera, renderer} = {
+    scene: getScene(),
+    renderer: getRenderer(),
+    camera: getCamera()
+  }
 
-  el.parentNode?.appendChild(parent);
+  
+  const createParent = () => {
+    const parent = document.createElement('div');
+    parent.style.width = '100%';
+    parent.style.height = '100%';
+
+    [...el.querySelectorAll('*')].forEach((child) => {
+      (child as NorskaElement)._norska = null;
+    });
+
+    el.parentNode?.appendChild(parent);
+
+    return parent;
+  }
+
+  const parent = createParent();
+  parent.appendChild(renderer.domElement);
 
   const getParentSize = () => {
     const { width, height } = parent.getBoundingClientRect();
@@ -37,24 +74,24 @@ const canvas: NorskaDirective = (el) => {
     renderer.setSize(width, height);
   };
 
-  window.addEventListener('resize', setCanvasSize);
-  parent.appendChild(renderer.domElement);
-
-  (el as unknown as HTMLDivElement).style.display = 'none';
-
-  setCanvasSize();
-
   const animate = () => {
     requestAnimationFrame(animate);
-
-    if (window.Norska.controls) {
-      window.Norska.controls.update();
-    }
-
     renderer.render(scene, camera);
   };
 
+  // Hide the architechture
+  (el as unknown as HTMLDivElement).style.display = 'none';
+
+  setCanvasSize();
+  window.addEventListener('resize', setCanvasSize);
+
   animate();
+
+  window._norska = {
+    scene,
+    camera,
+    renderer,
+  };
 };
 
 export default canvas;

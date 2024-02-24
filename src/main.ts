@@ -15,15 +15,12 @@ export default (norskaOptions?: NorskaOptions) => {
 
     const options = {
       prefix: '3',
+      loaders: [],
       ...norskaOptions
     };
 
     Alpine.directive(options.prefix, (el, args, routine) => {
-
-      const values = args.expression ? routine.evaluate(args.expression) : [];
-
       try {
-
         // Check if directive is a core directive
         if (args.modifiers[0] in directives.core) {
           directives.core[args.modifiers[0]](el, args, routine);
@@ -39,6 +36,8 @@ export default (norskaOptions?: NorskaOptions) => {
 
         // Else fallback to a three.js object instance
         const getInstance = (() => {
+
+          const values = args.expression ? routine.evaluate(args.expression) : [];
 
           if(lowercaseThreeNamespace[args.modifiers[0]] === undefined) {
             throw new Error(`The object ${args.modifiers[0]} does not exist in the three.js namespace`);
@@ -64,6 +63,14 @@ export default (norskaOptions?: NorskaOptions) => {
 
     // Register magic properties
     Object.keys(magics).forEach((name) => {
+      if (name === 'load') {
+        const loaders: Record<string, unknown> = {};
+        options.loaders.forEach((loader: FunctionConstructor) => {
+          loaders[loader.name] = new loader();
+        })
+        magics[name](Alpine, loaders);
+        return;
+      }
       magics[name](Alpine);
     });
   };

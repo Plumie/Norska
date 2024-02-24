@@ -1,18 +1,17 @@
-import camera from './camera';
 import canvas from './canvas';
-import scene from './scene';
 import p from './p';
 import attach from './attach';
-
 import instance from './instance';
+import three from './three';
+import primitive from './primitive';
 
 const directives: Record<string, any> = {
   core: {
-    camera,
     canvas,
-    scene,
     p,
-    attach
+    attach,
+    three,
+    primitive,
   },
   instance
 };
