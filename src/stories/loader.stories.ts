@@ -9,7 +9,7 @@ export default meta;
 export const Loader: StoryObj = {
   render: () => {
     return (`
-      <div x-data="{visible: true}">
+      <div x-data="{visible: false}">
         <button @click="visible = !visible">Toggle</button>
         <div x-3.canvas>
 
@@ -26,7 +26,7 @@ export const Loader: StoryObj = {
           <br x-3.pointLight="[0xffffff, 5, 100]" x-3.$position="[3, 3, 3]"/>
           <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
           <br 
-            x-3.primitive="$load($loaders.GLTFLoader, 'Damaged.glb', (model) => model.scene)" 
+            x-3.primitive="$load($loaders.GLTFLoader, 'duck.glb', (model) => model.scene)" 
             x-3.$visible="visible"
           />
         </div>
