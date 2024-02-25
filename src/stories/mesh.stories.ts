@@ -36,16 +36,14 @@ export const Mesh: StoryObj = {
           >
             <br x-3.color="'#151414'" x-3.attach.background />
           </div>
-          <br 
-            x-3.three.camera
-            x-3.$position="[0, 0, 5]"
-          />
 
           <br x-3.pointLight="[0xffffff, 5, 100]" x-3.$position="[3, 3, 3]"/>
           <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
+
           <div
             x-3.mesh
             x-3.$rotation="[$math.degToRad(22.5), $math.degToRad(45), 0]"
+            @click="() => $i.material.color.set('blue')"
           >
             <br 
               x-3.${material} 

@@ -1,7 +1,7 @@
 import { NorskaDirective } from '@/types/Norska';
 import { Object3D } from 'three';
 
-const primitive: NorskaDirective = (
+const primitive: NorskaDirective = async (
   el,
   {expression},
   { evaluateLater, effect, cleanup },
@@ -13,19 +13,21 @@ const primitive: NorskaDirective = (
 
   const hasParent = () => el.parentNode?._norska;
 
-  const insertObject = (object: Object3D) => {
+  const insertInstance = () => {
+    getValues((object: Object3D) => {
 
-    el._norska = object;
+      el._norska = object;
 
-    if (hasParent()) {
-      el.parentNode?._norska.add(el._norska);
-      return;
-    }
+      if (hasParent()) {
+        el.parentNode?._norska.add(el._norska);
+        return;
+      }
 
-    scene.add(el._norska);
+      scene.add(el._norska);
+    });
   };
 
-  const removeObject = () => {
+  const removeInstance = () => {
     if (hasParent()) {
       el.parentNode?._norska.remove(el._norska);
       return;
@@ -34,15 +36,8 @@ const primitive: NorskaDirective = (
     scene.remove(el._norska);
   };
 
-  effect(() => {
-    getValues((object: any) => {
-      insertObject(object);
-    }); 
-  });
-
-  cleanup(() => {
-    removeObject()
-  });
+  effect(() => insertInstance());
+  cleanup(() => removeInstance());
 };
 
 export default primitive;

@@ -27,7 +27,6 @@ export const xif: StoryObj = {
             />
           </div>
 
-          <br x-3.three.camera x-3.$position="[0, 0, 4]" />
           <br x-3.pointLight="[0xffffff, 5, 100]" x-3.$position="[3, 3, 3]"/>
           <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
 

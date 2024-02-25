@@ -1,6 +1,6 @@
 import { NorskaDirective } from "@/types/Norska";
 
-type Three = "scene" | "camera" | "renderer";
+type Three = 'scene' | 'camera' | 'renderer';
 
 const three: NorskaDirective = (
   el,

@@ -4,9 +4,10 @@ import Alpine from 'alpinejs'
 import './preview.css';
 import './pico.min.css';
 import norska from '../src/main'
+import { TextureLoader } from 'three';
 
 Alpine.plugin(norska({
-  loaders: [GLTFLoader]
+  loaders: [GLTFLoader, TextureLoader]
 }));
 window.Alpine = Alpine
  

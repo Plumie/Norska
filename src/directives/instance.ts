@@ -1,10 +1,16 @@
+import * as THREE from 'three';
+
 import { NorskaDirective } from '@/types/Norska';
+
+// Capital letters cannot be used in an html attribute
+const lowercaseThreeNamespace: Record<string, any> = Object.fromEntries(
+  Object.entries(THREE).map(([k, v]) => [k.toLowerCase(), v])
+);
 
 const instance: NorskaDirective = (
   el,
-  {},
-  { cleanup },
-  instance
+  {expression, modifiers },
+  { Alpine, effect, cleanup, evaluate},
 ) => {
 
   const { scene } = window._norska;
@@ -13,30 +19,51 @@ const instance: NorskaDirective = (
 
   const createInstance = () => {
 
+    const values = expression ? evaluate(expression) : [];
+
+    const getInstance = () => {
+      if (Array.isArray(values)) {
+        return new (lowercaseThreeNamespace as Record<string, any>)[modifiers[0]](...values);
+      }
+      if (values != null && values.constructor.name === "Object") {
+        return new lowercaseThreeNamespace[modifiers[0]]({ ...values as Object });
+      }
+      return new lowercaseThreeNamespace[modifiers[0]](values);
+    }
+
+    const instance = getInstance();
+
     el._norska = instance;
+
+    el._norska.el = el;
 
     if (!instance.isObject3D) return;
 
     if (hasParent()) {
-      el.parentNode?._norska.add(el._norska);
+      el.parentNode?._norska.add(instance);
       return;
     }
-    scene.add(el._norska);
-  };
+
+    scene.add(instance);
+  }
 
   const removeInstance = () => {
 
-    if (!instance.isObject3D) return;
+    const instance = el._norska;
+
+    if (!instance || !instance.isObject3D) return;
 
     if (hasParent()) {
-      el._norska?.parent.remove(el._norska);
+      instance.parent.remove(el._norska);
       return;
     }
-    scene.remove(el._norska);
+    scene.remove(instance);
 
   };
 
-  createInstance();
+  effect(() => {
+    createInstance()
+  });
 
   cleanup(() => removeInstance());
 };

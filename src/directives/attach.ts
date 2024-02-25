@@ -1,40 +1,56 @@
 import { NorskaDirective } from '@/types/Norska';
 
+// Drilling down into the parent object and attaching the current object
 const attach: NorskaDirective = (
 	el,
   { modifiers },
-  { effect },
+  { effect, cleanup },
 ) => {
 
-  effect(() => {
+  const getSpecificProperty: any = () => {
 
-    const i = el._norska;
-    const parentInstance = el.parentNode?._norska || window._norska;
+    const parentInstance = el.parentNode?._norska;
 
-    if (!i || !parentInstance) return;
-
-    modifiers.shift();
-
-    const last = modifiers[modifiers.length - 1];
+    if (!el._norska || !parentInstance) return;
 
     let j = parentInstance;
 
-    modifiers.forEach((modifier: string,) => {
-      if (j[modifier] === undefined) {
-        throw new Error(`Property ${modifiers.join('.')} does not exist`);
-      }
+    const properties = modifiers.slice(1);
 
-      if (modifier === last) return;
-      j = j[modifier];
+    const last = properties[properties.length - 1];
+
+    properties.forEach((property: string,) => {
+      if (j[property] === undefined) throw new Error(`Property ${properties.join('.')} does not exist`);
+      if (property === last) return;
+      j = j[property];
     });
 
-    if (j[last]?.set) {
-      j[last].copy(i);
+    return [j, last]
+  }
+
+  const attachToParent = () => {
+
+    const data = getSpecificProperty();
+    if (!data) return;
+    
+    const [object, key] = data;
+
+    const i = el._norska;
+
+    if (object[key]?.set) {
+      object[key].copy(i);
       return; 
     }
 
-    j[last] = i;
-  });
+    object[key] = i;
+  };
+
+  effect(() => {
+    el.parentNode.addEventListener('norska:update', attachToParent);
+    attachToParent();
+  })
+
+  cleanup(() => el.parentNode.removeEventListener('norska:update', attachToParent));
 };
 
 export default attach;

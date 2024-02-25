@@ -1,19 +1,19 @@
 import canvas from './canvas';
-import p from './p';
+import prop from './prop';
 import attach from './attach';
 import instance from './instance';
 import three from './three';
 import primitive from './primitive';
+import event from './event';
 
 const directives: Record<string, any> = {
-  core: {
-    canvas,
-    p,
-    attach,
-    three,
-    primitive,
-  },
-  instance
+  canvas,
+  prop,
+  attach,
+  instance,
+  three,
+  primitive,
+  event
 };
 
 export default directives;

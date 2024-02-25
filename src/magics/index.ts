@@ -1,13 +1,17 @@
 import three from '@/magics/three';
 import frame from '@/magics/frame';
 import i from '@/magics/i';
-import load from './load';
+import load from '@/magics/load';
+import loaders from '@/magics/loaders';
+import math from '@/magics/math';
 
 const magics: Record<string, any> = {
   three,
+  math,
   frame,
   i,
-  load
+  load,
+  loaders
 };
 
 export default magics;
