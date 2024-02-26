@@ -1,36 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import * as THREE from 'three';
 
 const meta: Meta = {
-  title: 'Mesh',
+  title: 'Events',
 };
 
 export default meta;
 
-export const Mesh: StoryObj = {
+export const Events: StoryObj = {
   argTypes: {
-    geometry: {
-      options: Object.keys(THREE).filter((key) => key.endsWith('Geometry')),
-      control: {
-        type: 'select',
-      },
-    },
-    material: {
-      options: Object.keys(THREE).filter((key) => key.endsWith('Material')),
+    events: {
+      options: ['click', 'dblclick', 'pointerdown', 'pointerup', 'contextmenu', 'wheel', 'pointerover', 'pointerenter', 'pointerout'],
       control: {
         type: 'select',
       },
     }
   },
   render: ({
-    geometry = "BoxGeometry",
-    material = "meshStandardMaterial",
+    events = "click"
   }) => {
-
     return (`
       <div x-data>
         <div x-3.canvas>
-
           <div
             x-3.three.scene
           >
@@ -43,18 +33,18 @@ export const Mesh: StoryObj = {
           <div
             x-3.mesh
             x-3.$rotation="[$math.degToRad(22.5), $math.degToRad(45), 0]"
+            @${events}="() => $i.material.color.setHex(Math.random() * 0xffffff)"
           >
             <br 
-              x-3.${material} 
+              x-3.meshBasicMaterial 
               x-3.$color="'red'"
               x-3.attach.material
             />
             <br 
-              x-3.${geometry} 
+              x-3.boxGeometry
               x-3.attach.geometry
             />
           </div>
-
         </div>
       </div>
     `)

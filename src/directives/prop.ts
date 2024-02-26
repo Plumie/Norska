@@ -1,21 +1,28 @@
 import { NorskaDirective } from '@/types/Norska';
 
 // Drilling down current object and changing the property
-const p: NorskaDirective = (
+const prop: NorskaDirective = (
 	el,
   { modifiers, expression },
   { evaluateLater, effect },
 ) => {
 
-  const getValues = evaluateLater(expression);
+  const getValues = evaluateLater(expression ? expression : 'true');
   
+  modifiers = modifiers.map((modifier: string) => {
+    return modifier.replace(/-./g, (x) => x.charAt(1).toUpperCase());
+  });
+
   const changeProperty = () => {
+
     getValues((value: any) => {
+
       const instance = el._norska;
 
       if (!instance) return;
 
       let instanceCopy = instance;
+
       const last = modifiers[modifiers.length - 1];
 
       modifiers.forEach((modifier: string,) => {
@@ -41,4 +48,4 @@ const p: NorskaDirective = (
   });
 };
 
-export default p;
+export default prop;

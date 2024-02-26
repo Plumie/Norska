@@ -1,6 +1,7 @@
 {
   "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite build --watch",
     "build": "vite build",
     "storybook": "storybook dev -p 6006 --no-open",

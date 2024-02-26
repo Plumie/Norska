@@ -7,6 +7,10 @@ const attach: NorskaDirective = (
   { effect, cleanup },
 ) => {
 
+  modifiers = modifiers.map((modifier: string) => {
+    return modifier.replace(/-./g, (x) => x.charAt(1).toUpperCase());
+  });
+
   const getSpecificProperty: any = () => {
 
     const parentInstance = el.parentNode?._norska;

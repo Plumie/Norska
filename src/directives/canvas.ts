@@ -1,5 +1,6 @@
 import { NorskaDirective, NorskaElement } from '@/types/Norska';
-import { Camera, PerspectiveCamera, Raycaster, Scene, Vector2, WebGLRenderer } from 'three';
+import { Camera, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
+import { createEventListeners } from './events';
 
 const canvas: NorskaDirective = (
   el,
@@ -13,6 +14,7 @@ const canvas: NorskaDirective = (
   const getRenderer = () => {
     if (parameters.renderer instanceof WebGLRenderer) return parameters.renderer; 
     const renderer = new WebGLRenderer(); 
+    if (parameters.shadow) renderer.shadowMap.enabled = true;
     if (parameters.renderer?.constructor.name === 'Object') Object.assign(renderer, parameters.renderer);
     return renderer;
   }
@@ -39,12 +41,10 @@ const canvas: NorskaDirective = (
     return scene;
   }
 
-  const {scene, camera, renderer, raycaster, pointer} = {
+  const {scene, camera, renderer} = {
     scene: getScene(),
     renderer: getRenderer(),
     camera: getCamera(),
-    raycaster: new Raycaster(),
-    pointer: new Vector2()
   }
 
   // Create a parent div to hold the renderer
@@ -73,18 +73,9 @@ const canvas: NorskaDirective = (
     renderer.setSize(width, height);
   };
 
-  let intersects: any[] = [];
+  window.addEventListener('resize', setCanvasSize);
 
-  const onPointerMove = (event: PointerEvent) => {
-    pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-    pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-    raycaster.setFromCamera(pointer, camera);
-    intersects = raycaster.intersectObjects(scene.children);
-
-    // change cursor depending on if an object is intersected
-    document.body.style.cursor = intersects.length ? 'pointer' : 'auto';
-  }
+  createEventListeners(camera, scene);
 
   const animate = () => {
     requestAnimationFrame(animate);
@@ -95,8 +86,7 @@ const canvas: NorskaDirective = (
 
   setCanvasSize();
 
-  window.addEventListener('resize', setCanvasSize);
-
+  // Render 
   animate();
 
   window._norska = {
@@ -105,12 +95,6 @@ const canvas: NorskaDirective = (
     renderer,
   };
 
-  window.addEventListener('pointermove', onPointerMove);
-  window.addEventListener('click', (e) => {
-    if (!intersects[0]) return;
-    const object = intersects[0].object;
-    object.el.dispatchEvent(new CustomEvent('click', { detail: e }));
-  });
 };
 
 export default canvas;
