@@ -5,13 +5,13 @@ export type Instance<T = Record<string, any>> = T & {
 };
 
 export type NorskaAddons = {
-  prefix: string;
+  namespace: string;
   directives?: Record<string, NorskaDirectiveCallback>;
   magics?: Record<string, NorskaMagicProperty>
 }
 
 export type NorskaOptions = {
-  namespace?: string;
+  prefix?: string;
   loaders?: any[];
   addons?: NorskaAddons[];
 };

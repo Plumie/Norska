@@ -46,20 +46,25 @@ const onPointerMove = (e: PointerEvent) => {
     return;
   }
 
-  const oldIntersects = getIntersects(oldPointer);
   const intersects = getIntersects(pointer);
 
-  const pointerStatus = {
-    in: intersects.length && !oldIntersects.length,
-    out: oldIntersects.length && !intersects.length,
-    over: oldIntersects.length && intersects.length
+  const isWaitingForClick = hasClickEventLister(intersects[0]);
+
+  document.body.style.cursor = isWaitingForClick ? 'pointer' : 'auto';
+
+  if (isWaitingForClick) {
+    const oldIntersects = getIntersects(oldPointer);
+
+    const pointerStatus = {
+      in: intersects.length && !oldIntersects.length,
+      out: oldIntersects.length && !intersects.length,
+      over: oldIntersects.length && intersects.length
+    }
+
+    if (pointerStatus.in) sendCustomEvent(intersects, 'pointerenter', e);
+    if (pointerStatus.out) sendCustomEvent(oldIntersects, 'pointerout', e);
+    if (pointerStatus.over) sendCustomEvent(intersects, 'pointerover', e);;
   }
-
-  if (pointerStatus.in) sendCustomEvent(intersects, 'pointerenter', e);
-  if (pointerStatus.out) sendCustomEvent(oldIntersects, 'pointerout', e);
-  if (pointerStatus.over) sendCustomEvent(intersects, 'pointerover', e);;
-
-  document.body.style.cursor = hasClickEventLister(intersects[0]) ? 'pointer' : 'auto';
 
   oldPointer.copy(pointer);
 }
