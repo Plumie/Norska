@@ -2,7 +2,7 @@ import { showcase } from '@/stories/utils';
 import type { Meta, StoryObj } from '@storybook/html';
 
 const meta: Meta = {
-  title: 'Events',
+  title: 'Core/Events',
 };
 
 export default meta;

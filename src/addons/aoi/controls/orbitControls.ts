@@ -1,17 +1,21 @@
-import { NorskaDirectiveCallback } from '@/types/norska.types';
+import { NorskaDirectiveCallback } from '@/types/norska';
 import { attachInstance, detachInstance } from '@/utils/instance';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const orbitControls: NorskaDirectiveCallback = (
   el,
-  {},
-  { effect, cleanup },
+  { expression },
+  { effect, cleanup, evaluateLater },
 ) => {
+  const getValues = evaluateLater(expression.length ? expression : 'false');
   effect(() => {
-    const {camera, renderer} = window._norska;
-    const controls = new OrbitControls(camera, renderer.domElement);
-    attachInstance(el, controls);
-    window._norska.controls = controls;
+    getValues((values) => {
+      const {camera, renderer} = window._norska;
+      const controls = new OrbitControls(camera, renderer.domElement);
+      Object.assign(controls, values);
+      attachInstance(el, controls);
+      window._norska.controls = controls;
+    });
   })
 
   cleanup(() => {

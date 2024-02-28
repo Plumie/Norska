@@ -1,20 +1,39 @@
-import { showcase } from '@/stories/utils';
+import { showcase } from '@addons/aoi/stories/utils';
 import type { Meta, StoryObj } from '@storybook/html';
 
 const meta: Meta = {
-  title: 'Addons',
+  title: 'Aoi/OrbitControls',
+  args: {
+    orbitControlsProps: {
+      enableDamping: true,
+      dampingFactor: 0.25,
+      autoRotate: true,
+      autoRotateSpeed: 0.5,
+      enableZoom: true,
+      enablePan: true,
+      enableRotate: true
+    }
+  },
+  argTypes: {
+    orbitControlsProps: {
+      control: {
+        type: 'object',
+      },
+    }
+  }
 };
 
 export default meta;
 
-export const Addons: StoryObj = {
+export const OrbitControls: StoryObj = {
   render: ({
+    orbitControlsProps
   }) => {
     return (`
       <div x-data>
         <div x-3.canvas>
           ${showcase}
-          <br x-3.aoi.orbitcontrols />
+          <br x-3.aoi.orbitcontrols='${JSON.stringify(orbitControlsProps)}' />
           <div
             x-3.mesh
             x-3.$rotation="[$math.degToRad(22.5), $math.degToRad(45), 0]"

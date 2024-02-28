@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/html';
 import { showcase } from './utils';
 
 const meta: Meta = {
-  title: 'Reactivity',
+  title: 'Core/Reactivity',
 };
 
 export default meta;
@@ -49,7 +49,7 @@ export const xfor: StoryObj = {
         <button 
           style="position: absolute; top: 16px; left: 16px" class="contrast"
           @click="count++"
-        >Add !</button>
+        >Add</button>
         <div x-3.canvas>
           ${showcase}
           <template x-for="i in [...Array(count)]">
