@@ -13,5 +13,10 @@ const config = {
   docs: {
     autodocs: "tag",
   },
+  options: {
+    storySort: {
+      order: ["Mesh", "Reactivity", "Events"],
+    },
+  }
 };
 export default config;

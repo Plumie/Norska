@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
+import { showcase } from './utils';
 
 const meta: Meta = {
   title: 'Reactivity',
@@ -16,20 +17,8 @@ export const xif: StoryObj = {
           @click="show = !show"
           x-text="show ? 'Hide' : 'Show'"
         ></button>
-
         <div x-3.canvas>
-          <div 
-            x-3.three.scene 
-          >
-            <br
-              x-3.color="'#151414'"
-              x-3.attach.background
-            />
-          </div>
-
-          <br x-3.pointLight="[0xffffff, 5, 100]" x-3.$position="[3, 3, 3]"/>
-          <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
-
+          ${showcase}
           <template x-if="show">
             <div
               x-3.mesh
@@ -37,7 +26,6 @@ export const xif: StoryObj = {
             >
               <br 
                 x-3.meshStandardMaterial 
-                x-3.$color="'white'"
                 x-3.attach.material
               />
               <br 
@@ -62,21 +50,8 @@ export const xfor: StoryObj = {
           style="position: absolute; top: 16px; left: 16px" class="contrast"
           @click="count++"
         >Add !</button>
-
         <div x-3.canvas>
-          <div 
-            x-3.three.scene 
-          >
-            <br
-              x-3.color="'#151414'"
-              x-3.attach.background
-            />
-          </div>
-
-          <br x-3.three.camera x-3.$position="[0, 0, 4]" />
-          <br x-3.pointLight="[0xffffff, 5, 100]" x-3.$position="[3, 3, 3]"/>
-          <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
-
+          ${showcase}
           <template x-for="i in [...Array(count)]">
             <div
               x-3.mesh
@@ -86,7 +61,6 @@ export const xfor: StoryObj = {
             >
               <br 
                 x-3.meshStandardMaterial 
-                x-3.$color="'white'"
                 x-3.attach.material
               />
               <br 

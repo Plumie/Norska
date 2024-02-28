@@ -1,17 +1,19 @@
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
+import { TextureLoader } from 'three';
 import Alpine from 'alpinejs'
-
 import './preview.css';
 import './pico.min.css';
-import norska from '../src/main'
-import { TextureLoader } from 'three';
+import norska from '@/main'
+import aoi from '@addons/aoi';
 
-Alpine.plugin(norska({
-  loaders: [GLTFLoader, TextureLoader]
-}));
-window.Alpine = Alpine
- 
-Alpine.start()
+if (!window.Alpine) {
+  Alpine.plugin(norska({
+    loaders: [GLTFLoader, TextureLoader],
+    addons: [aoi]
+  }));
+  window.Alpine = Alpine
+  Alpine.start()
+}
 
 const preview = {
   parameters: {
@@ -22,6 +24,11 @@ const preview = {
         date: /Date$/i,
       },
     },
+    options: {
+      storySort: {
+        order: ["Mesh", "Reactivity", "Events"],
+      },
+    }
   },
 };
 

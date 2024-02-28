@@ -4,10 +4,6 @@ import { Scene, Camera, Renderer, Controls } from 'three'
 declare global {
   interface Window {
     Alpine: Alpine
-    _norska: {
-      scene: Scene
-      camera: Camera
-      renderer: Renderer
-    }
+    _norska: Instance 
   }
 }

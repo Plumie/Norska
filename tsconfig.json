@@ -17,7 +17,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/core/*"],
+      "@addons/*": ["src/addons/*"]
     }
   },
   "include": ["src"]

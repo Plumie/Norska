@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import * as THREE from 'three';
+import { showcase } from '@/stories/utils';
 
 const meta: Meta = {
   title: 'Mesh',
@@ -8,11 +9,28 @@ const meta: Meta = {
 export default meta;
 
 export const Mesh: StoryObj = {
+  args: {
+    meshAttributes: 'x-3.$rotation="[$math.degToRad(22.5), $math.degToRad(45), 0]"',
+    geometry: "BoxGeometry",
+    geometryAttributes: '',
+    material: "MeshStandardMaterial",
+    materialAttributes: '',
+  },
   argTypes: {
+    meshAttributes: {
+      control: {
+        type: 'text',
+      },
+    },
     geometry: {
       options: Object.keys(THREE).filter((key) => key.endsWith('Geometry')),
       control: {
         type: 'select',
+      },
+    },
+    geometryAttributes: {
+      control: {
+        type: 'text',
       },
     },
     material: {
@@ -20,41 +38,40 @@ export const Mesh: StoryObj = {
       control: {
         type: 'select',
       },
-    }
+    },
+    materialAttributes: {
+      control: {
+        type: 'text',
+      },
+    },
   },
   render: ({
+    meshAttributes,
     geometry = "BoxGeometry",
+    geometryAttributes = '',
     material = "meshStandardMaterial",
+    materialAttributes = '',
   }) => {
 
     return (`
       <div x-data>
         <div x-3.canvas>
-
-          <div
-            x-3.three.scene
-          >
-            <br x-3.color="'#151414'" x-3.attach.background />
-          </div>
-
-          <br x-3.pointLight="[0xffffff, 5, 100]" x-3.$position="[3, 3, 3]"/>
-          <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
-
+          ${showcase}
           <div
             x-3.mesh
-            x-3.$rotation="[$math.degToRad(22.5), $math.degToRad(45), 0]"
+            ${meshAttributes}
           >
             <br 
               x-3.${material} 
-              x-3.$color="'red'"
               x-3.attach.material
+              ${materialAttributes}
             />
             <br 
               x-3.${geometry} 
               x-3.attach.geometry
+              ${geometryAttributes}
             />
           </div>
-
         </div>
       </div>
     `)
