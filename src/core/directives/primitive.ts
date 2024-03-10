@@ -1,4 +1,4 @@
-import { Instance, NorskaDirectiveCallback } from '@/types/norska.types';
+import { Instance, NorskaDirectiveCallback } from '@/types/norska';
 import { attachInstance, detachInstance, getInstance, addInstance, removeInstance } from '@/utils/instance';
 import { isObject3D } from '@/utils/guards';
 import { Object3D } from 'three';
