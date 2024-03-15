@@ -1,4 +1,4 @@
-import { showcase } from '@/stories/utils';
+import { showcase } from '@/stories/utils/showcase';
 import type { Meta, StoryObj } from '@storybook/html';
 
 const meta: Meta = {

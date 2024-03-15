@@ -1,4 +1,4 @@
-export const showcase = `
+const showcase = `
   <div
     x-3.three.scene
   >
@@ -11,3 +11,5 @@ export const showcase = `
   <br x-3.pointLight="[0xffffff, 5, 100]" x-3.$position="[3, 3, 3]"/>
   <br x-3.hemisphereLight="[0xffffff, 0x151414, 1]" />
 `
+
+export default showcase;
