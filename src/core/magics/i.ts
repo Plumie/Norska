@@ -1,4 +1,4 @@
-import { ElementWithNorskaAttributes } from '@/types/norska.types';
+import { ElementWithNorskaAttributes } from '@/types/norska';
 import { Alpine } from 'alpinejs';
 
 export default (Alpine: Alpine) => {

@@ -23,13 +23,13 @@ export default (norskaOptions?: NorskaOptions) => {
       return loaders;
     }
 
-    const getAddonsNamespace = () => {
+    const getAddonsNames = () => {
       return options.addons.map(addon => addon.namespace);
     }
 
     Alpine.directive(options.prefix, (el, args, routine) => {
       const name = args.modifiers[0];
-      const addonsNames = getAddonsNamespace();
+      const addonsNames = getAddonsNames();
 
       if (!(addonsNames.includes(name))) {
         if (name.charAt(0) === "$") {

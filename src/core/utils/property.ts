@@ -1,4 +1,4 @@
-import { Instance } from "@/types/norska.types";
+import { Instance } from "@/types/norska";
 import { DirectiveData } from "alpinejs";
 
 export const getPath = (modifiers: DirectiveData['modifiers']) => modifiers.map((modifier: string) => modifier.replace(/-./g, (match) => match.charAt(1).toUpperCase()));

@@ -1,4 +1,4 @@
-import { ElementWithNorskaAttributes, NorskaDirectiveCallback } from '@/types/norska.types';
+import { ElementWithNorskaAttributes, NorskaDirectiveCallback } from '@/types/norska';
 import { Camera, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 import { isObject } from '@/utils/guards';
 import { createEventManager } from '@/directives/canvas/events';
@@ -52,8 +52,8 @@ const canvas: NorskaDirectiveCallback = (
 
   const createParent = () => {
     const parent = document.createElement('div')
-    parent.style.setProperty('width', '100%');
-    parent.style.setProperty('heigth', '100%');
+    parent.style.width = '100%';
+    parent.style.height = '100%';
     el.parentNode?.appendChild(parent);
     parent.appendChild(window._norska.renderer.domElement);
     return parent;

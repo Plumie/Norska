@@ -67,7 +67,7 @@ const S = (n) => Array.isArray(n), E = (n) => n != null && n.constructor.name ==
   }, a = () => {
     var h;
     const r = document.createElement("div");
-    return r.style.setProperty("width", "100%"), r.style.setProperty("heigth", "100%"), (h = n.parentNode) == null || h.appendChild(r), r.appendChild(window._norska.renderer.domElement), r;
+    return r.style.width = "100%", r.style.height = "100%", (h = n.parentNode) == null || h.appendChild(r), r.appendChild(window._norska.renderer.domElement), r;
   }, w = (r) => {
     const { width: h, height: k } = r.getBoundingClientRect();
     window._norska.camera.aspect = h / k, window._norska.camera.updateProjectionMatrix(), window._norska.renderer.setSize(h, k);

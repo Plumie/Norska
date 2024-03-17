@@ -1,4 +1,4 @@
-import { Instance, NorskaDirectiveCallback } from '@/types/norska.types';
+import { Instance, NorskaDirectiveCallback } from '@/types/norska';
 import { getInstance } from '@/utils/instance';
 import { isArray, isObject } from '@/utils/guards';
 import { getDeepProperty, getPath } from '@/utils/property';
