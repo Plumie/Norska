@@ -1,7 +1,18 @@
 {
   "type": "module",
+  "name": "@norska/core",
+  "author": "Plumie",
+  "description": "Three.js lightweight plugin for Alpine 🏔️",
+  "version": "0.4.0",
+  "bugs": {
+    "url": "https://github.com/Plumie/Norska/issues"
+  },
+  "homepage": "https://github.com/Plumie/Norska#readme",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/norska.js",
   "scripts": {
-    "start": "vite",
     "dev": "vite build --watch",
     "build": "vite build",
     "storybook": "storybook dev -p 6006 --no-open",
