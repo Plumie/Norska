@@ -25,7 +25,7 @@ export default defineConfig({
       ]
     },
     lib: {
-      entry: path.resolve(__dirname, 'src/main.ts'),
+      entry: path.resolve(__dirname, 'src/core/main.ts'),
       name: 'Norska',
       formats: ['es'],
       fileName: 'norska'
@@ -33,7 +33,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, 'src/core'),
+      '@addons': path.resolve(__dirname, 'src/addons')
     }
   },
 });

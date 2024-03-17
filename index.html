@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+  <head>
+    <script src="index.ts" type="module"></script>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div x-data style="height: 100%">
+      <div x-3.canvas="{shadows: true}">
+        <br x-3.pointLight="[0xffffff, 10]" x-3.$cast-shadow x-3.$position="[2, 2, 2]" />
+        <div x-3.mesh x-3.$cast-shadow>
+          <br         
+              x-3.boxGeometry
+              x-3.attach.geometry
+          />
+          <br         
+              x-3.meshStandardMaterial="{color: 0xff0000}"
+              x-3.attach.material
+          />
+        </div>
+        <div x-3.mesh x-3.$rotation.x="-$math.degToRad(90)" x-3.$position.y="-0.5" x-3.$receive-shadow>
+          <br         
+              x-3.planeGeometry="[5, 5]"
+              x-3.attach.geometry
+          />
+          <br         
+              x-3.meshStandardMaterial="{color: 0x00ff00}"
+              x-3.attach.material
+          />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
