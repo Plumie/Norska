@@ -6,7 +6,7 @@ _Three.js plugin for Alpine_
 
 _How to install Norska with AlpineJS_
 
-Check out the documentation: https://plumie.gitbook.io/norska/
+Check out the documentation: https://docs.plume.moe/norska
 
 ## As a module
 
