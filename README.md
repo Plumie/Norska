@@ -2,15 +2,13 @@
 
 _Three.js plugin for Alpine_
 
+Check out the full documentation here: https://docs.plume.moe/norska
+
 # Installation
 
 _How to install Norska with AlpineJS_
 
-Check out the documentation: https://docs.plume.moe/norska
-
-## As a module
-
-Run the following command to install it.
+Run the following command to install Norska and its dependencies.
 
 ```bash
 npm install @norska/core alpinejs three
@@ -46,26 +44,21 @@ _How to use Norska_
 
 To create a ThreeJS scene in our document, we need to initialize a Canvas, for this it is possible to use `x-3.canvas` which will create a basic scene, a camera, and a renderer with each of the default parameters that can be adjusted.
 
-By default, Norksa takes the size of its parent container, so if it doesn't appear, you may be missing one or two style lines.
+By default, the canvas element size is determined by the directive's parent's size.
 
 ## Populating our scene
 
 There are many ways to fill your scene, but we'll keep it simple for now.
 
-Let's start with a simple cube.
+Let's start with a cube.
 
 **The hierarchy of the scene is the same as that of the HTML blocks in the canvas. A good way to do this is to use `<div>` for elements with children, and void elements like `<br/>` for the rest.**
 
-The scene already has a camera but its default position is 0 on all axes, that's why we move it back slightly to avoid it being in the cube.
 We declare a mesh with `x-3.mesh`, then we can attach a geometry and a material with the corresponding directives.
 
 ```html
 <div x-data>
     <div x-3.canvas>
-        <br 
-            x-3.camera
-            x-3.$position.z="5"
-        />
         <div x-3.mesh>
             <br         
                 x-3.boxGeometry
