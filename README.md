@@ -2,10 +2,6 @@
 
 _Three.js plugin for Alpine_
 
-### Warning: Norska is still in alpha, please avoid using it in production as many things are likely to change
-
-## Update: I've finally found some time to continue improving Norska until we reach a stable version, so get ready for lots of refactoring and improvements in the coming weeks.
-
 # Installation
 
 _How to install Norska with AlpineJS_
