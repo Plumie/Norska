@@ -1,7 +1,13 @@
 import { Alpine } from 'alpinejs';
+import { Object3D } from 'three';
 
 export default (Alpine: Alpine) => {
   Alpine.magic('load', () => async (loader: any, path: string) => {
-    return await loader.loadAsync(path);
+    const loaded = new Promise((resolve) => {
+      loader.load(path, (gltf: Object3D) => {
+        resolve(gltf);
+      });
+    });
+    return loaded;
   });
 };

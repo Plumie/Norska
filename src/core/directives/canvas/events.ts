@@ -34,7 +34,7 @@ const sendCustomEvent = (intersects: NorskaIntersection[], event: string, e: Eve
 
 const hasClickEventLister = (intersect: NorskaIntersection) => {
   if (!intersect) return false;
-  return cursorAttributesWhitelist.some((attr) => intersect.object.el.hasAttribute(attr));
+  return cursorAttributesWhitelist.some((attr) => intersect.object.el?.hasAttribute(attr));
 }
 
 const onPointerMove = (e: PointerEvent) => {

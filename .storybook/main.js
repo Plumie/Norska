@@ -15,7 +15,7 @@ const config = {
   },
   options: {
     storySort: {
-      order: ["Mesh", "Reactivity", "Events"],
+      order: ["Instance", "Reactivity", "Events"],
     },
   }
 };

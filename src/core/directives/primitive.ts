@@ -11,10 +11,13 @@ const primitive: NorskaDirectiveCallback = (
   const getValues = evaluateLater<Instance<Object3D>>(expression.length ? expression : 'false');
 
   effect(() => {
+    const parentObject = new Object3D();
+    attachInstance(el, parentObject);
+    addInstance(el, parentObject)
+
     getValues((values) => {
       if (!isObject3D(values)) throw new Error(`Primitive: expected an instance of Object3D, got ${(values as any)?.type ?? values} instead.`);
-      attachInstance(el, values);
-      addInstance(el, values)
+      parentObject.add(values);
     });
   });
 

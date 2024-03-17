@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/html';
 import * as THREE from 'three';
-import { showcase } from '@/stories/utils';
+import { showcase } from './utils';
 
 const meta: Meta = {
   title: 'Core/Instance',

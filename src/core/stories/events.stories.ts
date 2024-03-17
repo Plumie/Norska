@@ -1,6 +1,5 @@
-import { showcase } from '@/stories/utils/showcase';
 import type { Meta, StoryObj } from '@storybook/html';
-
+import { showcase } from './utils';
 const meta: Meta = {
   title: 'Core/Events',
 };

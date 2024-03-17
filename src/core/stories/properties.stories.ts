@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/html';
-import { showcase } from '@/stories/utils';
+import { showcase } from './utils';
 
 const meta: Meta = {
   title: 'Core/Properties',
@@ -26,6 +26,7 @@ export const Properties: StoryObj = {
   },
   render: ({
     meshAttributes,
+    geometryAttributes,
     materialAttributes,
   }) => {
 
@@ -45,6 +46,7 @@ export const Properties: StoryObj = {
             <br 
               x-3.boxGeometry 
               x-3.attach.geometry
+              ${geometryAttributes}
             />
           </div>
         </div>
