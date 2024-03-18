@@ -3,6 +3,7 @@
 _Three.js plugin for Alpine_
 
 Check out the full documentation here: https://docs.plume.moe/norska
+Live Demo: https://norska.plume.moe
 
 # Installation
 
